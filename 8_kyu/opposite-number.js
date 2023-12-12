@@ -1,3 +1,4 @@
+//https://www.codewars.com/kata/opposite-number/train/javascript
 // 📌 DESCRIPTION:
 // Very simple, given an integer or a floating-point number, find its opposite.
 // Examples:
