@@ -17,31 +17,22 @@
 
 // 💡 SOLUTION:
 
-// function isPerfect(n) {
-//   let arr = [];
-//   for (let i = 1; i < n; i++) {
-//     if (n % i === 0) { arr.push(i)} ;
-//   }
-//   return arr.reduce((accum, item) => accum + item, 0) === n;
-// }
-// console.log(isPerfect(28));
-
-
 function isPerfect(n) {
-    if (n === 1) {
-      return false;
-    }
-  
-    let sum = 1;
-    for (let i = 2; i * i <= n; i++) {
-      if (n % i === 0) {
-        console.log(sum += i);
-        if (i * i !== n) { // Проверяем, чтобы не учитывать одинаковые делители дважды
-          sum += n / i;
-        }
+  if (n <= 0 || n === 1) {
+    return false;
+  }
+
+  let sum = 1;
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      sum += i;
+
+      if (i !== n / i) {
+        sum += n / i
       }
     }
-  
-    return sum === n;
+
   }
-  console.log(isPerfect(28));
+  return sum === n
+}
+console.log(isPerfect(28))
