@@ -1,9 +1,21 @@
 // 📌 DESCRIPTION:
 
+
 // 💡 SOLUTION:
 
-function removeDuplicateWords (s) {
-    let set = new Set(s.split(' '))
-    return Array.from(set).join(' ')
+function findUnique(numbers) {
+  let numi = null;
+  let obj = {};
+  for (let key of numbers) {
+    obj[key] ? obj[key]++ : (obj[key] = 1);
   }
-  console.log(removeDuplicateWords('alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'))
+  for (let key in obj) {
+    if (obj[key] === 1) {
+      numi = parseInt(key);
+    }
+  }
+  return numi;
+}
+
+
+console.log(findUnique([3, 5, 5, 4, 4, 3, 2, 2, 9]));
