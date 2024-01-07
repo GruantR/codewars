@@ -1,22 +1,37 @@
 // 📌 DESCRIPTION:
 
-
 // 💡 SOLUTION:
+var list = [
+  {
+    firstName: "Sofia",
+    lastName: "I.",
+    country: "Argentina",
+    continent: "Americas",
+    age: 35,
+    language: "Java",
+  },
+  {
+    firstName: "Lukas",
+    lastName: "X.",
+    country: "Croatia",
+    continent: "Europe",
+    age: 35,
+    language: "Python",
+  },
+  {
+    firstName: "Madison",
+    lastName: "U.",
+    country: "United States",
+    continent: "Americas",
+    age: 32,
+    language: "Ruby",
+  },
+];
 
-function findUnique(numbers) {
-    let numi = null;
-    let obj = {};
-    for (let key of numbers) {
-      obj[key] ? obj[key]++ : (obj[key] = 1);
-    }
-    for (let key in obj) {
-      if (obj[key] === 1) {
-        numi = parseInt(key);
-      }
-    }
-    return numi;
+function greetDevelopers(list) {
+  for (let obj of list) {
+    obj.greeting = `Hi ${obj.firstName}, what do you like the most about ${obj.language}?`;
   }
-  
-  
-  console.log(findUnique([3, 5, 5, 4, 4, 3, 2, 2, 9]));
-  
+  return list;
+}
+console.log(greetDevelopers(list));
