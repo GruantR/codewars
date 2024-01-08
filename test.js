@@ -1,8 +1,19 @@
 // 📌 DESCRIPTION:
 
 // 💡 SOLUTION:
-function myLanguages(results) {
-let arr = Object.entries(results).sort((a,b) =>b[1]-a[1]).filter(item => item[1] >= 60).map(item => item[0])
-  return arr
+
+function groupAnagrams(words) {
+  let obj = {};
+  for (let key of words) {
+    let sortedElem = key.split('').sort().join('');
+    if(obj[sortedElem]) {
+        obj[sortedElem].push(key);
+    }
+    else {
+        obj[sortedElem] = [key]
+    }
+    
+  }
+  return Object.values(obj);
 }
-console.log(myLanguages({"Hindi" : 60, "Greek" : 55, "Dutch" : 93}))
+console.log(groupAnagrams(["tsar", "rat", "tar", "star", "tars", "cheese"]));
