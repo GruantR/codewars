@@ -8,7 +8,7 @@
 // 💡 SOLUTION:
 
 function getCount(str) {
-  let target = 'aeiou'.split('')
-  return str.split('').filter(item => target.includes(item)).length;
-}
-console.log(getCount("abracadabra"))
+    let target = 'aeiou'.split('')
+    return str.split('').filter(item => target.includes(item)).length;
+  }
+  console.log(getCount("abracadabra"))
