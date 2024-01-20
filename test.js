@@ -1,14 +1,11 @@
-//https://www.codewars.com/kata/list-filtering/train/javascript
+//https://www.codewars.com/kata/shortest-word/train/javascript
 // 📌 DESCRIPTION:
-// In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+// Simple, given a string of words, return the length of the shortest word(s).
 
-// Example
-// filter_list([1,2,'a','b']) == [1,2]
-// filter_list([1,'a','b',0,15]) == [1,0,15]
-// filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
+// String will never be empty and you do not need to account for different data types.
 // 💡 SOLUTION:
 
-function filter_list(list) {
-  return list.filter(item => Number.isFinite(item))
+function findShort(string){
+  return string.split(' ').sort((a,b)=> a.length - b.length)[0].length
 }
-console.log(filter_list([1,'a','b',0,15]))
+console.log(findShort("turns out random test cases are easier than writing out basic ones"))
