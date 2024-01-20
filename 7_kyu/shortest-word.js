@@ -6,6 +6,6 @@
 // 💡 SOLUTION:
 
 function findShort(string){
-  return string.split(' ').sort((a,b)=> a.length - b.length)[0].length
-}
-console.log(findShort("turns out random test cases are easier than writing out basic ones"))
+    return string.split(' ').sort((a,b)=> a.length - b.length)[0].length
+  }
+  console.log(findShort("turns out random test cases are easier than writing out basic ones"))
