@@ -10,7 +10,7 @@
 // 💡 SOLUTION:
 
 function min(arr, toReturn) {
-let newArr = [...arr].sort((a,b) => a-b);
-  return toReturn === 'value' ? newArr[0] : arr.indexOf(newArr[0])
-}
-console.log(min([2,3,4,5,1], 'va3lue'))
+    let newArr = [...arr].sort((a,b) => a-b);
+      return toReturn === 'value' ? newArr[0] : arr.indexOf(newArr[0])
+    }
+    console.log(min([2,3,4,5,1], 'va3lue'))
