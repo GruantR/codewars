@@ -1,11 +1,14 @@
-//https://www.codewars.com/kata/shortest-word/train/javascript
+//https://www.codewars.com/kata/54ff3102c1bad923760001f3/train/javascript
 // 📌 DESCRIPTION:
-// Simple, given a string of words, return the length of the shortest word(s).
+// Return the number (count) of vowels in the given string.
 
-// String will never be empty and you do not need to account for different data types.
+// We will consider a, e, i, o, u as vowels for this Kata (but not y).
+
+// The input string will only consist of lower case letters and/or spaces.
 // 💡 SOLUTION:
 
-function findShort(string){
-  return string.split(' ').sort((a,b)=> a.length - b.length)[0].length
+function getCount(str) {
+  let target = 'aeiou'.split('')
+  return str.split('').filter(item => target.includes(item)).length;
 }
-console.log(findShort("turns out random test cases are easier than writing out basic ones"))
+console.log(getCount("abracadabra"))
