@@ -9,6 +9,6 @@
 // 💡 SOLUTION:
 
 function filter_list(list) {
-  return list.filter(item => Number.isFinite(item))
-}
-console.log(filter_list([1,'a','b',0,15]))
+    return list.filter(item => Number.isFinite(item))
+  }
+  console.log(filter_list([1,'a','b',0,15]))
