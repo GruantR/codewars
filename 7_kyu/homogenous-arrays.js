@@ -18,7 +18,7 @@
 // 💡 SOLUTION:
 
 function filterHomogenous(arrays) {
-  // // Фильтруем массив на основе элементов с одинаковым типом данных и ненулевой длиной
-  return arrays.filter(arrElem => arrElem.every((item,index,array) => typeof(array[0]) === typeof(item)) && arrElem.length > 0);
-}
-console.log(filterHomogenous([[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]]))
+    // // Фильтруем массив на основе элементов с одинаковым типом данных и ненулевой длиной
+    return arrays.filter(arrElem => arrElem.every((item,index,array) => typeof(array[0]) === typeof(item)) && arrElem.length > 0);
+  }
+  console.log(filterHomogenous([[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]]))
