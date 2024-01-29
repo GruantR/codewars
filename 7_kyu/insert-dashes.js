@@ -7,6 +7,6 @@
 // 💡 SOLUTION:
 
 function insertDash(num) {
-  return num.toString().split('').map((item,index,array) => item %2 !== 0 && (array[index-1] %2 !==0 && array[index-1] >=0) ? '-'+item: item).join('')
-}
-console.log(insertDash(1454793))
+    return num.toString().split('').map((item,index,array) => item %2 !== 0 && (array[index-1] %2 !==0 && array[index-1] >=0) ? '-'+item: item).join('')
+  }
+  console.log(insertDash(1454793))
