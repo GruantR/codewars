@@ -1,14 +1,12 @@
-//https://www.codewars.com/kata/find-the-capitals-1/train/javascript
+//https://www.codewars.com/kata/insert-dashes/train/javascript
 // 📌 DESCRIPTION:
-// Instructions
-// Write a function that takes a single non-empty string of only lowercase and uppercase ascii letters (word) as its argument, and returns an ordered list containing the indices of all capital (uppercase) letters in the string.
+// Write a function insert_dash(num) / insertDash(num) / InsertDash(int num) that will insert dashes ('-') between each two odd digits in num. For example: if num is 454793 the output should be 4547-9-3.
 
-// Example (Input --> Output)
-// "CodEWaRs" --> [0,3,4,6]
+// Note that the number will always be non-negative (>= 0).
 
 // 💡 SOLUTION:
 
-var capitals = function (word) {
-	return word.split('').map((item,index)=> { if (item === item.toUpperCase())  {return index}}).filter(item => item !== undefined)
-};
-console.log(capitals('CodEWaRs'))
+function insertDash(num) {
+  return num.toString().split('').map((item,index,array) => item %2 !== 0 && (array[index-1] %2 !==0 && array[index-1] >=0) ? '-'+item: item).join('')
+}
+console.log(insertDash(1454793))
