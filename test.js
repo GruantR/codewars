@@ -1,19 +1,32 @@
-//https://www.codewars.com/kata/row-weights/train/javascript
+//https://www.codewars.com/kata/scrolling-text/train/javascript
 // 📌 DESCRIPTION:
 
-// Task
-// Given an array of positive integers (the weights of the people), return a new array/tuple of two integers, 
-// where the first one is the total weight of team 1, and the second one is the total weight of team 2.
+// Let's create some scrolling text!
+
+// Your task is to complete the function which takes a string, and returns an array with all possible rotations of the given string, in uppercase.
+
+// Example
+// scrollingText("codewars") should return:
+
+// [ "CODEWARS",
+//   "ODEWARSC",
+//   "DEWARSCO",
+//   "EWARSCOD",
+//   "WARSCODE",
+//   "ARSCODEW"
+//   "RSCODEWA",
+//   "SCODEWAR" ]
+// Good luck!
 
 // 💡 SOLUTION:
 
-function rowWeights(array){
-  let arr = [0,0]
-  array.forEach((item,index) => {
-    if (index === 0 || index % 2 === 0) {arr[0]+=item}
-    else(arr[1]+=item)
-  })
-  return arr
+function scrollingText(text){
+  let arr = [];
+  arr.push(text.toUpperCase())
+  for (let i = 0; i< text.length-1; i++) {
+    text = text.slice(1) + text.slice(0,1)
+    arr.push(text.toUpperCase())
+  }
+return arr
 }
-console.log(rowWeights([39,84,74,18,59,72,35,61]))
-
+console.log(scrollingText('abc'));
