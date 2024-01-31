@@ -21,12 +21,13 @@
 // 💡 SOLUTION:
 
 function scrollingText(text){
-  let arr = [];
-  arr.push(text.toUpperCase())
-  for (let i = 0; i< text.length-1; i++) {
-    text = text.slice(1) + text.slice(0,1)
+    let arr = [];
     arr.push(text.toUpperCase())
+    for (let i = 0; i< text.length-1; i++) {
+      text = text.slice(1) + text.slice(0,1)
+      arr.push(text.toUpperCase())
+    }
+  return arr
   }
-return arr
-}
-console.log(scrollingText('abc'));
+  console.log(scrollingText('abc'));
+  
