@@ -6,8 +6,9 @@
 
 // 💡 SOLUTION:
 function findMagic(arr){
-  let num = arr.filter((item,index)=> item === index)[0]
-return num ? num: -1
-}
-console.log(findMagic([-20,-10,2,10,20]))
-
+    let num = arr.filter((item,index)=> item === index)[0]
+  return num ? num: -1
+  }
+  console.log(findMagic([-20,-10,2,10,20]))
+  
+  
