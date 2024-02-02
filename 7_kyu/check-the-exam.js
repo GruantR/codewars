@@ -15,14 +15,14 @@
 
 // 💡 SOLUTION:
 function checkExam(array1, array2) {
-  let keks = array1.reduce((accum, item, index, array) => {
-    if(array1[index] === array2[index]){
-      return accum+4;
-    } else if(array2[index] === ''){
-      return accum + 0;
-    } else{
-      return accum-1;
-    }}, 0)
-  return keks > 0 ? keks:0;
- }
-console.log(checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"])) 
+    let keks = array1.reduce((accum, item, index, array) => {
+      if(array1[index] === array2[index]){
+        return accum+4;
+      } else if(array2[index] === ''){
+        return accum + 0;
+      } else{
+        return accum-1;
+      }}, 0)
+    return keks > 0 ? keks:0;
+   }
+  console.log(checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"])) 
