@@ -1,28 +1,44 @@
-//https://www.codewars.com/kata/5a3dd29055519e23ec000074/train/javascript
+//https://www.codewars.com/kata/583203e6eb35d7980400002a/train/javascript
 // 📌 DESCRIPTION:
-// The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The second one contains a student's submitted answers.
+// Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
 
-// The two arrays are not empty and are the same length. Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
+// Rules for a smiling face:
 
-// If the score < 0, return 0.
+// Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+// A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+// Every smiling face must have a smiling mouth that should be marked with either ) or D
+// No additional characters are allowed except for those mentioned.
 
-// For example:
+// Valid smiley face examples: :) :D ;-D :~)
+// Invalid smiley faces: ;( :> :} :]
 
-// checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]) → 6
-// checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]) → 7
-// checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]) → 16
-// checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
-
+// Example
+// countSmileys([':)', ';(', ';}', ':-D']);       // should return 2;
+// countSmileys([';D', ':-(', ':-)', ';~)']);     // should return 3;
+// countSmileys([';]', ':[', ';*', ':$', ';-D']); // should return 1;
+// Note
+// In case of an empty array return 0. You will not be tested with invalid input (input will always be an array). Order of the face (eyes, nose, mouth) elements will always be the same.
 // 💡 SOLUTION:
-function checkExam(array1, array2) {
-  let keks = array1.reduce((accum, item, index, array) => {
-    if(array1[index] === array2[index]){
-      return accum+4;
-    } else if(array2[index] === ''){
-      return accum + 0;
-    } else{
-      return accum-1;
-    }}, 0)
-  return keks > 0 ? keks:0;
- }
-console.log(checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"])) 
+function countSmileys(arr) {
+  let keks = arr.reduce((accum, item, index, array) => {
+    if ((
+      item.length === 3 &&
+      (item[0] === ":" || item[0] === ";") &&
+      (item[1] === "-" || item[1] === "~") &&
+      (item[2] === ")" || item[2] === "D")
+    )
+    ||
+    (
+      item.length === 2 &&
+      (item[0] === ":" || item[0] === ";") &&
+      (item[1] === ")" || item[1] === "D")
+    )
+    ) {
+      return accum + 1;
+    }
+    return accum;
+  }, 0);
+  return keks;
+}
+
+console.log(countSmileys([":D", ":~)", ";~D", ":)"]));
