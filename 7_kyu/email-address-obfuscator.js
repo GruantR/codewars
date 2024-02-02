@@ -25,6 +25,6 @@
 
 // 💡 SOLUTION:
 obfuscate = function(email) {
-  return email.split('').map(item => item === "@" ? ' [at] ': item === "." ? ' [dot] ': item).join('')
-}
-console.log(obfuscate('test@123.com'))
+    return email.split('').map(item => item === "@" ? ' [at] ': item === "." ? ' [dot] ': item).join('')
+  }
+  console.log(obfuscate('test@123.com'))
