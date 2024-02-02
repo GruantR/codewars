@@ -6,6 +6,7 @@
 // 💡 SOLUTION:
 
 function smallEnough(a, limit) {
-  return Math.max(...a) <= limit;
-}
-console.log(smallEnough([80, 117, 115, 104, 45, 85, 112, 115], 120));
+    return Math.max(...a) <= limit;
+  }
+  console.log(smallEnough([80, 117, 115, 104, 45, 85, 112, 115], 120));
+  
