@@ -20,25 +20,26 @@
 // In case of an empty array return 0. You will not be tested with invalid input (input will always be an array). Order of the face (eyes, nose, mouth) elements will always be the same.
 // 💡 SOLUTION:
 function countSmileys(arr) {
-  let keks = arr.reduce((accum, item, index, array) => {
-    if ((
-      item.length === 3 &&
-      (item[0] === ":" || item[0] === ";") &&
-      (item[1] === "-" || item[1] === "~") &&
-      (item[2] === ")" || item[2] === "D")
-    )
-    ||
-    (
-      item.length === 2 &&
-      (item[0] === ":" || item[0] === ";") &&
-      (item[1] === ")" || item[1] === "D")
-    )
-    ) {
-      return accum + 1;
-    }
-    return accum;
-  }, 0);
-  return keks;
-}
-
-console.log(countSmileys([":D", ":~)", ";~D", ":)"]));
+    let keks = arr.reduce((accum, item, index, array) => {
+      if ((
+        item.length === 3 &&
+        (item[0] === ":" || item[0] === ";") &&
+        (item[1] === "-" || item[1] === "~") &&
+        (item[2] === ")" || item[2] === "D")
+      )
+      ||
+      (
+        item.length === 2 &&
+        (item[0] === ":" || item[0] === ";") &&
+        (item[1] === ")" || item[1] === "D")
+      )
+      ) {
+        return accum + 1;
+      }
+      return accum;
+    }, 0);
+    return keks;
+  }
+  
+  console.log(countSmileys([":D", ":~)", ";~D", ":)"]));
+  
