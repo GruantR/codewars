@@ -1,13 +1,30 @@
-//https://www.codewars.com/kata/magic-index/train/javascript
+//https://www.codewars.com/kata/562d8d4c434582007300004e/train/javascript
 // 📌 DESCRIPTION:
-// A magic index in an array A[1...n-1] is defined to be an index such that A[i] = i. Given a sorted array of distinct integers, write a method to find a magic index, if one exists, in array A.
+// Many people choose to obfuscate their email address when displaying it on the Web. One common way of doing this is by substituting the @ and . characters for their literal equivalents in brackets.
 
-// findMagic([-20,-10,2,10,20]); // Returns 2
+// Example 1:
+
+// user_name@example.com
+// => user_name [at] example [dot] com
+// Example 2:
+
+// af5134@borchmore.edu
+// => af5134 [at] borchmore [dot] edu
+// Example 3:
+
+// jim.kuback@ennerman-hatano.com
+// => jim [dot] kuback [at] ennerman-hatano [dot] com
+// Using the examples above as a guide, write a function that takes an email address string and returns the obfuscated version as a string that replaces the characters @ and . with [at] and [dot], respectively.
+
+// Notes
+
+// Input (email) will always be a string object. Your function should return a string.
+// Change only the @ and . characters.
+// Email addresses may contain more than one . character.
+// Note the additional whitespace around the bracketed literals in the examples!
 
 // 💡 SOLUTION:
-function findMagic(arr){
-  let num = arr.filter((item,index)=> item === index)[0]
-return num ? num: -1
+obfuscate = function(email) {
+  return email.split('').map(item => item === "@" ? ' [at] ': item === "." ? ' [dot] ': item).join('')
 }
-console.log(findMagic([-20,-10,2,10,20]))
-
+console.log(obfuscate('test@123.com'))
