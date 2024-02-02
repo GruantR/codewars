@@ -1,30 +1,28 @@
-//https://www.codewars.com/kata/562d8d4c434582007300004e/train/javascript
+//https://www.codewars.com/kata/5a3dd29055519e23ec000074/train/javascript
 // 📌 DESCRIPTION:
-// Many people choose to obfuscate their email address when displaying it on the Web. One common way of doing this is by substituting the @ and . characters for their literal equivalents in brackets.
+// The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The second one contains a student's submitted answers.
 
-// Example 1:
+// The two arrays are not empty and are the same length. Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
 
-// user_name@example.com
-// => user_name [at] example [dot] com
-// Example 2:
+// If the score < 0, return 0.
 
-// af5134@borchmore.edu
-// => af5134 [at] borchmore [dot] edu
-// Example 3:
+// For example:
 
-// jim.kuback@ennerman-hatano.com
-// => jim [dot] kuback [at] ennerman-hatano [dot] com
-// Using the examples above as a guide, write a function that takes an email address string and returns the obfuscated version as a string that replaces the characters @ and . with [at] and [dot], respectively.
-
-// Notes
-
-// Input (email) will always be a string object. Your function should return a string.
-// Change only the @ and . characters.
-// Email addresses may contain more than one . character.
-// Note the additional whitespace around the bracketed literals in the examples!
+// checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]) → 6
+// checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]) → 7
+// checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]) → 16
+// checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
 
 // 💡 SOLUTION:
-obfuscate = function(email) {
-  return email.split('').map(item => item === "@" ? ' [at] ': item === "." ? ' [dot] ': item).join('')
-}
-console.log(obfuscate('test@123.com'))
+function checkExam(array1, array2) {
+  let keks = array1.reduce((accum, item, index, array) => {
+    if(array1[index] === array2[index]){
+      return accum+4;
+    } else if(array2[index] === ''){
+      return accum + 0;
+    } else{
+      return accum-1;
+    }}, 0)
+  return keks > 0 ? keks:0;
+ }
+console.log(checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"])) 
