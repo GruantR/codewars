@@ -13,8 +13,8 @@
 // 💡 SOLUTION:
 
 function twoSum(numbers, target) {
-  let arrIndex = [];
-numbers.forEach((item,index) => numbers.includes(target-item,index+1) ? arrIndex.push(numbers.indexOf(item),numbers.lastIndexOf(target-item)): -1)
-  return arrIndex
-}
-console.log(twoSum([1234, 5678, 9012], 14690))
+    let arrIndex = [];
+  numbers.forEach((item,index) => numbers.includes(target-item,index+1) ? arrIndex.push(numbers.indexOf(item),numbers.lastIndexOf(target-item)): -1)
+    return arrIndex
+  }
+  console.log(twoSum([1234, 5678, 9012], 14690))
