@@ -18,3 +18,5 @@ numbers.forEach((item,index) => numbers.includes(target-item,index+1) ? arrIndex
   return arrIndex
 }
 console.log(twoSum([1234, 5678, 9012], 14690))
+
+//ll
