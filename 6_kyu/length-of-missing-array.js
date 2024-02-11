@@ -24,25 +24,26 @@
 // 💡 SOLUTION:
 
 function getLengthOfMissingArray(arrayOfArrays) {
-  if (arrayOfArrays === null || arrayOfArrays.length === 0) {
-    return 0;
-  }
-  else if (arrayOfArrays.some((item) => item === null || item.length === 0)) {
-    return 0;
-  };
-
-  let arrSort = arrayOfArrays.map((item) => item.length).sort((a, b) => b - a);
-  for (let i = 0; i < arrSort.length; i++) {
-    if (!arrSort.includes(arrSort[i] - 1)) {
-      return arrSort[i] - 1;
+    if (arrayOfArrays === null || arrayOfArrays.length === 0) {
+      return 0;
+    }
+    else if (arrayOfArrays.some((item) => item === null || item.length === 0)) {
+      return 0;
+    };
+  
+    let arrSort = arrayOfArrays.map((item) => item.length).sort((a, b) => b - a);
+    for (let i = 0; i < arrSort.length; i++) {
+      if (!arrSort.includes(arrSort[i] - 1)) {
+        return arrSort[i] - 1;
+      }
     }
   }
-}
-console.log(
-  getLengthOfMissingArray([[],
-    [3],
-    [3, 2],
-    [1, 3, 0],
-    [3, 0, 2, 0],
-    [3, 4, 3, 0, 2, 3]])
-);
+  console.log(
+    getLengthOfMissingArray([[],
+      [3],
+      [3, 2],
+      [1, 3, 0],
+      [3, 0, 2, 0],
+      [3, 4, 3, 0, 2, 3]])
+  );
+  
