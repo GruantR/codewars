@@ -1,22 +1,48 @@
-//https://www.codewars.com/kata/52c31f8e6605bcc646000082/train/javascript
+//https://www.codewars.com/kata/57b6f5aadb5b3d0ae3000611/train/javascript
+
 // 📌 DESCRIPTION:
-// Write a function that takes an array of numbers (integers for the tests) and a target number. It should find two different items in the array that, when added together, give the target value. The indices of these items should then be returned in a tuple / list (depending on your language) like so: (index1, index2).
+// You get an array of arrays.
+// If you sort the arrays by their length, you will see, that their length-values are consecutive.
+// But one array is missing!
 
-// For the purposes of this kata, some tests may have multiple answers; any valid solutions will be accepted.
 
-// The input will always be valid (numbers will be an array of length 2 or greater, and all of the items will be numbers; target will always be the sum of two different items from that array).
+// You have to write a method, that return the length of the missing array.
 
-// Based on: https://leetcode.com/problems/two-sum/
+// Example:
+// [[1, 2], [4, 5, 1, 1], [1], [5, 6, 7, 8, 9]] --> 3
 
-// twoSum([1, 2, 3], 4) // returns [0, 2] or [2, 0]
-// twoSum([3, 2, 4], 6) // returns [1, 2] or [2, 1]
+// If the array of arrays is null/nil or empty, the method should return 0.
+
+// When an array in the array is null or empty, the method should return 0 too!
+// There will always be a missing element and its length will be always between the given arrays.
+
+// Have fun coding it and please don't forget to vote and rank this kata! :-)
+
+// I have created other katas. Have a look if you like coding and challenges.
+
+
 // 💡 SOLUTION:
 
-function twoSum(numbers, target) {
-  let arrIndex = [];
-numbers.forEach((item,index) => numbers.includes(target-item,index+1) ? arrIndex.push(numbers.indexOf(item),numbers.lastIndexOf(target-item)): -1)
-  return arrIndex
-}
-console.log(twoSum([1234, 5678, 9012], 14690))
+function getLengthOfMissingArray(arrayOfArrays) {
+  if (arrayOfArrays === null || arrayOfArrays.length === 0) {
+    return 0;
+  }
+  else if (arrayOfArrays.some((item) => item === null || item.length === 0)) {
+    return 0;
+  };
 
-//llcececece
+  let arrSort = arrayOfArrays.map((item) => item.length).sort((a, b) => b - a);
+  for (let i = 0; i < arrSort.length; i++) {
+    if (!arrSort.includes(arrSort[i] - 1)) {
+      return arrSort[i] - 1;
+    }
+  }
+}
+console.log(
+  getLengthOfMissingArray([[],
+    [3],
+    [3, 2],
+    [1, 3, 0],
+    [3, 0, 2, 0],
+    [3, 4, 3, 0, 2, 3]])
+);
