@@ -14,14 +14,15 @@
 // 💡 SOLUTION:
 
 function rgb(r, g, b) {
-  return Array.from(arguments).map(item => {
-    if (item < 0){item = 0}
-    if (item > 255){item = 255}
-    if (item.toString(16).toUpperCase().length === 1)  {
-      return '0'+ item.toString(16).toUpperCase()
-    }
-  else {
-    return item.toString(16).toUpperCase()
-  }}).join('');
-}
-console.log(rgb(11,9,117));
+    return Array.from(arguments).map(item => {
+      if (item < 0){item = 0}
+      if (item > 255){item = 255}
+      if (item.toString(16).toUpperCase().length === 1)  {
+        return '0'+ item.toString(16).toUpperCase()
+      }
+    else {
+      return item.toString(16).toUpperCase()
+    }}).join('');
+  }
+  console.log(rgb(11,9,117));
+  
