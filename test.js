@@ -1,31 +1,27 @@
-//https://www.codewars.com/kata/569d488d61b812a0f7000015/train/javascript
+//https://www.codewars.com/kata/513e08acc600c94f01000001/train/javascript
 
 // 📌 DESCRIPTION:
+// The rgb function is incomplete. Complete it so that passing in RGB decimal values will result in a hexadecimal representation being returned. Valid decimal values for RGB are 0 - 255. Any values that fall out of that range must be rounded to the closest valid value.
 
-// A stream of data is received and needs to be reversed.
+// Note: Your answer should always be 6 characters long, the shorthand with 3 will not work here.
 
-// Each segment is 8 bits long, meaning the order of these segments needs to be reversed, for example:
-
-// 11111111  00000000  00001111  10101010
-//  (byte1)   (byte2)   (byte3)   (byte4)
-// should become:
-
-// 10101010  00001111  00000000  11111111
-//  (byte4)   (byte3)   (byte2)   (byte1)
-// The total number of bits will always be a multiple of 8.
-
-// The data is given in an array as such:
-
-// [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,0]
-// Note: In the C and NASM languages you are given the third parameter which is the number of segment blocks.
-
+// Examples (input --> output):
+// 255, 255, 255 --> "FFFFFF"
+// 255, 255, 300 --> "FFFFFF"
+// 0, 0, 0       --> "000000"
+// 148, 0, 211   --> "9400D3"
 
 // 💡 SOLUTION:
 
-function dataReverse(data) {
-    let arr = [];
-    data.forEach((item,index) => index / 8 % 1 === 0 && index !== 0 ? arr.push('+'+item): arr.push(item))
-    return arr.join('').split('+').reverse().join('').split('').map(item => +item)
-  }
-  console.log(dataReverse([1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,0]))
- 
+function rgb(r, g, b) {
+  return Array.from(arguments).map(item => {
+    if (item < 0){item = 0}
+    if (item > 255){item = 255}
+    if (item.toString(16).toUpperCase().length === 1)  {
+      return '0'+ item.toString(16).toUpperCase()
+    }
+  else {
+    return item.toString(16).toUpperCase()
+  }}).join('');
+}
+console.log(rgb(11,9,117));
