@@ -1,27 +1,28 @@
-//https://www.codewars.com/kata/513e08acc600c94f01000001/train/javascript
+//https://www.codewars.com/kata/proof-read/train/javascript
 
 // 📌 DESCRIPTION:
-// The rgb function is incomplete. Complete it so that passing in RGB decimal values will result in a hexadecimal representation being returned. Valid decimal values for RGB are 0 - 255. Any values that fall out of that range must be rounded to the closest valid value.
+// You've just finished writing the last chapter for your novel when a virus suddenly infects your document. It has swapped the 'i's and 'e's in 'ei' words and capitalised random letters. Write a function which will:
 
-// Note: Your answer should always be 6 characters long, the shorthand with 3 will not work here.
+// a) remove the spelling errors in 'ei' words. (Example of 'ei' words: their, caffeine, deceive, weight)
 
-// Examples (input --> output):
-// 255, 255, 255 --> "FFFFFF"
-// 255, 255, 300 --> "FFFFFF"
-// 0, 0, 0       --> "000000"
-// 148, 0, 211   --> "9400D3"
+// b) only capitalise the first letter of each sentence. Make sure the rest of the sentence is in lower case.
+
+// Example: He haD iEght ShOTs of CAffIEne. --> He had eight shots of caffeine.
+
+
 
 // 💡 SOLUTION:
 
-function rgb(r, g, b) {
-  return Array.from(arguments).map(item => {
-    if (item < 0){item = 0}
-    if (item > 255){item = 255}
-    if (item.toString(16).toUpperCase().length === 1)  {
-      return '0'+ item.toString(16).toUpperCase()
-    }
-  else {
-    return item.toString(16).toUpperCase()
-  }}).join('');
+function proofread(str) {
+  return str
+    .toLowerCase()
+    .split("ie")
+    .join("ei")
+    .split(". ")
+    .map((item) => item.split("")[0].toUpperCase() + item.slice(1))
+    .join(". ");
 }
-console.log(rgb(11,9,117));
+
+console.log(
+  proofread("Their deceit was inconceivable. She seized the moment.")
+);
