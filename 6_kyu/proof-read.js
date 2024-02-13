@@ -14,15 +14,16 @@
 // 💡 SOLUTION:
 
 function proofread(str) {
-  return str
-    .toLowerCase()
-    .split("ie")
-    .join("ei")
-    .split(". ")
-    .map((item) => item.split("")[0].toUpperCase() + item.slice(1))
-    .join(". ");
-}
-
-console.log(
-  proofread("Their deceit was inconceivable. She seized the moment.")
-);
+    return str
+      .toLowerCase()
+      .split("ie")
+      .join("ei")
+      .split(". ")
+      .map((item) => item.split("")[0].toUpperCase() + item.slice(1))
+      .join(". ");
+  }
+  
+  console.log(
+    proofread("Their deceit was inconceivable. She seized the moment.")
+  );
+  
