@@ -1,28 +1,31 @@
-//https://www.codewars.com/kata/proof-read/train/javascript
+//https://www.codewars.com/kata/51689e27fe9a00b126000004/train/javascript
 
 // 📌 DESCRIPTION:
-// You've just finished writing the last chapter for your novel when a virus suddenly infects your document. It has swapped the 'i's and 'e's in 'ei' words and capitalised random letters. Write a function which will:
 
-// a) remove the spelling errors in 'ei' words. (Example of 'ei' words: their, caffeine, deceive, weight)
+// Complete the method so that it formats the words into a single comma separated value. The last word should be separated by the word 'and' instead of a comma. The method takes in an array of strings and returns a single formatted string.
 
-// b) only capitalise the first letter of each sentence. Make sure the rest of the sentence is in lower case.
+// Note:
 
-// Example: He haD iEght ShOTs of CAffIEne. --> He had eight shots of caffeine.
+// Empty string values should be ignored.
+// Empty arrays or null/nil/None values being passed into the method should result in an empty string being returned.
+// Example: (Input --> output)
 
+// ['ninja', 'samurai', 'ronin'] --> "ninja, samurai and ronin"
+// ['ninja', '', 'ronin'] --> "ninja and ronin"
+// [] -->""
 
 
 // 💡 SOLUTION:
 
-function proofread(str) {
-  return str
-    .toLowerCase()
-    .split("ie")
-    .join("ei")
-    .split(". ")
-    .map((item) => item.split("")[0].toUpperCase() + item.slice(1))
-    .join(". ");
+function formatWords(words){
+  if (words === null) {
+    return '';
+  }
+  const filteredWords = words.map((item)=> {if(item === null){return ''}; return item}).filter((item) => item.length > 0);
+  if (filteredWords.length < 2) {
+    return filteredWords.join('');
+  }
+  const lastWord = filteredWords.pop();
+  return `${filteredWords.join(', ')} and ${lastWord}`
 }
-
-console.log(
-  proofread("Their deceit was inconceivable. She seized the moment.")
-);
+console.log(formatWords(['one', 'two', '', null, 'three']))
