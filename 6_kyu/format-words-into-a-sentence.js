@@ -18,14 +18,14 @@
 // 💡 SOLUTION:
 
 function formatWords(words){
-  if (words === null) {
-    return '';
+    if (words === null) {
+      return '';
+    }
+    const filteredWords = words.map((item)=> {if(item === null){return ''}; return item}).filter((item) => item.length > 0);
+    if (filteredWords.length < 2) {
+      return filteredWords.join('');
+    }
+    const lastWord = filteredWords.pop();
+    return `${filteredWords.join(', ')} and ${lastWord}`
   }
-  const filteredWords = words.map((item)=> {if(item === null){return ''}; return item}).filter((item) => item.length > 0);
-  if (filteredWords.length < 2) {
-    return filteredWords.join('');
-  }
-  const lastWord = filteredWords.pop();
-  return `${filteredWords.join(', ')} and ${lastWord}`
-}
-console.log(formatWords(['one', 'two', '', null, 'three']))
+  console.log(formatWords(['one', 'two', '', null, 'three']))
