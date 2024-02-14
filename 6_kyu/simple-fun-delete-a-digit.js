@@ -21,12 +21,12 @@
 // 💡 SOLUTION:
 
 function deleteDigit(n) {
-  let arr = n.toString().split('');
-  let newArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    newArr.push(arr.filter((item,index) => i !== index).join(''))
+    let arr = n.toString().split('');
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      newArr.push(arr.filter((item,index) => i !== index).join(''))
+    }
+    return Math.max(...newArr)
+    
   }
-  return Math.max(...newArr)
-  
-}
-console.log(deleteDigit(1001))
+  console.log(deleteDigit(1001))
