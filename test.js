@@ -1,31 +1,32 @@
-//https://www.codewars.com/kata/51689e27fe9a00b126000004/train/javascript
+//https://www.codewars.com/kata/5894318275f2c75695000146/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Complete the method so that it formats the words into a single comma separated value. The last word should be separated by the word 'and' instead of a comma. The method takes in an array of strings and returns a single formatted string.
+// Task
+// Given an integer n, find the maximal number you can obtain by deleting exactly one digit of the given number.
 
-// Note:
+// Example
+// For n = 152, the output should be 52;
 
-// Empty string values should be ignored.
-// Empty arrays or null/nil/None values being passed into the method should result in an empty string being returned.
-// Example: (Input --> output)
+// For n = 1001, the output should be 101.
 
-// ['ninja', 'samurai', 'ronin'] --> "ninja, samurai and ronin"
-// ['ninja', '', 'ronin'] --> "ninja and ronin"
-// [] -->""
+// Input/Output
+// [input] integer n
+
+// Constraints: 10 ≤ n ≤ 1000000.
+
+// [output] an integer
 
 
 // 💡 SOLUTION:
 
-function formatWords(words){
-  if (words === null) {
-    return '';
+function deleteDigit(n) {
+  let arr = n.toString().split('');
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(arr.filter((item,index) => i !== index).join(''))
   }
-  const filteredWords = words.map((item)=> {if(item === null){return ''}; return item}).filter((item) => item.length > 0);
-  if (filteredWords.length < 2) {
-    return filteredWords.join('');
-  }
-  const lastWord = filteredWords.pop();
-  return `${filteredWords.join(', ')} and ${lastWord}`
+  return Math.max(...newArr)
+  
 }
-console.log(formatWords(['one', 'two', '', null, 'three']))
+console.log(deleteDigit(1001))
