@@ -35,51 +35,52 @@
 // 💡 SOLUTION:
 
 function balance(book) {
-  //Создадим массив из списка, разделяя каждую запись на элементы массива
-  let bookArr = book.split("\n");
-
-  //Удалим из массива баланс и выведем его в отдельную переменную
-  let balance = parseFloat(bookArr.shift());
-
-  let startBalance = balance;
-
-  let elemArr = bookArr.map((item) => item.split(" "));
-
-  let target = "qwertyuiopasdfghjklzxcvbnm".split("");
-
-  elemArr = elemArr.map((item, index) => {
-    if (item[1]) {
-      item[1] = item[1]
-        .split("")
-        .filter((item) => target.includes(item.toLowerCase()))
-        .join("");
-    }
-    if (item[2]) {
-      item[2] = +item[2]
-        .split("")
-        .filter((item) => item === "." || isFinite(item))
-        .join("");
-    }
-    item[3] = "Balance";
-    item[4] = Math.ceil((balance = balance - +item[2]) * 100) / 100;
-    return item.join(" ");
-  });
-
-  let finalBalance = startBalance - balance;
-  let expense = Math.ceil((finalBalance / elemArr.length) * 100) / 100;
-  elemArr.unshift(["Original Balance:", startBalance].join(" "));
-  elemArr.push(
-    ["Total expense", Math.ceil(finalBalance * 100) / 100].join(" ")
+    //Создадим массив из списка, разделяя каждую запись на элементы массива
+    let bookArr = book.split("\n");
+  
+    //Удалим из массива баланс и выведем его в отдельную переменную
+    let balance = parseFloat(bookArr.shift());
+  
+    let startBalance = balance;
+  
+    let elemArr = bookArr.map((item) => item.split(" "));
+  
+    let target = "qwertyuiopasdfghjklzxcvbnm".split("");
+  
+    elemArr = elemArr.map((item, index) => {
+      if (item[1]) {
+        item[1] = item[1]
+          .split("")
+          .filter((item) => target.includes(item.toLowerCase()))
+          .join("");
+      }
+      if (item[2]) {
+        item[2] = +item[2]
+          .split("")
+          .filter((item) => item === "." || isFinite(item))
+          .join("");
+      }
+      item[3] = "Balance";
+      item[4] = Math.ceil((balance = balance - +item[2]) * 100) / 100;
+      return item.join(" ");
+    });
+  
+    let finalBalance = startBalance - balance;
+    let expense = Math.ceil((finalBalance / elemArr.length) * 100) / 100;
+    elemArr.unshift(["Original Balance:", startBalance].join(" "));
+    elemArr.push(
+      ["Total expense", Math.ceil(finalBalance * 100) / 100].join(" ")
+    );
+    elemArr.push(["Average expense", expense].join(" "));
+    return elemArr.join("\n");
+  }
+  
+  console.log(
+    balance(`1000.00
+  125 Market 125.45
+  126 Hardware 34.95
+  127 Video 7.45
+  128 Book 14.32
+  129 Gasoline 16.10`)
   );
-  elemArr.push(["Average expense", expense].join(" "));
-  return elemArr.join("\n");
-}
-
-console.log(
-  balance(`1000.00
-125 Market 125.45
-126 Hardware 34.95
-127 Video 7.45
-128 Book 14.32
-129 Gasoline 16.10`)
-);
+  
