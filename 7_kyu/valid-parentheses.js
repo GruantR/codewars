@@ -18,9 +18,9 @@
 // 💡 SOLUTION:
 
 function validParentheses(parenStr) {
-  do {parenStr = parenStr.split('()').join('')} 
-  while(parenStr.includes('()'))
-
-  return parenStr.length === 0
-}
-console.log(validParentheses('(())((()())())'))
+    do {parenStr = parenStr.split('()').join('')} 
+    while(parenStr.includes('()'))
+  
+    return parenStr.length === 0
+  }
+  console.log(validParentheses('(())((()())())'))
