@@ -17,10 +17,20 @@
 
 // 💡 SOLUTION:
 
-function validParentheses(parenStr) {
-  do {parenStr = parenStr.split('()').join('')} 
-  while(parenStr.includes('()'))
+class Person {
+  #name
+  constructor(name) {
+    this.#name = name;
+  }
+  getName() {
+    return this.#name
+  }
+  satName(value) {
+    this.#name=value
+  }
 
-  return parenStr.length === 0
 }
-console.log(validParentheses('(())((()())())'))
+
+let userMasha = new Person('Маша')
+ console.log(userMasha);
+// userMasha.sayHello();
