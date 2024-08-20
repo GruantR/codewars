@@ -1,5 +1,3 @@
-//https://www.codewars.com/kata/555a67db74814aa4ee0001b5/train/javascript
-
 // 📌 DESCRIPTION:
 // Given a string, you have to return a string in which each character (case-sensitive) is repeated once.
 
@@ -12,6 +10,6 @@
 // 💡 SOLUTION:
 
 function doubleChar(str) {
-  return str.split('').reduce((acc,item)=>acc+item+item,"")
-}
-console.log(doubleChar('stRinf'))
+    return str.split('').reduce((acc,item)=>acc+item+item,"")
+  }
+  console.log(doubleChar('stRinf'))
