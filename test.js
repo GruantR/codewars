@@ -1,36 +1,15 @@
-//https://www.codewars.com/kata/6411b91a5e71b915d237332d/train/javascript
+//https://www.codewars.com/kata/555a67db74814aa4ee0001b5/train/javascript
 
 // // 📌 DESCRIPTION:
-// Write a function that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return true if the string is valid, and false if it's invalid.
-
-// Examples
-// "()"              =>  true
-// ")(()))"          =>  false
-// "("               =>  false
-// "(())((()())())"  =>  true
-// Constraints
-// 0 <= length of input <= 100
-
-// All inputs will be strings, consisting only of characters ( and ).
-// Empty strings are considered balanced (and therefore valid), and will be tested.
-// For languages with mutable strings, the inputs should not be mutated.
+// In this Kata we are passing a number (n) into a function.
+// Your code will determine if the number passed is even (or not).
+// The function needs to return either a true or false.
+// Numbers may be positive or negative, integers or floats.
+// Floats with decimal part non equal to zero are considered UNeven for this kata.
 
 // 💡 SOLUTION:
 
-class Person {
-  #name
-  constructor(name) {
-    this.#name = name;
-  }
-  getName() {
-    return this.#name
-  }
-  satName(value) {
-    this.#name=value
-  }
-
+function testEven(n) {
+  return n%2 === 0
 }
-
-let userMasha = new Person('Маша')
- console.log(userMasha);
-// userMasha.sayHello();
+console.log (testEven(2))
