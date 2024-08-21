@@ -1,26 +1,19 @@
-//https://www.codewars.com/kata/576757b1df89ecf5bd00073b/train/javascript
+//https://www.codewars.com/kata/57a083a57cb1f31db7000028/train/javascript
 
 // 📌 DESCRIPTION:
-// Build a pyramid-shaped tower, as an array/list of strings, given a positive integer number of floors. A tower block is represented with "*" character.
-// For example, a tower with 3 floors looks like this:
+// Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n ( inclusive ).
 
-// [
-//   "  *  ",
-//   " *** ", 
-//   "*****"
-// ]
+// Examples
+// n = 0  ==> [1]        # [2^0]
+// n = 1  ==> [1, 2]     # [2^0, 2^1]
+// n = 2  ==> [1, 2, 4]  # [2^0, 2^1, 2^2]
 // 💡 SOLUTION:
 
-function towerBuilder(nFloors) {
-  let arr = [];
-  let sum = nFloors;
-  let target = "*".repeat(nFloors * 2 - 1);
-  for (let i = 1; i < nFloors; i++) {
-    arr.push(" ".repeat(sum - 1) + "*".repeat(i * 2 - 1) + " ".repeat(sum - 1));
-    sum--;
+function powersOfTwo(n){
+  let arr=[];
+  for (let i=0; i<=n; i++){
+    arr.push(Math.pow(2,i))
   }
-  arr.push(target);
-
-  return arr;
+  return arr
 }
-console.log(towerBuilder(4));
+console.log(powersOfTwo(4))
