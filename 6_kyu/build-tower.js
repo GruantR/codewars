@@ -12,15 +12,16 @@
 // 💡 SOLUTION:
 
 function towerBuilder(nFloors) {
-  let arr = [];
-  let sum = nFloors;
-  let target = "*".repeat(nFloors * 2 - 1);
-  for (let i = 1; i < nFloors; i++) {
-    arr.push(" ".repeat(sum - 1) + "*".repeat(i * 2 - 1) + " ".repeat(sum - 1));
-    sum--;
+    let arr = [];
+    let sum = nFloors;
+    let target = "*".repeat(nFloors * 2 - 1);
+    for (let i = 1; i < nFloors; i++) {
+      arr.push(" ".repeat(sum - 1) + "*".repeat(i * 2 - 1) + " ".repeat(sum - 1));
+      sum--;
+    }
+    arr.push(target);
+  
+    return arr;
   }
-  arr.push(target);
-
-  return arr;
-}
-console.log(towerBuilder(4));
+  console.log(towerBuilder(4));
+  
