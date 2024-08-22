@@ -1,19 +1,14 @@
-//https://www.codewars.com/kata/57a083a57cb1f31db7000028/train/javascript
+//https://www.codewars.com/kata/530e15517bc88ac656000716/train/javascript
 
 // 📌 DESCRIPTION:
-// Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n ( inclusive ).
-
-// Examples
-// n = 0  ==> [1]        # [2^0]
-// n = 1  ==> [1, 2]     # [2^0, 2^1]
-// n = 2  ==> [1, 2, 4]  # [2^0, 2^1, 2^2]
+// ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. ROT13 is an example of the Caesar cipher.
+// Create a function that takes a string and returns the string ciphered with Rot13. If there are numbers or special characters included in the string, 
+// they should be returned as they are. Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation".
 // 💡 SOLUTION:
 
-function powersOfTwo(n){
-  let arr=[];
-  for (let i=0; i<=n; i++){
-    arr.push(Math.pow(2,i))
-  }
-  return arr
-}
-console.log(powersOfTwo(4))
+
+function rot13(message){
+ let lett = 'ABCDEFGHIJKLMNOPQRSTUVWXYZNOPQRSTUVWXYZABCDEFGHIJKLMabcdefghijklmnopqrstuvwxyznopqrstuvwxyzabcdefghijklm';
+  return message.split('').map(item => lett.includes(item) ? lett[lett.indexOf(item)+26]: item).join('')
+ }
+console.log(rot13('Test!'))
