@@ -8,7 +8,7 @@
 
 
 function rot13(message){
- let lett = 'ABCDEFGHIJKLMNOPQRSTUVWXYZNOPQRSTUVWXYZABCDEFGHIJKLMabcdefghijklmnopqrstuvwxyznopqrstuvwxyzabcdefghijklm';
-  return message.split('').map(item => lett.includes(item) ? lett[lett.indexOf(item)+26]: item).join('')
- }
-console.log(rot13('Test!'))
+    let lett = 'ABCDEFGHIJKLMNOPQRSTUVWXYZNOPQRSTUVWXYZABCDEFGHIJKLMabcdefghijklmnopqrstuvwxyznopqrstuvwxyzabcdefghijklm';
+     return message.split('').map(item => lett.includes(item) ? lett[lett.indexOf(item)+26]: item).join('')
+    }
+   console.log(rot13('Test!'))
