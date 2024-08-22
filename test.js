@@ -1,14 +1,15 @@
-//https://www.codewars.com/kata/530e15517bc88ac656000716/train/javascript
+//https://www.codewars.com/kata/57a0e5c372292dd76d000d7e/train/javascript
 
 // 📌 DESCRIPTION:
-// ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. ROT13 is an example of the Caesar cipher.
-// Create a function that takes a string and returns the string ciphered with Rot13. If there are numbers or special characters included in the string, 
-// they should be returned as they are. Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation".
-// 💡 SOLUTION:
+// Write a function that accepts an integer n and a string s as parameters, and returns a string of s repeated exactly n times.
+
+// Examples (input -> output)
+// 6, "I"     -> "IIIIII"
+// 5, "Hello" -> "HelloHelloHelloHelloHello"
+// // 💡 SOLUTION:
 
 
-function rot13(message){
- let lett = 'ABCDEFGHIJKLMNOPQRSTUVWXYZNOPQRSTUVWXYZABCDEFGHIJKLMabcdefghijklmnopqrstuvwxyznopqrstuvwxyzabcdefghijklm';
-  return message.split('').map(item => lett.includes(item) ? lett[lett.indexOf(item)+26]: item).join('')
- }
-console.log(rot13('Test!'))
+function repeatStr (n, s) {
+  return s.repeat(n);
+}
+console.log(repeatStr(2,'*'))
