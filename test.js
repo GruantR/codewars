@@ -1,15 +1,14 @@
-//https://www.codewars.com/kata/57a0e5c372292dd76d000d7e/train/javascript
+//https://www.codewars.com/kata/57f781872e3d8ca2a000007e/train/javascript
 
 // 📌 DESCRIPTION:
-// Write a function that accepts an integer n and a string s as parameters, and returns a string of s repeated exactly n times.
+// Given an array of integers, return a new array with each value doubled.
+// For example:
 
-// Examples (input -> output)
-// 6, "I"     -> "IIIIII"
-// 5, "Hello" -> "HelloHelloHelloHelloHello"
-// // 💡 SOLUTION:
+// [1, 2, 3] --> [2, 4, 6]
 
 
-function repeatStr (n, s) {
-  return s.repeat(n);
+function maps(x){
+ 
+return x.map(item => item*2)
 }
-console.log(repeatStr(2,'*'))
+console.log(maps([1, 2, 3]))
