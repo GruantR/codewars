@@ -1,14 +1,23 @@
-//https://www.codewars.com/kata/57f781872e3d8ca2a000007e/train/javascript
+//https://www.codewars.com/kata/5390bac347d09b7da40006f6/train/javascript
 
 // 📌 DESCRIPTION:
-// Given an array of integers, return a new array with each value doubled.
-// For example:
+// Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013). 
+// Jaden is also known for some of his philosophy that he delivers via Twitter. 
+// When writing on Twitter, he is known for almost always capitalizing every word. 
+// For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+// Your task is to convert strings to how they would be written by Jaden Smith. 
+// The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
 
-// [1, 2, 3] --> [2, 4, 6]
 
 
-function maps(x){
- 
-    return x.map(item => item*2)
-    }
-    console.log(maps([1, 2, 3]))
+
+
+String.prototype.toJadenCase = function () {
+  return this
+  .split(' ')
+  .map(item=> item.charAt(0).toUpperCase()+item.slice(1))
+  .join(' ')
+};
+
+let str = 'abc ddd ccdcd';
+console.log (str.toJadenCase())
