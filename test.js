@@ -1,23 +1,18 @@
-//https://www.codewars.com/kata/5390bac347d09b7da40006f6/train/javascript
+//https://www.codewars.com/kata/551f37452ff852b7bd000139/train/javascript
 
 // 📌 DESCRIPTION:
-// Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013). 
-// Jaden is also known for some of his philosophy that he delivers via Twitter. 
-// When writing on Twitter, he is known for almost always capitalizing every word. 
-// For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
-// Your task is to convert strings to how they would be written by Jaden Smith. 
-// The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+// Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
+
+// The binary number returned should be a string.
+
+// Examples:(Input1, Input2 --> Output (explanation)))
+
+// 1, 1 --> "10" (1 + 1 = 2 in decimal or 10 in binary)
+// 5, 9 --> "1110" (5 + 9 = 14 in decimal or 1110 in binary)
 
 
 
-
-
-String.prototype.toJadenCase = function () {
-  return this
-  .split(' ')
-  .map(item=> item.charAt(0).toUpperCase()+item.slice(1))
-  .join(' ')
-};
-
-let str = 'abc ddd ccdcd';
-console.log (str.toJadenCase())
+function addBinary(a,b) {
+return (a+b).toString(2)
+}
+console.log(addBinary(5,9))
