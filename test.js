@@ -1,18 +1,19 @@
-//https://www.codewars.com/kata/551f37452ff852b7bd000139/train/javascript
+//https://www.codewars.com/kata/55fd2d567d94ac3bc9000064/train/javascript
 
 // 📌 DESCRIPTION:
-// Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
+// 1
+// 3     5
+// 7     9    11
+// 13    15    17    19
+// 21    23    25    27    29
+// ...
+// Calculate the sum of the numbers in the nth row of this triangle (starting at index 1) e.g.: (Input --> Output)
 
-// The binary number returned should be a string.
-
-// Examples:(Input1, Input2 --> Output (explanation)))
-
-// 1, 1 --> "10" (1 + 1 = 2 in decimal or 10 in binary)
-// 5, 9 --> "1110" (5 + 9 = 14 in decimal or 1110 in binary)
+// 1 -->  1
+// 2 --> 3 + 5 = 8
 
 
-
-function addBinary(a,b) {
-return (a+b).toString(2)
+function rowSumOddNumbers(n) {
+	return Math.pow(n,2)*n
 }
-console.log(addBinary(5,9))
+console.log(rowSumOddNumbers(9))
