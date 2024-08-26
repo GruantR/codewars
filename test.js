@@ -1,15 +1,20 @@
-//https://www.codewars.com/kata/52efefcbcdf57161d4000091/train/javascript
+//https://www.codewars.com/kata/55d24f55d7dd296eb9000030/train/javascript
 
 // 📌 DESCRIPTION:
-// The main idea is to count all the occurring characters in a string. If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+// Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0. Your function only needs to return the result, what is shown between parentheses in the example below is how you reach that result and it's not part of it, see the sample tests.
 
-// What if the string is empty? Then the result should be empty object literal, {}.
+// For example (Input -> Output):
+
+// 2 -> 3 (1 + 2)
+// 8 -> 36 (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8)
 
 // 💡 SOLUTION:
 
-function count(string) {
-  let obj = {};
-  string.split('').forEach(item => obj[item] ? obj[item]+=1: obj[item] = 1);
-  return obj
+var summation = function (num) {
+  let sum = 0;
+for (let i = 0; i<= num; i++) {
+  sum+=i
 }
-console.log(count('aba'))
+return sum;
+}
+console.log(summation(8))
