@@ -8,8 +8,8 @@
 // 💡 SOLUTION:
 
 function count(string) {
-  let obj = {};
-  string.split('').forEach(item => obj[item] ? obj[item]+=1: obj[item] = 1);
-  return obj
-}
-console.log(count('aba'))
+    let obj = {};
+    string.split('').forEach(item => obj[item] ? obj[item]+=1: obj[item] = 1);
+    return obj
+  }
+  console.log(count('aba'))
