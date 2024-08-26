@@ -1,19 +1,76 @@
-//https://www.codewars.com/kata/55fd2d567d94ac3bc9000064/train/javascript
+//https://www.codewars.com/kata/525f3eda17c7cd9f9e000b39/train/javascript
 
 // 📌 DESCRIPTION:
-// 1
-// 3     5
-// 7     9    11
-// 13    15    17    19
-// 21    23    25    27    29
-// ...
-// Calculate the sum of the numbers in the nth row of this triangle (starting at index 1) e.g.: (Input --> Output)
+//This time we want to write calculations using functions and get the results. Let's have a look at some examples:
 
-// 1 -->  1
-// 2 --> 3 + 5 = 8
+// seven(times(five())); // must return 35
+// four(plus(nine())); // must return 13
+// eight(minus(three())); // must return 5
+// six(dividedBy(two())); // must return 3
+// Requirements:
 
+// There must be a function for each number from 0 ("zero") to 9 ("nine")
+// There must be a function for each of the following mathematical operations: plus, minus, times, dividedBy
+// Each calculation consist of exactly one operation and two numbers
+// The most outer function represents the left operand, the most inner function represents the right operand
+// Division should be integer division. For example, this should return 2, not 2.666666...:
+// eight(dividedBy(three()));
 
-function rowSumOddNumbers(n) {
-	return Math.pow(n,2)*n
+function zero(fn) {
+  return fn ? fn(0) : 0;
 }
-console.log(rowSumOddNumbers(9))
+function one(fn) {
+  return fn ? fn(1) : 1;
+}
+function two(fn) {
+  return fn ? fn(2) : 2;
+}
+function three(fn) {
+  return fn ? fn(3) : 3;
+}
+function four(fn) {
+  return fn ? fn(4) : 4;
+}
+function five(fn) {
+  return fn ? fn(5) : 5;
+}
+function six(fn) {
+  return fn ? fn(6) : 6;
+}
+function seven(fn) {
+  return fn ? fn(7) : 7;
+}
+function eight(fn) {
+  return fn ? fn(8) : 8;
+}
+function nine(fn) {
+  return fn ? fn(9) : 9;
+}
+
+function plus(x) {
+  return function (y) {
+    return x + y;
+  };
+}
+
+function minus(x) {
+  return function (y) {
+    return y - x;
+  };
+}
+
+function times(x) {
+  return function (y) {
+    return x * y;
+  };
+}
+function dividedBy(x) {
+  return function (y) {
+    return Math.floor(y / x);
+  };
+}
+
+console.log(seven(times(five())));
+console.log(four(plus(nine())));
+console.log(eight(minus(three())));
+console.log(six(dividedBy(four())));
