@@ -1,20 +1,31 @@
-//https://www.codewars.com/kata/55d24f55d7dd296eb9000030/train/javascript
+//https://www.codewars.com/kata/55f2b110f61eb01779000053/train/javascript
 
 // 📌 DESCRIPTION:
-// Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0. Your function only needs to return the result, what is shown between parentheses in the example below is how you reach that result and it's not part of it, see the sample tests.
+// Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
 
-// For example (Input -> Output):
+// Note: a and b are not ordered!
 
-// 2 -> 3 (1 + 2)
-// 8 -> 36 (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8)
+// Examples (a, b) --> output (explanation)
+// (1, 0) --> 1 (1 + 0 = 1)
+// (1, 2) --> 3 (1 + 2 = 3)
+// (0, 1) --> 1 (0 + 1 = 1)
+// (1, 1) --> 1 (1 since both are same)
+// (-1, 0) --> -1 (-1 + 0 = -1)
+// (-1, 2) --> 2 (-1 + 0 + 1 + 2 = 2)
 
 // 💡 SOLUTION:
 
-var summation = function (num) {
-  let sum = 0;
-for (let i = 0; i<= num; i++) {
-  sum+=i
+function getSum(a, b)
+{
+    if (a===b) {return a}
+    let big = 0;
+    let small = 0;
+    if (a>b) {big = a; small = b};
+    if (a<b) {big = b; small = a};
+  let sum = 0
+   for (let i = small; i<=big; i++) {
+ sum+=i;
+   }
+   return sum
 }
-return sum;
-}
-console.log(summation(8))
+console.log(getSum(5,-1))
