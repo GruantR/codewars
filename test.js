@@ -1,23 +1,42 @@
-//https://www.codewars.com/kata/55f8a9c06c018a0d6e000132/train/javascript
+//https://www.codewars.com/kata/550f22f4d758534c1100025a/train/javascript
 
 // 📌 DESCRIPTION:
-// ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
 
-// If the function is passed a valid PIN string, return true, else return false.
+// Once upon a time, on a way through the old wild mountainous west,…
+// … a man was given directions to go from one point to another. The directions were "NORTH", "SOUTH", "WEST", "EAST". Clearly "NORTH" and "SOUTH" are opposite, "WEST" and "EAST" too.
 
-// Examples (Input --> Output)
-// "1234"   -->  true
-// "12345"  -->  false
-// "a234"   -->  false
+// Going to one direction and coming back the opposite direction right away is a needless effort. Since this is the wild west, with dreadful weather and not much water, it's important to save yourself some energy, otherwise you might die of thirst!
+
+// How I crossed a mountainous desert the smart way.
+// The directions given to the man are, for example, the following (depending on the language):
+
+// ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"].
+// or
+// { "NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST" };
+// or
+// [North, South, South, East, West, North, West]
+
 // 💡 SOLUTION:
 
-function validatePIN(pin) {
-  return (
-    pin
-      .toString()
-      .split("")
-      .every((item) => item >= "0" && item <= 9) &&
-    (pin.toString().length === 4 || pin.toString().length === 6)
-  );
+function dirReduc(arr) {
+  let stek = [];
+  let objNegtive = {
+    'EAST':"WEST",
+    "WEST":'EAST',
+    'NORTH':'SOUTH',
+    'SOUTH':'NORTH'
+  }
+  arr.forEach(item => {
+    if (
+      (stek.length>0 && stek[stek.length-1] === objNegtive[item])
+    ) {
+      stek.pop();
+    } else {
+      stek.push(item);
+    }
+  });
+  return stek;
 }
-console.log(validatePIN(1234));
+console.log(
+  dirReduc(["EAST","WEST","SOUTH","NORTH","NORTH","NORTH","NORTH","EAST","WEST","NORTH","SOUTH"])
+);
