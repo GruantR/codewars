@@ -1,31 +1,23 @@
-//https://www.codewars.com/kata/55f2b110f61eb01779000053/train/javascript
+//https://www.codewars.com/kata/55f8a9c06c018a0d6e000132/train/javascript
 
 // 📌 DESCRIPTION:
-// Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
+// ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
 
-// Note: a and b are not ordered!
+// If the function is passed a valid PIN string, return true, else return false.
 
-// Examples (a, b) --> output (explanation)
-// (1, 0) --> 1 (1 + 0 = 1)
-// (1, 2) --> 3 (1 + 2 = 3)
-// (0, 1) --> 1 (0 + 1 = 1)
-// (1, 1) --> 1 (1 since both are same)
-// (-1, 0) --> -1 (-1 + 0 = -1)
-// (-1, 2) --> 2 (-1 + 0 + 1 + 2 = 2)
-
+// Examples (Input --> Output)
+// "1234"   -->  true
+// "12345"  -->  false
+// "a234"   -->  false
 // 💡 SOLUTION:
 
-function getSum(a, b)
-{
-    if (a===b) {return a}
-    let big = 0;
-    let small = 0;
-    if (a>b) {big = a; small = b};
-    if (a<b) {big = b; small = a};
-  let sum = 0
-   for (let i = small; i<=big; i++) {
- sum+=i;
-   }
-   return sum
+function validatePIN(pin) {
+  return (
+    pin
+      .toString()
+      .split("")
+      .every((item) => item >= "0" && item <= 9) &&
+    (pin.toString().length === 4 || pin.toString().length === 6)
+  );
 }
-console.log(getSum(5,-1))
+console.log(validatePIN(1234));
