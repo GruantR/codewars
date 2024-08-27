@@ -12,12 +12,13 @@
 // 💡 SOLUTION:
 
 function validatePIN(pin) {
-  return (
-    pin
-      .toString()
-      .split("")
-      .every((item) => item >= "0" && item <= 9) &&
-    (pin.toString().length === 4 || pin.toString().length === 6)
-  );
-}
-console.log(validatePIN(1234));
+    return (
+      pin
+        .toString()
+        .split("")
+        .every((item) => item >= "0" && item <= 9) &&
+      (pin.toString().length === 4 || pin.toString().length === 6)
+    );
+  }
+  console.log(validatePIN(1234));
+  
