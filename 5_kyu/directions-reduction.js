@@ -19,24 +19,25 @@
 // 💡 SOLUTION:
 
 function dirReduc(arr) {
-  let stek = [];
-  let objNegtive = {
-    'EAST':"WEST",
-    "WEST":'EAST',
-    'NORTH':'SOUTH',
-    'SOUTH':'NORTH'
-  }
-  arr.forEach(item => {
-    if (
-      (stek.length>0 && stek[stek.length-1] === objNegtive[item])
-    ) {
-      stek.pop();
-    } else {
-      stek.push(item);
+    let stek = [];
+    let objNegtive = {
+      'EAST':"WEST",
+      "WEST":'EAST',
+      'NORTH':'SOUTH',
+      'SOUTH':'NORTH'
     }
-  });
-  return stek;
-}
-console.log(
-  dirReduc(["EAST","WEST","SOUTH","NORTH","NORTH","NORTH","NORTH","EAST","WEST","NORTH","SOUTH"])
-);
+    arr.forEach(item => {
+      if (
+        (stek.length>0 && stek[stek.length-1] === objNegtive[item])
+      ) {
+        stek.pop();
+      } else {
+        stek.push(item);
+      }
+    });
+    return stek;
+  }
+  console.log(
+    dirReduc(["EAST","WEST","SOUTH","NORTH","NORTH","NORTH","NORTH","EAST","WEST","NORTH","SOUTH"])
+  );
+  
