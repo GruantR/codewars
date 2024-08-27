@@ -32,13 +32,14 @@
 // 💡 SOLUTION:
 
 function sumDigPow(a, b) {
-  let arr = [];
-  for (let i = a; i<b; i++) {
-    if (i === i.toString().split('').reduce((accum,item,index)=> accum + Math.pow(item,index+1),0)) {
-      arr.push(i)
+    let arr = [];
+    for (let i = a; i<b; i++) {
+      if (i === i.toString().split('').reduce((accum,item,index)=> accum + Math.pow(item,index+1),0)) {
+        arr.push(i)
+      }
     }
+    return arr
   }
-  return arr
-}
-
-console.log(sumDigPow(1,150))
+  
+  console.log(sumDigPow(1,150))
+  
