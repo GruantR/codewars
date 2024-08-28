@@ -1,17 +1,26 @@
-//https://www.codewars.com/kata/59ca8246d751df55cc00014c/train/javascript
+//https://www.codewars.com/kata/57ea5b0b75ae11d1e800006c/train/javascript
 
 // 📌 DESCRIPTION:
 
-// A hero is on his way to the castle to complete his mission. However, he's been told that the castle is surrounded with a couple of powerful dragons! each dragon takes 2 bullets to be defeated, our hero has no idea how many bullets he should carry.. Assuming he's gonna grab a specific given number of bullets and move forward to fight another specific given number of dragons, will he survive?
+// Write a function that takes an array of strings as an argument and returns a sorted array containing the same strings, ordered from shortest to longest.
 
-// Return true if yes, false otherwise :)
+// For example, if this array were passed as an argument:
+
+// ["Telescopes", "Glasses", "Eyes", "Monocles"]
+
+// Your function would return the following array:
+
+// ["Eyes", "Glasses", "Monocles", "Telescopes"]
+
+// All of the strings in the array passed to your function will be different lengths, so you will not have to decide how to order multiple strings of the same length.
 
 
 
 // 💡 SOLUTION:
 
-function hero(bullets, dragons){
-  return bullets/2 >= dragons
-  }
-console.log(hero(10,6));
+function sortByLength (array) {
 
+    return array.sort((a,b)=>a.split('').length - b.split('').length)
+
+}
+console.log(sortByLength(["", "Moderately", "Brains", "Pizza"]))
