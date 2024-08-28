@@ -11,7 +11,8 @@
 // 💡 SOLUTION:
 
 function hero(bullets, dragons){
-  return bullets/2 >= dragons
-  }
-console.log(hero(10,6));
-
+    return bullets/2 >= dragons
+    }
+  console.log(hero(10,6));
+  
+  
