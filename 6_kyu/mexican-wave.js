@@ -15,11 +15,12 @@
 // 💡 SOLUTION:
 
 function wave(str){
-  let arr = [];
-  for (let i = 0; i<str.length; i++) {
-    if (str[i]=== ' '){continue}
-    arr.push(str.split('').map((item,index,array)=> index === i ? item.toUpperCase():item).join(''))
+    let arr = [];
+    for (let i = 0; i<str.length; i++) {
+      if (str[i]=== ' '){continue}
+      arr.push(str.split('').map((item,index,array)=> index === i ? item.toUpperCase():item).join(''))
+    }
+    return arr
   }
-  return arr
-}
-console.log(wave('hello'))
+  console.log(wave('hello'))
+  
