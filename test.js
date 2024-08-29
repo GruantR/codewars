@@ -1,25 +1,44 @@
-//https://www.codewars.com/kata/58f5c63f1e26ecda7e000029/train/javascript
+//https://www.codewars.com/kata/54a91a4883a7de5d7800009c/train/javascript
 
 // 📌 DESCRIPTION:
-// In this simple Kata your task is to create a function that turns a string into a Mexican Wave. You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up. 
-// Rules
-//  1.  The input string will always be lower case but maybe empty.
 
-//  2.  If the character in the string is whitespace then pass over it as if it was an empty seat
-// Example
-// wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
-// Good luck and enjoy!
+// Your job is to write a function which increments a string, to create a new string.
 
+// If the string already ends with a number, the number should be incremented by 1.
+// If the string does not end with a number. the number 1 should be appended to the new string.
+// Examples:
 
+// foo -> foo1
+
+// foobar23 -> foobar24
+
+// foo0042 -> foo0043
+
+// foo9 -> foo10
+
+// foo099 -> foo100
+
+// Attention: If the number has leading zeros the amount of digits should be considered.
 
 // 💡 SOLUTION:
 
-function wave(str){
-  let arr = [];
-  for (let i = 0; i<str.length; i++) {
-    if (str[i]=== ' '){continue}
-    arr.push(str.split('').map((item,index,array)=> index === i ? item.toUpperCase():item).join(''))
+function incrementString(strng) {
+  if (  !isFinite(strng[strng.length-1])) {
+    return strng+'1'
+ }
+  let target = [];
+  for (let i = strng.length - 1; i >= 0; i--) {
+    if (!isFinite(strng[i])) {
+      break;
+    }
+    target.push(strng[i]);
   }
-  return arr
+  let newStr = strng.slice(0, strng.length - target.length);
+  let newTarget = target.reverse().join("");
+  
+  return (
+    newStr + (parseInt(newTarget) + 1).toString().padStart(newTarget.length, 0)
+  );
 }
-console.log(wave('hello'))
+
+console.log(incrementString("lmlm0"));
