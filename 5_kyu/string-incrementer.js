@@ -23,22 +23,23 @@
 // 💡 SOLUTION:
 
 function incrementString(strng) {
-  if (  !isFinite(strng[strng.length-1])) {
-    return strng+'1'
- }
-  let target = [];
-  for (let i = strng.length - 1; i >= 0; i--) {
-    if (!isFinite(strng[i])) {
-      break;
+    if (  !isFinite(strng[strng.length-1])) {
+      return strng+'1'
+   }
+    let target = [];
+    for (let i = strng.length - 1; i >= 0; i--) {
+      if (!isFinite(strng[i])) {
+        break;
+      }
+      target.push(strng[i]);
     }
-    target.push(strng[i]);
+    let newStr = strng.slice(0, strng.length - target.length);
+    let newTarget = target.reverse().join("");
+    
+    return (
+      newStr + (parseInt(newTarget) + 1).toString().padStart(newTarget.length, 0)
+    );
   }
-  let newStr = strng.slice(0, strng.length - target.length);
-  let newTarget = target.reverse().join("");
   
-  return (
-    newStr + (parseInt(newTarget) + 1).toString().padStart(newTarget.length, 0)
-  );
-}
-
-console.log(incrementString("lmlm0"));
+  console.log(incrementString("lmlm0"));
+  
