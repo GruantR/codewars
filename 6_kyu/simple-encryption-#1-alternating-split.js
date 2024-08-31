@@ -29,33 +29,34 @@
 // 💡 SOLUTION:
 
 function encrypt(text, n) {
-  if(n<1 || text === null || text.length === 0){return text}
-  for (let y = 0; y<n; y++) {
-let arr = text.split('')
-let newArr= [[],[]];
-for (let i=0; i<arr.length;i++) {
-  i%2 === 0 || i === 0 ? newArr[1].push(arr[i]) : newArr[0].push(arr[i]) 
-}
-text = newArr.flat().join('')
+    if(n<1 || text === null || text.length === 0){return text}
+    for (let y = 0; y<n; y++) {
+  let arr = text.split('')
+  let newArr= [[],[]];
+  for (let i=0; i<arr.length;i++) {
+    i%2 === 0 || i === 0 ? newArr[1].push(arr[i]) : newArr[0].push(arr[i]) 
   }
-return text
-}
-console.log(encrypt("This is a test!", 1))
-
-
-
-function decrypt(encryptedText, n) {
-  if(n<1 || encryptedText === null || encryptedText.length === 0){return encryptedText}
-  for (let y = 0; y<n; y++) {
-let len = Math.floor(encryptedText.length/2);
- let a = encryptedText.slice(0,len).split('');
- let b = encryptedText.slice(len).split('');
- let newArr = [];
- for (let i = 0; i<len+1; i++) {
-newArr.push(b[i],a[i])
- }
- encryptedText = newArr.join('')
-}
-return encryptedText
-}
-console.log(decrypt("hsi  etTi sats!",1))
+  text = newArr.flat().join('')
+    }
+  return text
+  }
+  console.log(encrypt("This is a test!", 1))
+  
+  
+  
+  function decrypt(encryptedText, n) {
+    if(n<1 || encryptedText === null || encryptedText.length === 0){return encryptedText}
+    for (let y = 0; y<n; y++) {
+  let len = Math.floor(encryptedText.length/2);
+   let a = encryptedText.slice(0,len).split('');
+   let b = encryptedText.slice(len).split('');
+   let newArr = [];
+   for (let i = 0; i<len+1; i++) {
+  newArr.push(b[i],a[i])
+   }
+   encryptedText = newArr.join('')
+  }
+  return encryptedText
+  }
+  console.log(decrypt("hsi  etTi sats!",1))
+  
