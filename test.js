@@ -1,61 +1,30 @@
-//https://www.codewars.com/kata/57814d79a56c88e3e0000786/train/javascript
+//https://www.codewars.com/kata/57f24e6a18e9fad8eb000296/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Implement a pseudo-encryption algorithm which given a string S and an integer N concatenates all the odd-indexed characters of S with all the even-indexed characters of S, this process should be repeated N times.
+// Who remembers back to their time in the schoolyard, when girls would take a flower and tear its petals, saying each of the following phrases each time a petal was torn:
 
-// Examples:
+// "I love you"
+// "a little"
+// "a lot"
+// "passionately"
+// "madly"
+// "not at all"
+// If there are more than 6 petals, you start over with "I love you" for 7 petals, "a little" for 8 petals and so on.
 
-// encrypt("012345", 1)  =>  "135024"
-// encrypt("012345", 2)  =>  "135024"  ->  "304152"
-// encrypt("012345", 3)  =>  "135024"  ->  "304152"  ->  "012345"
+// When the last petal was torn there were cries of excitement, dreams, surging thoughts and emotions.
 
-// encrypt("01234", 1)  =>  "13024"
-// encrypt("01234", 2)  =>  "13024"  ->  "32104"
-// encrypt("01234", 3)  =>  "13024"  ->  "32104"  ->  "20314"
-// Together with the encryption function, you should also implement a decryption function which reverses the process.
-
-// If the string S is an empty value or the integer N is not positive, return the first argument without changes.
-
-// This kata is part of the Simple Encryption Series:
-
-// Simple Encryption #1 - Alternating Split
-// Simple Encryption #2 - Index-Difference
-// Simple Encryption #3 - Turn The Bits Around
-// Simple Encryption #4 - Qwerty
-// Have fun coding it and please don't forget to vote and rank this kata! :-)
+// Your goal in this kata is to determine which phrase the girls would say at the last petal for a flower of a given number of petals. The number of petals is always greater than 0.
 
 
 // 💡 SOLUTION:
 
-function encrypt(text, n) {
-  if(n<1 || text === null || text.length === 0){return text}
-  for (let y = 0; y<n; y++) {
-let arr = text.split('')
-let newArr= [[],[]];
-for (let i=0; i<arr.length;i++) {
-  i%2 === 0 || i === 0 ? newArr[1].push(arr[i]) : newArr[0].push(arr[i]) 
-}
-text = newArr.flat().join('')
-  }
-return text
-}
-console.log(encrypt("This is a test!", 1))
+function howMuchILoveYou(nbPetals) {
+  let arr = ["not at all","I love you","a little","a lot","passionately","madly",];
+  if (nbPetals === 6){return arr[0]}
+  if (nbPetals<7) {return arr[nbPetals]};
+  
+return arr[nbPetals-6*Math.floor(nbPetals/6)]
 
-
-
-function decrypt(encryptedText, n) {
-  if(n<1 || encryptedText === null || encryptedText.length === 0){return encryptedText}
-  for (let y = 0; y<n; y++) {
-let len = Math.floor(encryptedText.length/2);
- let a = encryptedText.slice(0,len).split('');
- let b = encryptedText.slice(len).split('');
- let newArr = [];
- for (let i = 0; i<len+1; i++) {
-newArr.push(b[i],a[i])
- }
- encryptedText = newArr.join('')
 }
-return encryptedText
-}
-console.log(decrypt("hsi  etTi sats!",1))
+console.log(howMuchILoveYou(6))
