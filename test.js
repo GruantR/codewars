@@ -1,30 +1,21 @@
-//https://www.codewars.com/kata/57f24e6a18e9fad8eb000296/train/javascript
+//https://www.codewars.com/kata/55c45be3b2079eccff00010f/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Who remembers back to their time in the schoolyard, when girls would take a flower and tear its petals, saying each of the following phrases each time a petal was torn:
+// Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
 
-// "I love you"
-// "a little"
-// "a lot"
-// "passionately"
-// "madly"
-// "not at all"
-// If there are more than 6 petals, you start over with "I love you" for 7 petals, "a little" for 8 petals and so on.
+// Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
 
-// When the last petal was torn there were cries of excitement, dreams, surging thoughts and emotions.
+// If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
 
-// Your goal in this kata is to determine which phrase the girls would say at the last petal for a flower of a given number of petals. The number of petals is always greater than 0.
-
+// Examples
+// "is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
+// "4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
+// ""  -->  ""
 
 // 💡 SOLUTION:
 
-function howMuchILoveYou(nbPetals) {
-  let arr = ["not at all","I love you","a little","a lot","passionately","madly",];
-  if (nbPetals === 6){return arr[0]}
-  if (nbPetals<7) {return arr[nbPetals]};
-  
-return arr[nbPetals-6*Math.floor(nbPetals/6)]
-
+function order(words){
+return words.split(' ').sort((a,b)=>a.split('').filter(item=> isFinite(item))-b.split('').filter(item=> isFinite(item))).join(' ')
 }
-console.log(howMuchILoveYou(6))
+console.log(order("is2 Thi1s T4est 3a"))
