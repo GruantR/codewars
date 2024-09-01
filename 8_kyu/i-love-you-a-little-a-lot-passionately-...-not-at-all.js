@@ -20,11 +20,11 @@
 // 💡 SOLUTION:
 
 function howMuchILoveYou(nbPetals) {
-  let arr = ["not at all","I love you","a little","a lot","passionately","madly",];
-  if (nbPetals === 6){return arr[0]}
-  if (nbPetals<7) {return arr[nbPetals]};
+    let arr = ["not at all","I love you","a little","a lot","passionately","madly",];
+    if (nbPetals === 6){return arr[0]}
+    if (nbPetals<7) {return arr[nbPetals]};
+    
+  return arr[nbPetals-6*Math.floor(nbPetals/6)]
   
-return arr[nbPetals-6*Math.floor(nbPetals/6)]
-
-}
-console.log(howMuchILoveYou(6))
+  }
+  console.log(howMuchILoveYou(6))
