@@ -16,7 +16,7 @@
 // 💡 SOLUTION:
 
 function expressionMatter(a, b, c) {
-  let arr = [(a+b)*c, a*(b+c), a*b*c, a*b+c, a+b+c ]
-  return arr.sort((a,b)=>b-a)[0]
-}
-console.log(expressionMatter(1,2,3))
+    let arr = [(a+b)*c, a*(b+c), a*b*c, a*b+c, a+b+c ]
+    return arr.sort((a,b)=>b-a)[0]
+  }
+  console.log(expressionMatter(1,2,3))
