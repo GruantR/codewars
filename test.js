@@ -1,21 +1,22 @@
-//https://www.codewars.com/kata/55c45be3b2079eccff00010f/train/javascript
+//https://www.codewars.com/kata/5ae62fcf252e66d44d00008e/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+// In other words, try every combination of a, b, and c with the operators, without reordering the operands, and return the maximum value.
 
-// Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+// Example
+// With the numbers 1, 2, and 3, here are some possible expressions:
 
-// If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
-
-// Examples
-// "is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
-// "4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
-// ""  -->  ""
+// 1 * (2 + 3) = 5
+// 1 * 2 * 3 = 6
+// 1 + 2 * 3 = 7
+// (1 + 2) * 3 = 9
+// The maximum value that can be obtained is 9.
 
 // 💡 SOLUTION:
 
-function order(words){
-return words.split(' ').sort((a,b)=>a.split('').filter(item=> isFinite(item))-b.split('').filter(item=> isFinite(item))).join(' ')
+function expressionMatter(a, b, c) {
+  let arr = [(a+b)*c, a*(b+c), a*b*c, a*b+c, a+b+c ]
+  return arr.sort((a,b)=>b-a)[0]
 }
-console.log(order("is2 Thi1s T4est 3a"))
+console.log(expressionMatter(1,2,3))
