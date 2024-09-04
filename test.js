@@ -1,57 +1,26 @@
-//https://www.codewars.com/kata/577bd8d4ae2807c64b00045b/train/javascript
+//https://www.codewars.com/kata/57ee4a67108d3fd9eb0000e7/train/javascript
 
 // 📌 DESCRIPTION:
-// Create a function that returns the name of the winner in a fight between two fighters.
 
-// Each fighter takes turns attacking the other and whoever kills the other first is victorious. Death is defined as having health <= 0.
+// Write a function that takes a list of strings as an argument and returns a filtered list containing the same elements but with the 'geese' removed.
 
-// Each fighter will be a Fighter object/instance. See the Fighter class below in your chosen language.
+// The geese are any strings in the following array, which is pre-populated in your solution:
 
-// Both health and damagePerAttack (damage_per_attack for python) will be integers larger than 0. You can mutate the Fighter objects.
+//   ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
+// For example, if this array were passed as an argument:
 
-// Your function also receives a third argument, a string, with the name of the fighter that attacks first.
+//  ["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]
+// Your function would return the following array:
 
-// Example:
-//   declare_winner(Fighter("Lew", 10, 2), Fighter("Harry", 5, 4), "Lew") => "Lew"
-  
-//   Lew attacks Harry; Harry now has 3 health.
-//   Harry attacks Lew; Lew now has 6 health.
-//   Lew attacks Harry; Harry now has 1 health.
-//   Harry attacks Lew; Lew now has 2 health.
-//   Lew attacks Harry: Harry now has -1 health and is dead. Lew wins.
-// function Fighter(name, health, damagePerAttack) {
-//         this.name = name;
-//         this.health = health;
-//         this.damagePerAttack = damagePerAttack;
-//         this.toString = function() { return this.name; }
-}
+// ["Mallard", "Hook Bill", "Crested", "Blue Swedish"]
+// The elements in the returned array should be in the same order as in the initial array passed to your function, albeit with the 'geese' removed. Note that all of the strings will be in the same case as those provided, and some elements may be repeated.
+
+
 // 💡 SOLUTION:
 
-function Fighter(name, health, damagePerAttack) {
-  this.name = name;
-  this.health = health;
-  this.damagePerAttack = damagePerAttack;
-  this.toString = function() { return this.name; }
-}
-
-function declareWinner(fighter1, fighter2, firstAttacker) {
-  let firstBoom;
-  let secondBoom;
-  if (fighter1.name === firstAttacker) {
-    firstBoom = fighter1;
-    secondBoom = fighter2;
-  }
-  else {
-    firstBoom = fighter2;
-    secondBoom = fighter1
-  };
-  while (firstBoom.health > 0 &&  secondBoom.health > 0) {
-    secondBoom.health -=firstBoom.damagePerAttack
-    if (secondBoom.health <1) {return firstBoom.name}
-    firstBoom.health -=secondBoom.damagePerAttack
-    if (firstBoom.health <1) {return secondBoom.name}
-  }
-
-}
-console.log(declareWinner (new Fighter("Lew", 10, 2), new Fighter("Harry", 5, 4), "Lew"))
-
+function gooseFilter (birds) {
+  var geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+  return birds.filter(item=> !geese.includes(item))
+  
+};
+console.log(gooseFilter(["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]))
