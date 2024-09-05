@@ -1,26 +1,24 @@
-//https://www.codewars.com/kata/57ee4a67108d3fd9eb0000e7/train/javascript
+//https://www.codewars.com/kata/585d7d5adb20cf33cb000235/train/javascript
 
 // 📌 DESCRIPTION:
+// There is an array with some numbers. All numbers are equal except for one. Try to find it!
 
-// Write a function that takes a list of strings as an argument and returns a filtered list containing the same elements but with the 'geese' removed.
+// findUniq([ 1, 1, 1, 2, 1, 1 ]) === 2
+// findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55
+// It’s guaranteed that array contains at least 3 numbers.
 
-// The geese are any strings in the following array, which is pre-populated in your solution:
+// The tests contain some very huge arrays, so think about performance.
 
-//   ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
-// For example, if this array were passed as an argument:
+// This is the first kata in series:
 
-//  ["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]
-// Your function would return the following array:
-
-// ["Mallard", "Hook Bill", "Crested", "Blue Swedish"]
-// The elements in the returned array should be in the same order as in the initial array passed to your function, albeit with the 'geese' removed. Note that all of the strings will be in the same case as those provided, and some elements may be repeated.
-
+// Find the unique number (this kata)
+// Find the unique string
+// Find The Unique
 
 // 💡 SOLUTION:
 
-function gooseFilter (birds) {
-  var geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
-  return birds.filter(item=> !geese.includes(item))
-  
-};
-console.log(gooseFilter(["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]))
+
+function findUniq(arr) {
+return arr.filter(item => arr.indexOf(item)=== arr.lastIndexOf(item))[0]
+}
+console.log(findUniq([ 3, 10, 3, 3, 3 ]))
