@@ -19,6 +19,6 @@
 
 
 function findUniq(arr) {
-return arr.filter(item => arr.indexOf(item)=== arr.lastIndexOf(item))[0]
-}
-console.log(findUniq([ 3, 10, 3, 3, 3 ]))
+    return arr.filter(item => arr.indexOf(item)=== arr.lastIndexOf(item))[0]
+    }
+    console.log(findUniq([ 3, 10, 3, 3, 3 ]))
