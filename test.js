@@ -1,24 +1,22 @@
-//https://www.codewars.com/kata/585d7d5adb20cf33cb000235/train/javascript
+//https://www.codewars.com/kata/54ff0d1f355cfd20e60001fc/train/javascript
 
 // 📌 DESCRIPTION:
-// There is an array with some numbers. All numbers are equal except for one. Try to find it!
+// In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n. For example: 5! = 5 * 4 * 3 * 2 * 1 = 120. By convention the value of 0! is 1.
 
-// findUniq([ 1, 1, 1, 2, 1, 1 ]) === 2
-// findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55
-// It’s guaranteed that array contains at least 3 numbers.
+// Write a function to calculate factorial for a given input. If input is below 0 or above 12 throw an exception of type ArgumentOutOfRangeException (C#) or IllegalArgumentException (Java) or RangeException (PHP) or throw a RangeError (JavaScript) or ValueError (Python) or return -1 (C).
 
-// The tests contain some very huge arrays, so think about performance.
-
-// This is the first kata in series:
-
-// Find the unique number (this kata)
-// Find the unique string
-// Find The Unique
+// More details about factorial can be found here.
 
 // 💡 SOLUTION:
 
-
-function findUniq(arr) {
-return arr.filter(item => arr.indexOf(item)=== arr.lastIndexOf(item))[0]
+function factorial(n){
+  if (n<0 || n>12) {return -1}
+  if (n === 0 || n ===1) {
+    return 1
+  }
+  else {
+    return n*factorial(n-1)
+  }
+  
 }
-console.log(findUniq([ 3, 10, 3, 3, 3 ]))
+console.log(factorial(5))
