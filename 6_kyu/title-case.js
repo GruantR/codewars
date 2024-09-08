@@ -20,21 +20,22 @@
 // 💡 SOLUTION:
 
 function titleCase(title, minorWords) {
-  if (title.length === 0) {
-    return "";
+    if (title.length === 0) {
+      return "";
+    }
+    let arrTarget = minorWords ? minorWords.toLowerCase().split(" ") : [];
+    let arrStr = title
+      .toLowerCase()
+      .split(" ")
+      .map((item, index) =>
+        index === 0
+          ? item[0].toUpperCase() + item.slice(1)
+          : arrTarget.includes(item)
+          ? item
+          : item[0].toUpperCase() + item.slice(1)
+      )
+      .join(" ");
+    return arrStr;
   }
-  let arrTarget = minorWords ? minorWords.toLowerCase().split(" ") : [];
-  let arrStr = title
-    .toLowerCase()
-    .split(" ")
-    .map((item, index) =>
-      index === 0
-        ? item[0].toUpperCase() + item.slice(1)
-        : arrTarget.includes(item)
-        ? item
-        : item[0].toUpperCase() + item.slice(1)
-    )
-    .join(" ");
-  return arrStr;
-}
-console.log(titleCase("dvd ccc", " "));
+  console.log(titleCase("dvd ccc", " "));
+  
