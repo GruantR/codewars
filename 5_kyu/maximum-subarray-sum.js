@@ -13,19 +13,20 @@
 // 💡 SOLUTION:
 
 var maxSequence = function (arr) {
-  if (arr.length === 0) {
-    return 0;
-  }
-  if (!arr.find((item) => item > 0)) {
-    return 0;
-  }
-  let sum = 0;
-  let answer = arr[0];
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
-    answer = Math.max(sum, answer);
-    sum = +Math.max(sum, 0);
-  }
-  return answer;
-};
-console.log(maxSequence([-2, -1, -3, -4, -1, -2, -1, -5, -14]));
+    if (arr.length === 0) {
+      return 0;
+    }
+    if (!arr.find((item) => item > 0)) {
+      return 0;
+    }
+    let sum = 0;
+    let answer = arr[0];
+    for (let i = 0; i < arr.length; i++) {
+      sum += arr[i];
+      answer = Math.max(sum, answer);
+      sum = +Math.max(sum, 0);
+    }
+    return answer;
+  };
+  console.log(maxSequence([-2, -1, -3, -4, -1, -2, -1, -5, -14]));
+  
