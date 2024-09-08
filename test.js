@@ -1,40 +1,31 @@
-//https://www.codewars.com/kata/5202ef17a402dd033c000009/train/javascript
+//https://www.codewars.com/kata/54521e9ec8e60bc4de000d6c/train/javascript
 
 // 📌 DESCRIPTION:
 
-// A string is considered to be in title case if each word in the string is either (a) capitalised (that is, only the first letter of the word is in upper case) or (b) considered to be an exception and put entirely into lower case unless it is the first word, which is always capitalised.
+// The maximum sum subarray problem consists in finding the maximum sum of a contiguous subsequence in an array or list of integers:
 
-// Write a function that will convert a string into title case, given an optional list of exceptions (minor words). The list of minor words will be given as a string with each word separated by a space. Your function should ignore the case of the minor words string -- it should behave in the same way even if the case of the minor word string is changed.
+// maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4])
+// // should be 6: [4, -1, 2, 1]
+// Easy case is when the list is made up of only positive numbers and the maximum sum is the sum of the whole array. If the list is made up of only negative numbers, return 0 instead.
 
-// Arguments (Haskell)
-// First argument: space-delimited list of minor words that must always be lowercase except for the first word in the string.
-// Second argument: the original string to be converted.
-// Arguments (Other languages)
-// First argument (required): the original string to be converted.
-// Second argument (optional): space-delimited list of minor words that must always be lowercase except for the first word in the string. The JavaScript/CoffeeScript tests will pass undefined when this argument is unused.
-// Example
-// titleCase('a clash of KINGS', 'a an the of') // should return: 'A Clash of Kings'
-// titleCase('THE WIND IN THE WILLOWS', 'The In') // should return: 'The Wind in the Willows'
-// titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
+// Empty list is considered to have zero greatest sum. Note that the empty list or array is also a valid sublist/subarray.
 
 // 💡 SOLUTION:
 
-function titleCase(title, minorWords) {
-  if (title.length === 0) {
-    return "";
+var maxSequence = function (arr) {
+  if (arr.length === 0) {
+    return 0;
   }
-  let arrTarget = minorWords ? minorWords.toLowerCase().split(" ") : [];
-  let arrStr = title
-    .toLowerCase()
-    .split(" ")
-    .map((item, index) =>
-      index === 0
-        ? item[0].toUpperCase() + item.slice(1)
-        : arrTarget.includes(item)
-        ? item
-        : item[0].toUpperCase() + item.slice(1)
-    )
-    .join(" ");
-  return arrStr;
-}
-console.log(titleCase("dvd ccc", " "));
+  if (!arr.find((item) => item > 0)) {
+    return 0;
+  }
+  let sum = 0;
+  let answer = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    answer = Math.max(sum, answer);
+    sum = +Math.max(sum, 0);
+  }
+  return answer;
+};
+console.log(maxSequence([-2, -1, -3, -4, -1, -2, -1, -5, -14]));
