@@ -1,31 +1,59 @@
-//https://www.codewars.com/kata/54521e9ec8e60bc4de000d6c/train/javascript
+//https://www.codewars.com/kata/595ef0c7458ad5facc000019/train/javascript
 
 // 📌 DESCRIPTION:
+// International hackers group organized a programming competition, in which n teams participated.
 
-// The maximum sum subarray problem consists in finding the maximum sum of a contiguous subsequence in an array or list of integers:
+// They were assigned to separate rooms for competitions, and the rooms were lined up in a straight line.
 
-// maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4])
-// // should be 6: [4, -1, 2, 1]
-// Easy case is when the list is made up of only positive numbers and the maximum sum is the sum of the whole array. If the list is made up of only negative numbers, return 0 instead.
+// The game was over and each team scored points. It's time to pay bonuses. The rule is:
 
-// Empty list is considered to have zero greatest sum. Note that the empty list or array is also a valid sublist/subarray.
+// - The bonus unit is 1K($1000), and each team gets at least 1k.
+// - The bonus payment process is not public. 
+// - A team can know the bonus amount of its adjacent team, if the 
+//   score of the adjacent team is lower than itself.
+// - If a team finds that its bonus is no higher than the adjacent team whose
+//   score is lower than itself, the team will not be satisfied
+// Given an integer array scores represents the score of all teams. Your task is to calculate how much bonuses international hackers group need to pay to keep all teams satisfied.
+
+// Note, the unit of bonus is 1K. All teams are in a straight line, and their order is the same as that of the array elements.
+
+// Example
+// For scores = [10,20,30], the output should be 6.
+
+// team1's score = 10
+// team2's score = 20
+// team3's score = 30
+
+// team1 can get 1K, The team was satisfied 
+// because it knew nothing about the other teams.
+
+// team2 can know team1's bonus amount, 
+// So team2 at least get 2K to be satisfied
+
+// team3 can know team2's bonus amount, 
+// So team3 at least get 3K to be satisfied
+
+// 1 + 2 + 3 = 6
+// For scores = [10,20,20,30], the output should be 6.
+
+// The possible bonus amount of each team can be:[1,2,1,2]
+
+// For scores = [20,30,10,30,40,10,20,30,40,30], the output should be 20.
+
+// The possible bonus amount of each team can be:[1,2,1,2,3,1,2,3,4,1]
 
 // 💡 SOLUTION:
 
-var maxSequence = function (arr) {
-  if (arr.length === 0) {
-    return 0;
+function minimumBonus(scores){
+  let target = [1]
+  for (let i = 1; i<scores.length; i++) {
+    scores[i] > scores [i-1] ? target.push(target[target.length-1]+1) : target.push(1) 
   }
-  if (!arr.find((item) => item > 0)) {
-    return 0;
+
+  for (let i = scores.length-2; i>=0; i--) {
+    scores[i]>scores[i+1] && target[i] <= target[i+1] ? target[i]= target[i+1]+1 : target[i]
   }
-  let sum = 0;
-  let answer = arr[0];
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
-    answer = Math.max(sum, answer);
-    sum = +Math.max(sum, 0);
-  }
-  return answer;
-};
-console.log(maxSequence([-2, -1, -3, -4, -1, -2, -1, -5, -14]));
+  return target.reduce((accum,item)=> accum+item)
+  
+}
+console.log(minimumBonus([10,20,30]))
