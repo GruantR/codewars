@@ -45,15 +45,16 @@
 // 💡 SOLUTION:
 
 function minimumBonus(scores){
-  let target = [1]
-  for (let i = 1; i<scores.length; i++) {
-    scores[i] > scores [i-1] ? target.push(target[target.length-1]+1) : target.push(1) 
-  }
-
-  for (let i = scores.length-2; i>=0; i--) {
-    scores[i]>scores[i+1] && target[i] <= target[i+1] ? target[i]= target[i+1]+1 : target[i]
-  }
-  return target.reduce((accum,item)=> accum+item)
+    let target = [1]
+    for (let i = 1; i<scores.length; i++) {
+      scores[i] > scores [i-1] ? target.push(target[target.length-1]+1) : target.push(1) 
+    }
   
-}
-console.log(minimumBonus([10,20,30]))
+    for (let i = scores.length-2; i>=0; i--) {
+      scores[i]>scores[i+1] && target[i] <= target[i+1] ? target[i]= target[i+1]+1 : target[i]
+    }
+    return target.reduce((accum,item)=> accum+item)
+    
+  }
+  console.log(minimumBonus([10,20,30]))
+  
