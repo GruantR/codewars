@@ -16,7 +16,7 @@
 // 💡 SOLUTION:
 
 function stray(numbers) {
-  let sort = numbers.sort();
-  return sort[0] === sort[1] ? sort[sort.length-1] : sort[0]
-}
-console.log(stray([1, 2, 1]))
+    let sort = numbers.sort();
+    return sort[0] === sort[1] ? sort[sort.length-1] : sort[0]
+  }
+  console.log(stray([1, 2, 1]))
