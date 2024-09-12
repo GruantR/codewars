@@ -1,29 +1,22 @@
-//https://www.codewars.com/kata/55d1d6d5955ec6365400006d/train/javascript
+//https://www.codewars.com/kata/57f609022f4d534f05000024/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Given an integer as input, can you round it to the next (meaning, "greater than or equal") multiple of 5?
+// You are given an odd-length array of integers, in which all of them are the same, except for one single number.
 
-// Examples:
+// Complete the method which accepts such an array, and returns that single different number.
 
-// input:    output:
-// 0    ->   0
-// 2    ->   5
-// 3    ->   5
-// 12   ->   15
-// 21   ->   25
-// 30   ->   30
-// -2   ->   0
-// -5   ->   -5
-// etc.
-// Input may be any positive or negative integer (including 0).
+// The input array will always be valid! (odd-length >= 3)
 
-// You can assume that all inputs are valid integers.
+// Examples
+// [1, 1, 2] ==> 2
+// [17, 17, 3, 17, 17, 17, 17] ==> 3
 
 
 // 💡 SOLUTION:
 
-function roundToNext5(n){
-  return Math.ceil(n/5)*5
+function stray(numbers) {
+  let sort = numbers.sort();
+  return sort[0] === sort[1] ? sort[sort.length-1] : sort[0]
 }
-console.log(roundToNext5(-6))
+console.log(stray([1, 2, 1]))
