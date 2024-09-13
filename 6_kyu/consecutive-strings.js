@@ -29,25 +29,26 @@
 // 💡 SOLUTION:
 
 function longestConsec(strarr, k) {
-  if (strarr.length === 0 || k > strarr.length || k <= 0) {
-    return "";
-  }
-  let target = "";
-  let finalLen = "";
-  while (strarr.length !== k - 1) {
-    for (let i = 0; i < k; i++) {
-      target += strarr[i];
+    if (strarr.length === 0 || k > strarr.length || k <= 0) {
+      return "";
     }
-    if (target.length > finalLen.length) {
-      finalLen = target;
+    let target = "";
+    let finalLen = "";
+    while (strarr.length !== k - 1) {
+      for (let i = 0; i < k; i++) {
+        target += strarr[i];
+      }
+      if (target.length > finalLen.length) {
+        finalLen = target;
+      }
+  
+      strarr.shift();
+      target = "";
     }
-
-    strarr.shift();
-    target = "";
+  
+    return finalLen;
   }
-
-  return finalLen;
-}
-console.log(
-  longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2)
-);
+  console.log(
+    longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2)
+  );
+  
