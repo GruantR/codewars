@@ -17,9 +17,9 @@
 // 💡 SOLUTION:
 
 function minValue(values){
-  let newArr = [];
-  values.forEach(item => newArr.includes(item)? 1: newArr.push(item));
-  return +newArr.sort((a,b)=>a-b).join('')
-}
-
-console.log(minValue([4, 7, 5, 7]))
+    let newArr = [];
+    values.forEach(item => newArr.includes(item)? 1: newArr.push(item));
+    return +newArr.sort((a,b)=>a-b).join('')
+  }
+  
+  console.log(minValue([4, 7, 5, 7]))
