@@ -22,6 +22,6 @@
 // 💡 SOLUTION:
 
 function isTriangle(a,b,c){
-  return a+b <= c ? false : b+c <= a ? false : a+c <=b ? false: true
-}
-console.log(isTriangle(2,2,2))
+    return a+b <= c ? false : b+c <= a ? false : a+c <=b ? false: true
+  }
+  console.log(isTriangle(2,2,2))
