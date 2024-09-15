@@ -1,25 +1,27 @@
-//https://www.codewars.com/kata/5ac6932b2f317b96980000ca/train/javascript
+//https://www.codewars.com/kata/56606694ec01347ce800001b/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Task
-// Given a list of digits, return the smallest number that could be formed from these digits, using the digits only once (ignore duplicates).
+// Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
 
-// Notes:
-// Only positive integers will be passed to the function (> 0 ), no negatives or zeros.
-// Input >> Output Examples
-// minValue ({1, 3, 1})  ==> return (13)
-// Explanation:
-// (13) is the minimum number could be formed from {1, 3, 1} , Without duplications
+// (In this case, all triangles must have surface greater than 0 to be accepted).
+
+// Examples:
+
+// Input -> Output
+// 1,2,2 -> true
+// 4,2,3 -> true
+// 2,2,2 -> true
+// 1,2,3 -> false
+// -5,1,3 -> false
+// 0,2,3 -> false
+// 1,2,9 -> false 
 
 
 
 // 💡 SOLUTION:
 
-function minValue(values){
-  let newArr = [];
-  values.forEach(item => newArr.includes(item)? 1: newArr.push(item));
-  return +newArr.sort((a,b)=>a-b).join('')
+function isTriangle(a,b,c){
+  return a+b <= c ? false : b+c <= a ? false : a+c <=b ? false: true
 }
-
-console.log(minValue([4, 7, 5, 7]))
+console.log(isTriangle(2,2,2))
