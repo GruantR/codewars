@@ -37,14 +37,14 @@
 // 💡 SOLUTION:
 
 function queueTime(customers, n) {
-  let arr = [];
-  for (let i = 0; i<n; i++) {
-    arr.push(0)
+    let arr = [];
+    for (let i = 0; i<n; i++) {
+      arr.push(0)
+    }
+    for (let target of customers) {
+      arr.sort((a,b) => a-b)
+      arr[0] += target
+    }
+    return arr.sort((a,b)=>b-a)[0]
   }
-  for (let target of customers) {
-    arr.sort((a,b) => a-b)
-    arr[0] += target
-  }
-  return arr.sort((a,b)=>b-a)[0]
-}
-console.log(queueTime([1,2,3,4,5], 100))
+  console.log(queueTime([1,2,3,4,5], 100))
