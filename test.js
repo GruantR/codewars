@@ -1,27 +1,50 @@
-//https://www.codewars.com/kata/56606694ec01347ce800001b/train/javascript
+//https://www.codewars.com/kata/57b06f90e298a7b53d000a86/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
+// There is a queue for the self-checkout tills at the supermarket. Your task is write a function to calculate the total time required for all the customers to check out!
 
-// (In this case, all triangles must have surface greater than 0 to be accepted).
+// input
+// customers: an array of positive integers representing the queue. Each integer represents a customer, and its value is the amount of time they require to check out.
+// n: a positive integer, the number of checkout tills.
+// output
+// The function should return an integer, the total time required.
 
-// Examples:
+// Important
+// Please look at the examples and clarifications below, to ensure you understand the task correctly :)
 
-// Input -> Output
-// 1,2,2 -> true
-// 4,2,3 -> true
-// 2,2,2 -> true
-// 1,2,3 -> false
-// -5,1,3 -> false
-// 0,2,3 -> false
-// 1,2,9 -> false 
+// Examples
+// queueTime([5,3,4], 1)
+// // should return 12
+// // because when there is 1 till, the total time is just the sum of the times
 
+// queueTime([10,2,3,3], 2)
+// // should return 10
+// // because here n=2 and the 2nd, 3rd, and 4th people in the 
+// // queue finish before the 1st person has finished.
+
+// queueTime([2,3,10], 2)
+// // should return 12
+// Clarifications
+// There is only ONE queue serving many tills, and
+// The order of the queue NEVER changes, and
+// The front person in the queue (i.e. the first element in the array/list) proceeds to a till as soon as it becomes free.
+// N.B. You should assume that all the test input will be valid, as specified above.
+
+// P.S. The situation in this kata can be likened to the more-computer-science-related idea of a thread pool, with relation to running multiple processes at the same time: https://en.wikipedia.org/wiki/Thread_pool
 
 
 // 💡 SOLUTION:
 
-function isTriangle(a,b,c){
-  return a+b <= c ? false : b+c <= a ? false : a+c <=b ? false: true
+function queueTime(customers, n) {
+  let arr = [];
+  for (let i = 0; i<n; i++) {
+    arr.push(0)
+  }
+  for (let target of customers) {
+    arr.sort((a,b) => a-b)
+    arr[0] += target
+  }
+  return arr.sort((a,b)=>b-a)[0]
 }
-console.log(isTriangle(2,2,2))
+console.log(queueTime([1,2,3,4,5], 100))
