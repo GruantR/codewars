@@ -12,16 +12,17 @@
 // 💡 SOLUTION:
 
 function persistence(num) {
-  let counter = 0;
-  let target = 1;
-  while (String(num).length > 1) {
-    String(num)
-      .split("")
-      .map((item) => (target *= item));
-    num = target;
-    target = 1;
-    counter++;
+    let counter = 0;
+    let target = 1;
+    while (String(num).length > 1) {
+      String(num)
+        .split("")
+        .map((item) => (target *= item));
+      num = target;
+      target = 1;
+      counter++;
+    }
+    return counter;
   }
-  return counter;
-}
-console.log(persistence(39));
+  console.log(persistence(39));
+  
