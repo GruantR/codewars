@@ -1,27 +1,40 @@
-//https://www.codewars.com/kata/55bf01e5a717a0d57e0000ec/train/javascript
+//https://www.codewars.com/kata/5544c7a5cb454edb3c000047/train/javascript
 
 // 📌 DESCRIPTION:
-// Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+// A child is playing with a ball on the nth floor of a tall building. The height of this floor above ground level, h, is known.
 
-// For example (Input --> Output):
+// He drops the ball out of the window. The ball bounces (for example), to two-thirds of its height (a bounce of 0.66).
 
-// 39 --> 3 (because 3*9 = 27, 2*7 = 14, 1*4 = 4 and 4 has only one digit, there are 3 multiplications)
-// 999 --> 4 (because 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12, and finally 1*2 = 2, there are 4 multiplications)
-// 4 --> 0 (because 4 is already a one-digit number, there is no multiplication)
+// His mother looks out of a window 1.5 meters from the ground.
 
+// How many times will the mother see the ball pass in front of her window (including when it's falling and bouncing)?
+
+// Three conditions must be met for a valid experiment:
+// Float parameter "h" in meters must be greater than 0
+// Float parameter "bounce" must be greater than 0 and less than 1
+// Float parameter "window" must be less than h.
+// If all three conditions above are fulfilled, return a positive integer, otherwise return -1.
+
+// Note:
+// The ball can only be seen if the height of the rebounding ball is strictly greater than the window parameter.
+
+// Examples:
+// - h = 3, bounce = 0.66, window = 1.5, result is 3
+
+// - h = 3, bounce = 1, window = 1.5, result is -1 
+
+// (Condition 2) not fulfilled).
 // 💡 SOLUTION:
 
-function persistence(num) {
+function bouncingBall(h,  bounce,  window) {
+  if (h < 0 || bounce<0 || bounce>=1 || window >= h) {
+    return -1
+  } 
   let counter = 0;
-  let target = 1;
-  while (String(num).length > 1) {
-    String(num)
-      .split("")
-      .map((item) => (target *= item));
-    num = target;
-    target = 1;
-    counter++;
+  while (h>window) {
+    h*= bounce
+    h>window ? counter+=2: counter+=1
   }
-  return counter;
+return counter
 }
-console.log(persistence(39));
+console.log(bouncingBall(3.0, 0.66, 1.5))
