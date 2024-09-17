@@ -27,14 +27,14 @@
 // 💡 SOLUTION:
 
 function bouncingBall(h,  bounce,  window) {
-  if (h < 0 || bounce<0 || bounce>=1 || window >= h) {
-    return -1
-  } 
-  let counter = 0;
-  while (h>window) {
-    h*= bounce
-    h>window ? counter+=2: counter+=1
+    if (h < 0 || bounce<0 || bounce>=1 || window >= h) {
+      return -1
+    } 
+    let counter = 0;
+    while (h>window) {
+      h*= bounce
+      h>window ? counter+=2: counter+=1
+    }
+  return counter
   }
-return counter
-}
-console.log(bouncingBall(3.0, 0.66, 1.5))
+  console.log(bouncingBall(3.0, 0.66, 1.5))
