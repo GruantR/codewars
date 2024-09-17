@@ -15,13 +15,13 @@
 // 💡 SOLUTION:
 
 function high(x){
-let target = "-abcdefghijklmnopqrstuvwxyz";
-let obj = {
-
-};
-for (let item of x.split(' ')) {
-  obj[item] ? 1: obj[item] = item.split('').reduce((accum,elem) => accum+target.indexOf(elem),0)
-}
-return Object.entries(obj).sort((a,b)=> b[1]-a[1])[0][0]
-}
-console.log(high(('man i need a taxi up to ubud')))
+    let target = "-abcdefghijklmnopqrstuvwxyz";
+    let obj = {
+    
+    };
+    for (let item of x.split(' ')) {
+      obj[item] ? 1: obj[item] = item.split('').reduce((accum,elem) => accum+target.indexOf(elem),0)
+    }
+    return Object.entries(obj).sort((a,b)=> b[1]-a[1])[0][0]
+    }
+    console.log(high(('man i need a taxi up to ubud')))
