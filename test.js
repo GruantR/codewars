@@ -1,27 +1,27 @@
-//https://www.codewars.com/kata/57eb8fcdf670e99d9b000272/train/javascript
+//https://www.codewars.com/kata/55bf01e5a717a0d57e0000ec/train/javascript
 
 // 📌 DESCRIPTION:
-// Given a string of words, you need to find the highest scoring word.
+// Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
 
-// Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc.
+// For example (Input --> Output):
 
-// For example, the score of abad is 8 (1 + 2 + 1 + 4).
+// 39 --> 3 (because 3*9 = 27, 2*7 = 14, 1*4 = 4 and 4 has only one digit, there are 3 multiplications)
+// 999 --> 4 (because 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12, and finally 1*2 = 2, there are 4 multiplications)
+// 4 --> 0 (because 4 is already a one-digit number, there is no multiplication)
 
-// You need to return the highest scoring word as a string.
-
-// If two words score the same, return the word that appears earliest in the original string.
-
-// All letters will be lowercase and all inputs will be valid.
 // 💡 SOLUTION:
 
-function high(x){
-let target = "-abcdefghijklmnopqrstuvwxyz";
-let obj = {
-
-};
-for (let item of x.split(' ')) {
-  obj[item] ? 1: obj[item] = item.split('').reduce((accum,elem) => accum+target.indexOf(elem),0)
+function persistence(num) {
+  let counter = 0;
+  let target = 1;
+  while (String(num).length > 1) {
+    String(num)
+      .split("")
+      .map((item) => (target *= item));
+    num = target;
+    target = 1;
+    counter++;
+  }
+  return counter;
 }
-return Object.entries(obj).sort((a,b)=> b[1]-a[1])[0][0]
-}
-console.log(high(('man i need a taxi up to ubud')))
+console.log(persistence(39));
