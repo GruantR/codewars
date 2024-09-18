@@ -1,40 +1,21 @@
-//https://www.codewars.com/kata/5544c7a5cb454edb3c000047/train/javascript
+//https://www.codewars.com/kata/656e4602ee72af0017e37e82/train/javascript
 
 // 📌 DESCRIPTION:
-// A child is playing with a ball on the nth floor of a tall building. The height of this floor above ground level, h, is known.
 
-// He drops the ball out of the window. The ball bounces (for example), to two-thirds of its height (a bounce of 0.66).
+// The cuckoo bird pops out of the cuckoo clock and chimes once on the quarter hour, half hour, and three-quarter hour. At the beginning of each hour (1-12), it chimes out the hour. Given the current time and a number n, determine the time when the cuckoo bird has chimed n  times.
 
-// His mother looks out of a window 1.5 meters from the ground.
+// Input Parameters:
+// initial_time - a string in the format "HH:MM", where 1 ≤ HH ≤ 12 and 0 ≤ MM ≤ 59, with leading 0’s if necessary.
+// n - an integer representing the target number of chimes, with 1 <= n <= 200.
 
-// How many times will the mother see the ball pass in front of her window (including when it's falling and bouncing)?
+// Return Value: The time when the cuckoo bird has chimed n  times - a string in the same format as initial_time.
 
-// Three conditions must be met for a valid experiment:
-// Float parameter "h" in meters must be greater than 0
-// Float parameter "bounce" must be greater than 0 and less than 1
-// Float parameter "window" must be less than h.
-// If all three conditions above are fulfilled, return a positive integer, otherwise return -1.
+// If the cuckoo bird chimes at initial_time, include those chimes in the count. If the nth chime is reached on the hour, report the time at the start of that hour (i.e. assume the cuckoo finishes chiming before the minute is up).
 
-// Note:
-// The ball can only be seen if the height of the rebounding ball is strictly greater than the window parameter.
+// Example: "03:38", 19   should return "06:00".
+// Explanation: It chimes once at "03:45", 4 times at "04:00", once each at "04:15", "04:30", "04:45", 5 times at "05:00", and once each at "05:15", "05:30", "05:45". At this point it has chimed 16 times, so the 19th chime occurs when it chimes 6 times at "06:00".
 
-// Examples:
-// - h = 3, bounce = 0.66, window = 1.5, result is 3
+// Source: International Collegiate Programming Contest, North Central North American Regional, 2023.
 
-// - h = 3, bounce = 1, window = 1.5, result is -1 
-
-// (Condition 2) not fulfilled).
 // 💡 SOLUTION:
 
-function bouncingBall(h,  bounce,  window) {
-  if (h < 0 || bounce<0 || bounce>=1 || window >= h) {
-    return -1
-  } 
-  let counter = 0;
-  while (h>window) {
-    h*= bounce
-    h>window ? counter+=2: counter+=1
-  }
-return counter
-}
-console.log(bouncingBall(3.0, 0.66, 1.5))
