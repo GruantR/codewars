@@ -19,3 +19,35 @@
 
 // 💡 SOLUTION:
 
+function cuckooClock(inputTime, chimes) {
+ 
+    let hourse = Number(inputTime[0].slice(0,2))
+    let minute = Number(inputTime[0].slice(3,5))
+    let counter = chimes;
+  
+  if (minute%15 === 0 && minute !== 0) {counter--}
+  if (minute === 0) {counter -= hourse}
+  
+  while (counter>0) {
+      if (minute%15 !== 0) {
+        minute = Math.floor(minute/15)*15;
+      };
+        minute +=15
+        
+      
+      if (minute === 60) {
+        hourse+=1;
+        if (hourse === 13) {hourse = 1}
+        minute = 0;
+       counter -= hourse;
+      }
+      else{counter--}
+  
+  
+    }
+  
+  
+  let arar = [hourse.toString().length === 1 ? 0+hourse.toString():hourse,minute.toString().length === 1? 0+minute.toString():minute].join(':')
+  return arar
+  }
+  console.log(cuckooClock(["08:17"],200))
