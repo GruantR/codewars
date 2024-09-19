@@ -26,25 +26,26 @@
 // 💡 SOLUTION:
 
 function revrot(str, sz) {
-  if (sz <= 0 || str === '') {return ''};
-  let arr = str.split("");
-  let newArr = [];
-  while (arr.length > 0) {
-    newArr.push(arr.splice(0, sz));
-  }
-   let ttt = newArr.map((item) => {
-    if (item.reduce((accum, elem) => +accum + +elem) % 2 === 0) {
-       return item.reverse().join('')
+    if (sz <= 0 || str === '') {return ''};
+    let arr = str.split("");
+    let newArr = [];
+    while (arr.length > 0) {
+      newArr.push(arr.splice(0, sz));
     }
-     else {
-      let a = item.splice(0,1)
-      item.push(a.join(''));
-     return item.join('')
-     }
+     let ttt = newArr.map((item) => {
+      if (item.reduce((accum, elem) => +accum + +elem) % 2 === 0) {
+         return item.reverse().join('')
+      }
+       else {
+        let a = item.splice(0,1)
+        item.push(a.join(''));
+       return item.join('')
+       }
+    }
+    );
+  
+    return ttt.join('');
   }
-  );
-
-  return ttt.join('');
-}
-
-console.log(revrot("1234", 0));
+  
+  console.log(revrot("1234", 0));
+  
