@@ -18,15 +18,15 @@
 
 
 multiplicationTable = function(size) {
-  let arr = [];
-  for(let i = 1; i<=size; i++) {
-    arr.push([])
-    for(let y= 1; y<=size; y++) {
-      arr[i-1].push(i*y)
+    let arr = [];
+    for(let i = 1; i<=size; i++) {
+      arr.push([])
+      for(let y= 1; y<=size; y++) {
+        arr[i-1].push(i*y)
+      }
+  
     }
-
+  
+  return arr
   }
-
-return arr
-}
-console.log(multiplicationTable(3))
+  console.log(multiplicationTable(3))
