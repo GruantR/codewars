@@ -1,24 +1,32 @@
-//https://www.codewars.com/kata/5d5ee4c35162d9001af7d699/train/javascript
+//https://www.codewars.com/kata/534d2f5b5371ecf8d2000a08/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Given a 2D ( nested ) list ( array, vector, .. ) of size m * n, your task is to find the sum of the minimum values in each row.
+// Your task, is to create N×N multiplication table, of size provided in parameter.
 
-// For Example:
+// For example, when given size is 3:
 
-// [ [ 1, 2, 3, 4, 5 ]        #  minimum value of row is 1
-// , [ 5, 6, 7, 8, 9 ]        #  minimum value of row is 5
-// , [ 20, 21, 34, 56, 100 ]  #  minimum value of row is 20
-// ]
-// So the function should return 26 because the sum of the minimums is 1 + 5 + 20 = 26.
+// 1 2 3
+// 2 4 6
+// 3 6 9
+// For the given example, the return value should be:
 
-// Note: You will always be given a non-empty list containing positive values.
-
-// ENJOY CODING :)
+// [[1,2,3],[2,4,6],[3,6,9]]
 
 // 💡 SOLUTION:
 
-function sumOfMinimums(arr) {
-  return arr.map(item => Math.min(...item)).reduce((accum, elem) => accum+elem)
+
+
+multiplicationTable = function(size) {
+  let arr = [];
+  for(let i = 1; i<=size; i++) {
+    arr.push([])
+    for(let y= 1; y<=size; y++) {
+      arr[i-1].push(i*y)
+    }
+
+  }
+
+return arr
 }
-console.log(sumOfMinimums([[7, 9, 8, 6, 2], [6, 3, 5, 4, 3], [5, 8, 7, 4, 5]]))
+console.log(multiplicationTable(3))
