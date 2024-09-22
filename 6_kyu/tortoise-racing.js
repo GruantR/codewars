@@ -31,7 +31,7 @@
 // 💡 SOLUTION:
 
 
-  function race(v1, v2, g) {
+function race(v1, v2, g) {
     if (v1>=v2) {return null}
     let timesSec = Math.floor(g/(v2-v1)*3600);
     let hours = Math.floor(timesSec/3600);
