@@ -24,10 +24,10 @@
 
 
 function multiTable(number) {
- let str = ''
-  for (let i = 1; i<11; i++) {
-      str+= `${i} * ${number} = ${number*i}\n` 
-  }
-  return str.trim()
-}
-console.log(multiTable(5))
+    let str = ''
+     for (let i = 1; i<11; i++) {
+         str+= `${i} * ${number} = ${number*i}\n` 
+     }
+     return str.trim()
+   }
+   console.log(multiTable(5))
