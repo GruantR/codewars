@@ -23,10 +23,9 @@
 // 💡 SOLUTION:
 
 var encryptThis = function (text) {
-  return text
-    .split(" ")
-    .map((item) => item.length<2 ? item.charCodeAt(0):item.length<3? item.charCodeAt(0)+item.slice(1):item.charCodeAt(0)+item[item.length-1]+item.slice(2,item.length-1)+item[1])
-    .join(' ')
-};
-console.log(encryptThis("A wise old owl lived in an oak"));
-
+    return text
+      .split(" ")
+      .map((item) => item.length<2 ? item.charCodeAt(0):item.length<3? item.charCodeAt(0)+item.slice(1):item.charCodeAt(0)+item[item.length-1]+item.slice(2,item.length-1)+item[1])
+      .join(' ')
+  };
+  console.log(encryptThis("A wise old owl lived in an oak"));
