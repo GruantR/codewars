@@ -1,33 +1,32 @@
-//https://www.codewars.com/kata/5a2fd38b55519ed98f0000ce/train/javascript
+//https://www.codewars.com/kata/5848565e273af816fb000449/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Your goal is to return multiplication table for number that is always an integer from 1 to 10.
+// Acknowledgments:
+// I thank yvonne-liu for the idea and for the example tests :)
 
-// For example, a multiplication table (string) for number == 5 looks like below:
+// Description:
+// Encrypt this!
 
-// 1 * 5 = 5
-// 2 * 5 = 10
-// 3 * 5 = 15
-// 4 * 5 = 20
-// 5 * 5 = 25
-// 6 * 5 = 30
-// 7 * 5 = 35
-// 8 * 5 = 40
-// 9 * 5 = 45
-// 10 * 5 = 50
-// P. S. You can use \n in string to jump to the next line.
+// You want to create secret messages which can be deciphered by the Decipher this! kata. Here are the conditions:
 
-// Note: newlines should be added between rows, but there should be no trailing newline at the end. If you're unsure about the format, look at the sample tests.
+// Your message is a string containing space separated words.
+// You need to encrypt each word in the message using the following rules:
+// The first letter must be converted to its ASCII code.
+// The second letter must be switched with the last letter
+// Keepin' it simple: There are no special characters in the input.
+// Examples:
+// encryptThis("Hello") === "72olle"
+// encryptThis("good") === "103doo"
+// encryptThis("hello world") === "104olle 119drlo"
 
 // 💡 SOLUTION:
 
+var encryptThis = function (text) {
+  return text
+    .split(" ")
+    .map((item) => item.length<2 ? item.charCodeAt(0):item.length<3? item.charCodeAt(0)+item.slice(1):item.charCodeAt(0)+item[item.length-1]+item.slice(2,item.length-1)+item[1])
+    .join(' ')
+};
+console.log(encryptThis("A wise old owl lived in an oak"));
 
-function multiTable(number) {
- let str = ''
-  for (let i = 1; i<11; i++) {
-      str+= `${i} * ${number} = ${number*i}\n` 
-  }
-  return str.trim()
-}
-console.log(multiTable(5))
