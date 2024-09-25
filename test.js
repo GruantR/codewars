@@ -1,32 +1,39 @@
-//https://www.codewars.com/kata/5848565e273af816fb000449/train/javascript
+//https://www.codewars.com/kata/5266876b8f4bf2da9b000362/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Acknowledgments:
-// I thank yvonne-liu for the idea and for the example tests :)
+// You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
 
-// Description:
-// Encrypt this!
+// Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
 
-// You want to create secret messages which can be deciphered by the Decipher this! kata. Here are the conditions:
-
-// Your message is a string containing space separated words.
-// You need to encrypt each word in the message using the following rules:
-// The first letter must be converted to its ASCII code.
-// The second letter must be switched with the last letter
-// Keepin' it simple: There are no special characters in the input.
-// Examples:
-// encryptThis("Hello") === "72olle"
-// encryptThis("good") === "103doo"
-// encryptThis("hello world") === "104olle 119drlo"
+// []                                -->  "no one likes this"
+// ["Peter"]                         -->  "Peter likes this"
+// ["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+// ["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+// ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
+// Note: For 4 or more names, the number in "and 2 others" simply increases.
 
 // 💡 SOLUTION:
 
-var encryptThis = function (text) {
-  return text
-    .split(" ")
-    .map((item) => item.length<2 ? item.charCodeAt(0):item.length<3? item.charCodeAt(0)+item.slice(1):item.charCodeAt(0)+item[item.length-1]+item.slice(2,item.length-1)+item[1])
-    .join(' ')
-};
-console.log(encryptThis("A wise old owl lived in an oak"));
+function likes(names) {
+  let finalStrOne = 'likes this'
+  let finalStrMany = 'like this'
 
+  if (names.length === 0) {
+    return `no one ${finalStrOne}`
+  }
+  else if(names.length === 1) {
+    return `${names[0]} ${finalStrOne}`
+  }
+  else if ((names.length === 2)) {
+    return `${names[0]} and ${names[1]} ${finalStrMany}`
+  }
+  else if((names.length === 3)) {
+    return `${names[0]}, ${names[1]} and ${names[2]} ${finalStrMany}`
+  }
+  else {
+    return `${names[0]}, ${names[1]} and ${names.length-2} others ${finalStrMany}`
+  }
+}
+
+console.log(likes(["Alex", "Jacob", "Mark", "Max"]))
