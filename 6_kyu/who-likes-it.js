@@ -16,24 +16,25 @@
 // 💡 SOLUTION:
 
 function likes(names) {
-  let finalStrOne = 'likes this'
-  let finalStrMany = 'like this'
-
-  if (names.length === 0) {
-    return `no one ${finalStrOne}`
+    let finalStrOne = 'likes this'
+    let finalStrMany = 'like this'
+  
+    if (names.length === 0) {
+      return `no one ${finalStrOne}`
+    }
+    else if(names.length === 1) {
+      return `${names[0]} ${finalStrOne}`
+    }
+    else if ((names.length === 2)) {
+      return `${names[0]} and ${names[1]} ${finalStrMany}`
+    }
+    else if((names.length === 3)) {
+      return `${names[0]}, ${names[1]} and ${names[2]} ${finalStrMany}`
+    }
+    else {
+      return `${names[0]}, ${names[1]} and ${names.length-2} others ${finalStrMany}`
+    }
   }
-  else if(names.length === 1) {
-    return `${names[0]} ${finalStrOne}`
-  }
-  else if ((names.length === 2)) {
-    return `${names[0]} and ${names[1]} ${finalStrMany}`
-  }
-  else if((names.length === 3)) {
-    return `${names[0]}, ${names[1]} and ${names[2]} ${finalStrMany}`
-  }
-  else {
-    return `${names[0]}, ${names[1]} and ${names.length-2} others ${finalStrMany}`
-  }
-}
-
-console.log(likes(["Alex", "Jacob", "Mark", "Max"]))
+  
+  console.log(likes(["Alex", "Jacob", "Mark", "Max"]))
+  
