@@ -1,39 +1,24 @@
-//https://www.codewars.com/kata/5266876b8f4bf2da9b000362/train/javascript
+//https://www.codewars.com/kata/57ee99a16c8df7b02d00045f/train/javascript
 
 // 📌 DESCRIPTION:
 
-// You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+// Challenge:
 
-// Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
+// Given a two-dimensional array of integers, return the flattened version of the array with all the integers in the sorted (ascending) order.
 
-// []                                -->  "no one likes this"
-// ["Peter"]                         -->  "Peter likes this"
-// ["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
-// ["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
-// ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
-// Note: For 4 or more names, the number in "and 2 others" simply increases.
+// Example:
+
+// Given [[3, 2, 1], [4, 6, 5], [], [9, 7, 8]], your function should return [1, 2, 3, 4, 5, 6, 7, 8, 9].
+
+// Addendum:
+
+// Please, keep in mind, that JavaScript is by default sorting objects alphabetically. For more information, please consult:
 
 // 💡 SOLUTION:
 
-function likes(names) {
-  let finalStrOne = 'likes this'
-  let finalStrMany = 'like this'
 
-  if (names.length === 0) {
-    return `no one ${finalStrOne}`
-  }
-  else if(names.length === 1) {
-    return `${names[0]} ${finalStrOne}`
-  }
-  else if ((names.length === 2)) {
-    return `${names[0]} and ${names[1]} ${finalStrMany}`
-  }
-  else if((names.length === 3)) {
-    return `${names[0]}, ${names[1]} and ${names[2]} ${finalStrMany}`
-  }
-  else {
-    return `${names[0]}, ${names[1]} and ${names.length-2} others ${finalStrMany}`
-  }
+function flattenAndSort(array) {
+  
+  return array.flat().sort((a,b)=>a-b);
 }
-
-console.log(likes(["Alex", "Jacob", "Mark", "Max"]))
+console.log(flattenAndSort([[3, 2, 1], [7, 9, 8], [6, 4, 5]]))
