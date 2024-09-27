@@ -15,14 +15,14 @@
 
 
 function XO(str) {
-  str = str.toLowerCase()
-  if (str.includes('o') === false && str.includes('x') === false ) {
-    return true
-  }
-  let obj = {}; 
-  str.split('').forEach(item => obj[item] ? obj[item]+=1 : obj[item]=1);
-  return obj.x === obj.o
-
+    str = str.toLowerCase()
+    if (str.includes('o') === false && str.includes('x') === false ) {
+      return true
+    }
+    let obj = {}; 
+    str.split('').forEach(item => obj[item] ? obj[item]+=1 : obj[item]=1);
+    return obj.x === obj.o
   
-}
-console.log(XO("ooxx"))
+    
+  }
+  console.log(XO("ooxx"))
