@@ -17,11 +17,11 @@
 
 
 function solve(s){
-  let obj = {
-    big:0,
-    small:0,
+    let obj = {
+      big:0,
+      small:0,
+    }
+   s.split('').forEach(item => item === item.toUpperCase() ? obj.big +=1 : obj.small+=1 );
+   return obj.small >= obj.big ?  s.toLowerCase() : s.toUpperCase();
   }
- s.split('').forEach(item => item === item.toUpperCase() ? obj.big +=1 : obj.small+=1 );
- return obj.small >= obj.big ?  s.toLowerCase() : s.toUpperCase();
-}
-console.log(solve('CODe'))
+  console.log(solve('CODe'))
