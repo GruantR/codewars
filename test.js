@@ -1,28 +1,27 @@
-//https://www.codewars.com/kata/55908aad6620c066bc00002a/train/javascript
+//https://www.codewars.com/kata/5b180e9fedaa564a7000009a/train/javascript
 
 // 📌 DESCRIPTION:
-// Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
 
-// Examples input/output:
+// In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
 
-// XO("ooxx") => true
-// XO("xooxx") => false
-// XO("ooxXm") => true
-// XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
-// XO("zzoo") => false
+// make as few changes as possible.
+// if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
+// For example:
+
+// solve("coDe") = "code". Lowercase characters > uppercase. Change only the "D" to lowercase.
+// solve("CODe") = "CODE". Uppercase characters > lowecase. Change only the "e" to uppercase.
+// solve("coDE") = "code". Upper == lowercase. Change all to lowercase.
+// More examples in test cases. Good luck!
 
 // 💡 SOLUTION:
 
 
-function XO(str) {
-  str = str.toLowerCase()
-  if (str.includes('o') === false && str.includes('x') === false ) {
-    return true
+function solve(s){
+  let obj = {
+    big:0,
+    small:0,
   }
-  let obj = {}; 
-  str.split('').forEach(item => obj[item] ? obj[item]+=1 : obj[item]=1);
-  return obj.x === obj.o
-
-  
+ s.split('').forEach(item => item === item.toUpperCase() ? obj.big +=1 : obj.small+=1 );
+ return obj.small >= obj.big ?  s.toLowerCase() : s.toUpperCase();
 }
-console.log(XO("ooxx"))
+console.log(solve('CODe'))
