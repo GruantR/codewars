@@ -1,27 +1,33 @@
-//https://www.codewars.com/kata/5b180e9fedaa564a7000009a/train/javascript
+//https://www.codewars.com/kata/5663f5305102699bad000056/train/javascript
 
 // 📌 DESCRIPTION:
 
-// In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
+// You are given two arrays a1 and a2 of strings. Each string is composed with letters from a to z. Let x be any string in the first array and y be any string in the second array.
 
-// make as few changes as possible.
-// if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
-// For example:
+// Find max(abs(length(x) − length(y)))
 
-// solve("coDe") = "code". Lowercase characters > uppercase. Change only the "D" to lowercase.
-// solve("CODe") = "CODE". Uppercase characters > lowecase. Change only the "e" to uppercase.
-// solve("coDE") = "code". Upper == lowercase. Change all to lowercase.
-// More examples in test cases. Good luck!
+// If a1 and/or a2 are empty return -1 in each language except in Haskell (F#) where you will return Nothing (None).
+
+// Example:
+// a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"]
+// a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]
+// mxdiflg(a1, a2) --> 13
+// Bash note:
+// input : 2 strings with substrings separated by ,
+// output: number as a string
 
 // 💡 SOLUTION:
 
 
-function solve(s){
-  let obj = {
-    big:0,
-    small:0,
+function mxdiflg(a1, a2) {
+  if (a1.length === 0 || a2.length ===0 ) {
+    return -1
   }
- s.split('').forEach(item => item === item.toUpperCase() ? obj.big +=1 : obj.small+=1 );
- return obj.small >= obj.big ?  s.toLowerCase() : s.toUpperCase();
+  let arr1 = [Math.max(...a1.map(item => item.length)),Math.min(...a1.map(item => item.length))];
+  let arr2 = [Math.max(...a2.map(item => item.length)),Math.min(...a2.map(item => item.length))];
+  return Math.max(arr1[0]-arr2[1],arr2[0]-arr1[1])
+
 }
-console.log(solve('CODe'))
+var s1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"];
+var s2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"];
+console.log(mxdiflg(s1,s2))
