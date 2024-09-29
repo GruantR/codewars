@@ -20,14 +20,15 @@
 
 
 function mxdiflg(a1, a2) {
-  if (a1.length === 0 || a2.length ===0 ) {
-    return -1
+    if (a1.length === 0 || a2.length ===0 ) {
+      return -1
+    }
+    let arr1 = [Math.max(...a1.map(item => item.length)),Math.min(...a1.map(item => item.length))];
+    let arr2 = [Math.max(...a2.map(item => item.length)),Math.min(...a2.map(item => item.length))];
+    return Math.max(arr1[0]-arr2[1],arr2[0]-arr1[1])
+  
   }
-  let arr1 = [Math.max(...a1.map(item => item.length)),Math.min(...a1.map(item => item.length))];
-  let arr2 = [Math.max(...a2.map(item => item.length)),Math.min(...a2.map(item => item.length))];
-  return Math.max(arr1[0]-arr2[1],arr2[0]-arr1[1])
-
-}
-var s1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"];
-var s2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"];
-console.log(mxdiflg(s1,s2))
+  var s1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"];
+  var s2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"];
+  console.log(mxdiflg(s1,s2))
+  
