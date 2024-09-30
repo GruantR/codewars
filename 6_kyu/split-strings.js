@@ -12,18 +12,19 @@
 // 💡 SOLUTION:
 
 function solution(str) {
-  if (str.length === 0) {
-    return [];
+    if (str.length === 0) {
+      return [];
+    }
+    if (str.length % 2 !== 0) {
+      str += "_";
+    }
+    let arrStr = str.split("");
+    let arr = [];
+    while (arrStr.length > 0) {
+      arr.push(arrStr.splice(0, 2).join(""));
+    }
+  
+    return arr;
   }
-  if (str.length % 2 !== 0) {
-    str += "_";
-  }
-  let arrStr = str.split("");
-  let arr = [];
-  while (arrStr.length > 0) {
-    arr.push(arrStr.splice(0, 2).join(""));
-  }
-
-  return arr;
-}
-console.log(solution("abc"));
+  console.log(solution("abc"));
+  
