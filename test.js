@@ -1,29 +1,37 @@
-//https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/train/javascript
+//https://www.codewars.com/kata/5277c8a221e209d3f6000b56/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+// Write a function that takes a string of braces, and determines if the order of the braces is valid. It should return true if the string is valid, and false if it's invalid.
 
-// Examples:
+// This Kata is similar to the Valid Parentheses Kata, but introduces new characters: brackets [], and curly braces {}. Thanks to @arnedag for the idea!
 
-// * 'abc' =>  ['ab', 'c_']
-// * 'abcdef' => ['ab', 'cd', 'ef']
+// All input strings will be nonempty, and will only consist of parentheses, brackets and curly braces: ()[]{}.
+
+// What is considered Valid?
+// A string of braces is considered valid if all braces are matched with the correct brace.
+
+// Examples
+// "(){}[]"   =>  True
+// "([{}])"   =>  True
+// "(}"       =>  False
+// "[(])"     =>  False
+// "[({})](]" =>  False
 
 // 💡 SOLUTION:
 
-function solution(str) {
-  if (str.length === 0) {
-    return [];
-  }
-  if (str.length % 2 !== 0) {
-    str += "_";
-  }
-  let arrStr = str.split("");
-  let arr = [];
-  while (arrStr.length > 0) {
-    arr.push(arrStr.splice(0, 2).join(""));
-  }
 
-  return arr;
+function validBraces(braces){
+let obj = {
+  ']' : '[',
+  '}' : '{',
+  ')' : '(',
+};
+
+let arr = [];
+braces.split('').forEach(item =>  !obj[item] ? arr.push(item) : obj[item] === arr[arr.length-1] ? arr.pop() : arr.push(item))
+return arr.length === 0
 }
-console.log(solution("abc"));
+
+console.log(validBraces("[[[]"))
+
