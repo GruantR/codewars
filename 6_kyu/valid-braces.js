@@ -22,16 +22,17 @@
 
 
 function validBraces(braces){
-let obj = {
-  ']' : '[',
-  '}' : '{',
-  ')' : '(',
-};
-
-let arr = [];
-braces.split('').forEach(item =>  !obj[item] ? arr.push(item) : obj[item] === arr[arr.length-1] ? arr.pop() : arr.push(item))
-return arr.length === 0
-}
-
-console.log(validBraces("[[[]"))
-
+    let obj = {
+      ']' : '[',
+      '}' : '{',
+      ')' : '(',
+    };
+    
+    let arr = [];
+    braces.split('').forEach(item =>  !obj[item] ? arr.push(item) : obj[item] === arr[arr.length-1] ? arr.pop() : arr.push(item))
+    return arr.length === 0
+    }
+    
+    console.log(validBraces("[[[]"))
+    
+    
