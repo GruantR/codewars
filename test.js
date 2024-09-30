@@ -1,33 +1,29 @@
-//https://www.codewars.com/kata/5663f5305102699bad000056/train/javascript
+//https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/train/javascript
 
 // 📌 DESCRIPTION:
 
-// You are given two arrays a1 and a2 of strings. Each string is composed with letters from a to z. Let x be any string in the first array and y be any string in the second array.
+// Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
 
-// Find max(abs(length(x) − length(y)))
+// Examples:
 
-// If a1 and/or a2 are empty return -1 in each language except in Haskell (F#) where you will return Nothing (None).
-
-// Example:
-// a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"]
-// a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]
-// mxdiflg(a1, a2) --> 13
-// Bash note:
-// input : 2 strings with substrings separated by ,
-// output: number as a string
+// * 'abc' =>  ['ab', 'c_']
+// * 'abcdef' => ['ab', 'cd', 'ef']
 
 // 💡 SOLUTION:
 
-
-function mxdiflg(a1, a2) {
-  if (a1.length === 0 || a2.length ===0 ) {
-    return -1
+function solution(str) {
+  if (str.length === 0) {
+    return [];
   }
-  let arr1 = [Math.max(...a1.map(item => item.length)),Math.min(...a1.map(item => item.length))];
-  let arr2 = [Math.max(...a2.map(item => item.length)),Math.min(...a2.map(item => item.length))];
-  return Math.max(arr1[0]-arr2[1],arr2[0]-arr1[1])
+  if (str.length % 2 !== 0) {
+    str += "_";
+  }
+  let arrStr = str.split("");
+  let arr = [];
+  while (arrStr.length > 0) {
+    arr.push(arrStr.splice(0, 2).join(""));
+  }
 
+  return arr;
 }
-var s1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"];
-var s2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"];
-console.log(mxdiflg(s1,s2))
+console.log(solution("abc"));
