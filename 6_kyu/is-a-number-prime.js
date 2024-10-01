@@ -19,20 +19,21 @@
 
 
 function isPrime(num) {
-  if (num === 2 || num === 3) {
-    return true
-  };
-  if (num%2 === 0  || num<=1) {
-    return false
-  };
-  let target = Math.floor(Math.sqrt(num));
-
-  for (let i = 2; i<=target; i++) {
-    if (num%i === 0) {
+    if (num === 2 || num === 3) {
+      return true
+    };
+    if (num%2 === 0  || num<=1) {
       return false
-    } 
+    };
+    let target = Math.floor(Math.sqrt(num));
+  
+    for (let i = 2; i<=target; i++) {
+      if (num%i === 0) {
+        return false
+      } 
+    }
+    return true
   }
-  return true
-}
-console.log(isPrime(7))
-
+  console.log(isPrime(7))
+  
+  
