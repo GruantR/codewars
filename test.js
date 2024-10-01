@@ -1,37 +1,38 @@
-//https://www.codewars.com/kata/5277c8a221e209d3f6000b56/train/javascript
+//https://www.codewars.com/kata/5262119038c0985a5b00029f/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Write a function that takes a string of braces, and determines if the order of the braces is valid. It should return true if the string is valid, and false if it's invalid.
+// Define a function that takes an integer argument and returns a logical value true or false depending on if the integer is a prime.
 
-// This Kata is similar to the Valid Parentheses Kata, but introduces new characters: brackets [], and curly braces {}. Thanks to @arnedag for the idea!
+// Per Wikipedia, a prime number ( or a prime ) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
 
-// All input strings will be nonempty, and will only consist of parentheses, brackets and curly braces: ()[]{}.
-
-// What is considered Valid?
-// A string of braces is considered valid if all braces are matched with the correct brace.
-
-// Examples
-// "(){}[]"   =>  True
-// "([{}])"   =>  True
-// "(}"       =>  False
-// "[(])"     =>  False
-// "[({})](]" =>  False
+// Requirements
+// You can assume you will be given an integer input.
+// You can not assume that the integer will be only positive. You may be given negative numbers as well ( or 0 ).
+// NOTE on performance: There are no fancy optimizations required, but still the most trivial solutions might time out. Numbers go up to 2^31 ( or similar, depending on language ). Looping all the way up to n, or n/2, will be too slow.
+// Example
+// is_prime(1)  /* false */
+// is_prime(2)  /* true  */
+// is_prime(-1) /* false */
 
 // 💡 SOLUTION:
 
 
-function validBraces(braces){
-let obj = {
-  ']' : '[',
-  '}' : '{',
-  ')' : '(',
-};
+function isPrime(num) {
+  if (num === 2 || num === 3) {
+    return true
+  };
+  if (num%2 === 0  || num<=1) {
+    return false
+  };
+  let target = Math.floor(Math.sqrt(num));
 
-let arr = [];
-braces.split('').forEach(item =>  !obj[item] ? arr.push(item) : obj[item] === arr[arr.length-1] ? arr.pop() : arr.push(item))
-return arr.length === 0
+  for (let i = 2; i<=target; i++) {
+    if (num%i === 0) {
+      return false
+    } 
+  }
+  return true
 }
-
-console.log(validBraces("[[[]"))
+console.log(isPrime(7))
 
