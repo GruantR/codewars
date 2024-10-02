@@ -13,15 +13,16 @@
 // 💡 SOLUTION:
 
 function findOutlier(integers) {
-  let even = 0;
-  let odd = 0;
-  for (let i = 0; i <= 3; i++) {
-    if (integers[i] === 0) {even+=1}
-    integers[i] % 2 === 0 ? (even += 1) : (odd += 1);
+    let even = 0;
+    let odd = 0;
+    for (let i = 0; i <= 3; i++) {
+      if (integers[i] === 0) {even+=1}
+      integers[i] % 2 === 0 ? (even += 1) : (odd += 1);
+    }
+  
+    return even > odd
+      ? integers.find((item) => item % 2 !== 0)
+      : integers.find((item) => item % 2 === 0);
   }
-
-  return even > odd
-    ? integers.find((item) => item % 2 !== 0)
-    : integers.find((item) => item % 2 === 0);
-}
-console.log(findOutlier([0,1,2]));
+  console.log(findOutlier([0,1,2]));
+  
