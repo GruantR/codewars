@@ -1,27 +1,23 @@
-//https://www.codewars.com/kata/5526fc09a1bbd946250002dc/train/javascript
+//https://www.codewars.com/kata/544aed4c4a30184e960010f4/train/javascript
 
 // 📌 DESCRIPTION:
 
-// You are given an array (which will have a length of at least 3, but could be very large) containing integers. The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N. Write a method that takes the array as an argument and returns this "outlier" N.
+// Create a function named divisors/Divisors that takes an integer n > 1 and returns an array with all of the integer's divisors(except for 1 and the number itself), from smallest to largest. If the number is prime return the string '(integer) is prime' (null in C#, empty table in COBOL) (use Either String a in Haskell and Result<Vec<u32>, String> in Rust).
 
-// Examples
-// [2, 4, 0, 100, 4, 11, 2602, 36] -->  11 (the only odd number)
-
-// [160, 3, 1719, 19, 11, 13, -21] --> 160 (the only even number)
-
+// Examples:
+// divisors(12) --> [2, 3, 4, 6]
+// divisors(25) --> [5]
+// divisors(13) --> "13 is prime"
 
 // 💡 SOLUTION:
 
-function findOutlier(integers) {
-  let even = 0;
-  let odd = 0;
-  for (let i = 0; i <= 3; i++) {
-    if (integers[i] === 0) {even+=1}
-    integers[i] % 2 === 0 ? (even += 1) : (odd += 1);
+function divisors(integer) {
+  let arr = [];
+  for (let i = 2; i <= Math.ceil(integer / 2); i++) {
+    if (integer % i === 0) {
+      arr.push(i);
+    }
   }
-
-  return even > odd
-    ? integers.find((item) => item % 2 !== 0)
-    : integers.find((item) => item % 2 === 0);
+  return arr.length >0 ? arr : `${integer} is prime`
 }
-console.log(findOutlier([0,1,2]));
+console.log(divisors(13));
