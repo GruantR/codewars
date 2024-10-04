@@ -1,23 +1,24 @@
-//https://www.codewars.com/kata/544aed4c4a30184e960010f4/train/javascript
+//https://www.codewars.com/kata/514b92a657cdc65150000006/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Create a function named divisors/Divisors that takes an integer n > 1 and returns an array with all of the integer's divisors(except for 1 and the number itself), from smallest to largest. If the number is prime return the string '(integer) is prime' (null in C#, empty table in COBOL) (use Either String a in Haskell and Result<Vec<u32>, String> in Rust).
+// If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
-// Examples:
-// divisors(12) --> [2, 3, 4, 6]
-// divisors(25) --> [5]
-// divisors(13) --> "13 is prime"
+// Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
 
+// Additionally, if the number is negative, return 0.
+
+// Note: If the number is a multiple of both 3 and 5, only count it once.
 // 💡 SOLUTION:
 
-function divisors(integer) {
-  let arr = [];
-  for (let i = 2; i <= Math.ceil(integer / 2); i++) {
-    if (integer % i === 0) {
-      arr.push(i);
-    }
+function solution(number) {
+  if (number < 1) {
+    return 0;
   }
-  return arr.length >0 ? arr : `${integer} is prime`
+  let arr = [];
+  for (let i = number - 1; i > 0; i--) {
+    i % 3 === 0 ? arr.push(i) : i % 5 === 0 ? arr.push(i) : 1;
+  }
+  return arr.reduce((accum, item) => accum + item, 0);
 }
-console.log(divisors(13));
+console.log(solution(20));
