@@ -12,13 +12,14 @@
 // 💡 SOLUTION:
 
 function solution(number) {
-  if (number < 1) {
-    return 0;
+    if (number < 1) {
+      return 0;
+    }
+    let arr = [];
+    for (let i = number - 1; i > 0; i--) {
+      i % 3 === 0 ? arr.push(i) : i % 5 === 0 ? arr.push(i) : 1;
+    }
+    return arr.reduce((accum, item) => accum + item, 0);
   }
-  let arr = [];
-  for (let i = number - 1; i > 0; i--) {
-    i % 3 === 0 ? arr.push(i) : i % 5 === 0 ? arr.push(i) : 1;
-  }
-  return arr.reduce((accum, item) => accum + item, 0);
-}
-console.log(solution(20));
+  console.log(solution(20));
+  
