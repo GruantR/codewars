@@ -1,24 +1,44 @@
-//https://www.codewars.com/kata/514b92a657cdc65150000006/train/javascript
+//https://www.codewars.com/kata/52a112d9488f506ae7000b95/train/javascript
 
 // 📌 DESCRIPTION:
 
-// If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+// Write a function with the signature shown below:
 
-// Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
+// function isIntArray(arr) {
+//   return true
+// }
+// returns true  / True if every element in an array is an integer or a float with no decimals.
+// returns true  / True if array is empty.
+// returns false / False for every other input.
 
-// Additionally, if the number is negative, return 0.
-
-// Note: If the number is a multiple of both 3 and 5, only count it once.
 // 💡 SOLUTION:
 
-function solution(number) {
-  if (number < 1) {
-    return 0;
-  }
-  let arr = [];
-  for (let i = number - 1; i > 0; i--) {
-    i % 3 === 0 ? arr.push(i) : i % 5 === 0 ? arr.push(i) : 1;
-  }
-  return arr.reduce((accum, item) => accum + item, 0);
+// snail = function(array) {
+//   let newArr = [];
+
+//   for (let i = 0; i<= 4; i++) {
+
+//     if (i === 0) {newArr.push(array[0].splice(0,array.length-1))}
+//     if (i === 1 ) {
+//       for (let j = 0; j<array.length; j++) {
+//         newArr.push(array[j].splice(array[j].length-1,1))
+//       }
+//     }
+//     if (i === 2) {
+//       newArr.push()
+//     };
+//   }
+//   return newArr
+// }
+// console.log(snail([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+
+
+function isIntArray(arr) {
+  if (arr === null || arr === undefined || !Array.isArray(arr)) {return false}
+  if (arr.length === 0) {return true};
+  if (arr.every(item => Number.isInteger(item) )) {return true}
+
+  return false;
 }
-console.log(solution(20));
+console.log(isIntArray([]))
+
