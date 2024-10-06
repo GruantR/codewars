@@ -1,66 +1,49 @@
-//https://www.codewars.com/kata/521c2db8ddc89b9b7a0000c1/train/javascript
+//https://www.codewars.com/kata/5d23d89906f92a00267bb83d/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
+// All the orders they create look something like this:
 
-// array = [[1,2,3],
-//          [4,5,6],
-//          [7,8,9]]
-// snail(array) #=> [1,2,3,6,9,8,7,4,5]
-// For better understanding, please follow the numbers of the next array consecutively:
+// "milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza"
 
-// array = [[1,2,3],
-//          [8,9,4],
-//          [7,6,5]]
-// snail(array) #=> [1,2,3,4,5,6,7,8,9]
+// The kitchen staff are threatening to quit, because of how difficult it is to read the orders.
+
+// Their preference is to get the orders as a nice clean string with spaces and capitals like so:
+
+// "Burger Fries Chicken Pizza Pizza Pizza Sandwich Milkshake Milkshake Coke"
+
+// The kitchen staff expect the items to be in the same order as they appear in the menu.
+
+// The menu items are fairly simple, there is no overlap in the names of the items:
+
+// 1. Burger
+// 2. Fries
+// 3. Chicken
+// 4. Pizza
+// 5. Sandwich
+// 6. Onionrings
+// 7. Milkshake
+// 8. Coke
 
 // 💡 SOLUTION:
 
-snail = function (array) {
-  if (array.flat().length === 0) {
-    return [];
-  }
-  if (array.flat().length === 1) {
-    return array[0];
-  }
-  let newArr = [];
-  while (array.length > 0) {
-    newArr.push(array[0].splice(0));
-    array.shift();
-    if (array.length === 1) {
-      newArr.push(array[0].splice(array[0].reverse()));
-      array.pop();
-    } else {
-      for (let j = 0; j < array.length; j++) {
-        newArr.push(array[j].splice(array[j].length - 1, 1));
-      }
-
-      newArr.push(
-        array[array.length - 1].splice(array[array.length - 1].reverse())
-      );
-      array.pop();
-
-      if (array.length === 1) {
-        newArr.push(array[0].splice(0));
-        array.pop();
-      } else {
-        for (let j = array.length - 1; j >= 0; j--) {
-          newArr.push(array[j].splice(0, 1));
+function getOrder(input) {
+    let newArr = [];
+    let start = 0;
+    let arr = ['burger', 'fries', 'chicken', 'pizza', 'sandwich', 'onionrings', 'milkshake', 'coke'];
+    for (let i = 0; i<=input.length; i++) {
+       
+        if (arr.includes(input.slice(start,i))) {
+            newArr.push(input.slice(start,i))
+            start = i;
         }
-      }
+    };
+    let result = [];
+    for (let i = 0; i< arr.length; i++) {
+        newArr.forEach(item => item === arr[i] ?result.push(item[0].toUpperCase()+item.slice(1)):1)
     }
-  }
-  return newArr.flat();
-};
 
-console.log(
-  snail([
-    [1, 2, 3, 4, 5, 6],
-    [20, 21, 22, 23, 24, 7],
-    [19, 32, 33, 34, 25, 8],
-    [18, 31, 36, 35, 26, 9],
-    [17, 30, 29, 28, 27, 10],
-    [16, 15, 14, 13, 12, 11],
-  ])
-);
+    
+    return result.join(' ')
+  }
+  console.log(getOrder("milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza"))
