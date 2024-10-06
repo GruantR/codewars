@@ -1,44 +1,66 @@
-//https://www.codewars.com/kata/52a112d9488f506ae7000b95/train/javascript
+//https://www.codewars.com/kata/521c2db8ddc89b9b7a0000c1/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Write a function with the signature shown below:
+// Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
 
-// function isIntArray(arr) {
-//   return true
-// }
-// returns true  / True if every element in an array is an integer or a float with no decimals.
-// returns true  / True if array is empty.
-// returns false / False for every other input.
+// array = [[1,2,3],
+//          [4,5,6],
+//          [7,8,9]]
+// snail(array) #=> [1,2,3,6,9,8,7,4,5]
+// For better understanding, please follow the numbers of the next array consecutively:
+
+// array = [[1,2,3],
+//          [8,9,4],
+//          [7,6,5]]
+// snail(array) #=> [1,2,3,4,5,6,7,8,9]
 
 // 💡 SOLUTION:
 
-// snail = function(array) {
-//   let newArr = [];
+snail = function (array) {
+  if (array.flat().length === 0) {
+    return [];
+  }
+  if (array.flat().length === 1) {
+    return array[0];
+  }
+  let newArr = [];
+  while (array.length > 0) {
+    newArr.push(array[0].splice(0));
+    array.shift();
+    if (array.length === 1) {
+      newArr.push(array[0].splice(array[0].reverse()));
+      array.pop();
+    } else {
+      for (let j = 0; j < array.length; j++) {
+        newArr.push(array[j].splice(array[j].length - 1, 1));
+      }
 
-//   for (let i = 0; i<= 4; i++) {
+      newArr.push(
+        array[array.length - 1].splice(array[array.length - 1].reverse())
+      );
+      array.pop();
 
-//     if (i === 0) {newArr.push(array[0].splice(0,array.length-1))}
-//     if (i === 1 ) {
-//       for (let j = 0; j<array.length; j++) {
-//         newArr.push(array[j].splice(array[j].length-1,1))
-//       }
-//     }
-//     if (i === 2) {
-//       newArr.push()
-//     };
-//   }
-//   return newArr
-// }
-// console.log(snail([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+      if (array.length === 1) {
+        newArr.push(array[0].splice(0));
+        array.pop();
+      } else {
+        for (let j = array.length - 1; j >= 0; j--) {
+          newArr.push(array[j].splice(0, 1));
+        }
+      }
+    }
+  }
+  return newArr.flat();
+};
 
-
-function isIntArray(arr) {
-  if (arr === null || arr === undefined || !Array.isArray(arr)) {return false}
-  if (arr.length === 0) {return true};
-  if (arr.every(item => Number.isInteger(item) )) {return true}
-
-  return false;
-}
-console.log(isIntArray([]))
-
+console.log(
+  snail([
+    [1, 2, 3, 4, 5, 6],
+    [20, 21, 22, 23, 24, 7],
+    [19, 32, 33, 34, 25, 8],
+    [18, 31, 36, 35, 26, 9],
+    [17, 30, 29, 28, 27, 10],
+    [16, 15, 14, 13, 12, 11],
+  ])
+);
