@@ -22,32 +22,33 @@
 // 💡 SOLUTION:
 
 function calculate(expression) {
-  let arrNew = ["+", "-", "*", "/"];
-  let arr = expression.split(" ");
-  let target = arr.reverse();
-
-  while (arrNew.some((operator) => target.includes(operator))) {
-    for (let i = 0; i < target.length; i++) {
-      if (
-        isFinite(target[i]) &&
-        isFinite(target[i + 1]) &&
-        arrNew.includes(target[i + 2])
-      ) {
-        a = Number(target[i]);
-        b = Number(target[i + 1]);
-        let obj = {
-          "+": b + a,
-          "-": b - a,
-          "*": b * a,
-          "/": b / a,
-        };
-
-        target.splice(i, 3, obj[target[i + 2]]);
-        break;
+    let arrNew = ["+", "-", "*", "/"];
+    let arr = expression.split(" ");
+    let target = arr.reverse();
+  
+    while (arrNew.some((operator) => target.includes(operator))) {
+      for (let i = 0; i < target.length; i++) {
+        if (
+          isFinite(target[i]) &&
+          isFinite(target[i + 1]) &&
+          arrNew.includes(target[i + 2])
+        ) {
+          a = Number(target[i]);
+          b = Number(target[i + 1]);
+          let obj = {
+            "+": b + a,
+            "-": b - a,
+            "*": b * a,
+            "/": b / a,
+          };
+  
+          target.splice(i, 3, obj[target[i + 2]]);
+          break;
+        }
       }
     }
+  
+    return Number(target.join(""));
   }
-
-  return Number(target.join(""));
-}
-console.log(calculate("0"));
+  console.log(calculate("0"));
+  
