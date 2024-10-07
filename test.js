@@ -1,57 +1,53 @@
-//https://www.codewars.com/kata/5b7176768adeae9bc9000056/train/javascript
+//https://www.codewars.com/kata/5e5b7f55c2e8ae0016f42339/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Given a sorted array of distinct integers, write a function indexEqualsValue that returns the lowest index for which array[index] == index.
-// Return -1 if there is no such index.
+// Your task is to write a function calculate, which accepts a string with a mathematical exprssion written in prefix Polish notation and evaluates it. This means that all operations are placed before their operands. For example, the expression 3 + 5 is written in Polish notation as + 3 5, and (3 + 5) / (2 * 2) is / + 3 5 * 2 2.
 
-// Your algorithm should be very performant.
+// The only valid operations are +, -, * and /. The input string is guaranteed to be a valid expression.
 
-// [input] array of integers ( with 0-based nonnegative indexing )
-// [output] integer
+// You can use eval or alternative if available in your language, but it is in no way needed for an idiomatic solution.
 
-// Examples:
-// input: [-8,0,2,5]
-// output: 2 # since array[2] == 2
+// Examples
+// calculate('123.456')       == 123.456
+// calculate('+ -5 5')        == 0
+// calculate('* + 2 2 3')     == 12
+// calculate('/ + 3 5 * 2 2') == 2
+// Input
+// A non-empty string consisting of numbers and arithmetic operators separated by spaces. This string is a valid arithmetic expression written in prefix polish notation.
 
-// input: [-1,0,3,6]
-// output: -1 # since no index in array satisfies array[index] == index
-// Random Tests Constraints:
-// Array length: 200 000
-
-// Amount of tests: 1 000
-
-// Time limit: 150 ms
-
-
+// Output
+// A number, result of evaluating the expression.
 
 // 💡 SOLUTION:
 
-function indexEqualsValue(a) {
-  let start = 0;
-  let end = a.length - 1;
-  let index = Math.floor((start + end) / 2);
-  console.log(index);
-  while (start <= end) {
-    if (a[index] > index) {
-      if (a[index] === index) {
-        return index;
+function calculate(expression) {
+  let arrNew = ["+", "-", "*", "/"];
+  let arr = expression.split(" ");
+  let target = arr.reverse();
+
+  while (arrNew.some((operator) => target.includes(operator))) {
+    for (let i = 0; i < target.length; i++) {
+      if (
+        isFinite(target[i]) &&
+        isFinite(target[i + 1]) &&
+        arrNew.includes(target[i + 2])
+      ) {
+        a = Number(target[i]);
+        b = Number(target[i + 1]);
+        let obj = {
+          "+": b + a,
+          "-": b - a,
+          "*": b * a,
+          "/": b / a,
+        };
+
+        target.splice(i, 3, obj[target[i + 2]]);
+        break;
       }
-      end = index - 1;
-    } else if (a[index] < index) {
-      if (a[index] === index) {
-        return index;
-      }
-      start = index + 1;
-    } else {
-      while (a[index - 1] === index - 1) {
-        index -= 1;
-      }
-      return index;
     }
-    index = Math.floor((start + end) / 2);
   }
 
-  return -1;
+  return Number(target.join(""));
 }
-console.log(indexEqualsValue([-5, 1, 2, 3, 4, 5, 7, 10, 15]));
+console.log(calculate("0"));
