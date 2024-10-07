@@ -28,30 +28,31 @@
 // 💡 SOLUTION:
 
 function indexEqualsValue(a) {
-  let start = 0;
-  let end = a.length - 1;
-  let index = Math.floor((start + end) / 2);
-  console.log(index);
-  while (start <= end) {
-    if (a[index] > index) {
-      if (a[index] === index) {
+    let start = 0;
+    let end = a.length - 1;
+    let index = Math.floor((start + end) / 2);
+    console.log(index);
+    while (start <= end) {
+      if (a[index] > index) {
+        if (a[index] === index) {
+          return index;
+        }
+        end = index - 1;
+      } else if (a[index] < index) {
+        if (a[index] === index) {
+          return index;
+        }
+        start = index + 1;
+      } else {
+        while (a[index - 1] === index - 1) {
+          index -= 1;
+        }
         return index;
       }
-      end = index - 1;
-    } else if (a[index] < index) {
-      if (a[index] === index) {
-        return index;
-      }
-      start = index + 1;
-    } else {
-      while (a[index - 1] === index - 1) {
-        index -= 1;
-      }
-      return index;
+      index = Math.floor((start + end) / 2);
     }
-    index = Math.floor((start + end) / 2);
+  
+    return -1;
   }
-
-  return -1;
-}
-console.log(indexEqualsValue([-5, 1, 2, 3, 4, 5, 7, 10, 15]));
+  console.log(indexEqualsValue([-5, 1, 2, 3, 4, 5, 7, 10, 15]));
+  
