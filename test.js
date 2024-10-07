@@ -1,49 +1,57 @@
-//https://www.codewars.com/kata/5d23d89906f92a00267bb83d/train/javascript
+//https://www.codewars.com/kata/5b7176768adeae9bc9000056/train/javascript
 
 // 📌 DESCRIPTION:
 
-// All the orders they create look something like this:
+// Given a sorted array of distinct integers, write a function indexEqualsValue that returns the lowest index for which array[index] == index.
+// Return -1 if there is no such index.
 
-// "milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza"
+// Your algorithm should be very performant.
 
-// The kitchen staff are threatening to quit, because of how difficult it is to read the orders.
+// [input] array of integers ( with 0-based nonnegative indexing )
+// [output] integer
 
-// Their preference is to get the orders as a nice clean string with spaces and capitals like so:
+// Examples:
+// input: [-8,0,2,5]
+// output: 2 # since array[2] == 2
 
-// "Burger Fries Chicken Pizza Pizza Pizza Sandwich Milkshake Milkshake Coke"
+// input: [-1,0,3,6]
+// output: -1 # since no index in array satisfies array[index] == index
+// Random Tests Constraints:
+// Array length: 200 000
 
-// The kitchen staff expect the items to be in the same order as they appear in the menu.
+// Amount of tests: 1 000
 
-// The menu items are fairly simple, there is no overlap in the names of the items:
+// Time limit: 150 ms
 
-// 1. Burger
-// 2. Fries
-// 3. Chicken
-// 4. Pizza
-// 5. Sandwich
-// 6. Onionrings
-// 7. Milkshake
-// 8. Coke
+
 
 // 💡 SOLUTION:
 
-function getOrder(input) {
-    let newArr = [];
-    let start = 0;
-    let arr = ['burger', 'fries', 'chicken', 'pizza', 'sandwich', 'onionrings', 'milkshake', 'coke'];
-    for (let i = 0; i<=input.length; i++) {
-       
-        if (arr.includes(input.slice(start,i))) {
-            newArr.push(input.slice(start,i))
-            start = i;
-        }
-    };
-    let result = [];
-    for (let i = 0; i< arr.length; i++) {
-        newArr.forEach(item => item === arr[i] ?result.push(item[0].toUpperCase()+item.slice(1)):1)
+function indexEqualsValue(a) {
+  let start = 0;
+  let end = a.length - 1;
+  let index = Math.floor((start + end) / 2);
+  console.log(index);
+  while (start <= end) {
+    if (a[index] > index) {
+      if (a[index] === index) {
+        return index;
+      }
+      end = index - 1;
+    } else if (a[index] < index) {
+      if (a[index] === index) {
+        return index;
+      }
+      start = index + 1;
+    } else {
+      while (a[index - 1] === index - 1) {
+        index -= 1;
+      }
+      return index;
     }
-
-    
-    return result.join(' ')
+    index = Math.floor((start + end) / 2);
   }
-  console.log(getOrder("milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza"))
+
+  return -1;
+}
+console.log(indexEqualsValue([-5, 1, 2, 3, 4, 5, 7, 10, 15]));
