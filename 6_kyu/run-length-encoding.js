@@ -14,9 +14,9 @@
 // 💡 SOLUTION:
 
 var runLengthEncoding = function(str){
-   let arr = [[]];
-    str.split('').forEach((item,index) => arr[arr.length-1][1] === item ? arr[arr.length-1][0]+=1: arr.push([1,item]))
-    arr.shift();
-    return arr
-  }
-console.log(runLengthEncoding("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"));
+    let arr = [[]];
+     str.split('').forEach((item,index) => arr[arr.length-1][1] === item ? arr[arr.length-1][0]+=1: arr.push([1,item]))
+     arr.shift();
+     return arr
+   }
+ console.log(runLengthEncoding("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"));
