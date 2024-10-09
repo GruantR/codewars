@@ -1,22 +1,48 @@
-//https://www.codewars.com/kata/546dba39fa8da224e8000467/train/javascript
+//https://www.codewars.com/kata/zero-plentiful-array/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Run-length encoding (RLE) is a very simple form of data compression in which runs of data (that is, sequences in which the same data value occurs in many consecutive data elements) are stored as a single data value and count, rather than as the original run. Wikipedia
+// An array is called zero-plentiful if it contains multiple zeros, and every sequence of zeros is at least 4 items long.
 
-// Task
-// Your task is to write such a run-length encoding. For a given string, return a list (or array) of pairs (or arrays) [ (i1, s1), (i2, s2), …, (in, sn) ], such that one can reconstruct the original string by replicating the character sx ix times and concatening all those strings. Your run-length encoding should be minimal, ie. for all i the values si and si+1 should differ.
+// Your task is to return the number of zero sequences if the given array is zero-plentiful, oherwise 0.
 
 // Examples
-// As the article states, RLE is a very simple form of data compression. It's only suitable for runs of data, as one can see in the following example:
+// [0, 0, 0, 0, 0, 1]  -->  1
+// # 1 group of 5 zeros (>= 4), thus the result is 1
 
+// [0, 0, 0, 0, 1, 0, 0, 0, 0]  -->  2
+// # 2 group of 4 zeros (>= 4), thus the result is 2
+
+// [0, 0, 0, 0, 1, 0]  -->  0 
+// # 1 group of 4 zeros and 1 group of 1 zero (< 4)
+// # _every_ sequence of zeros must be at least 4 long, thus the result is 0
+
+// [0, 0, 0, 1, 0, 0]  -->  0
+// # 1 group of 3 zeros (< 4) and 1 group of 2 zeros (< 4)
+
+// [1, 2, 3, 4, 5]  -->  0
+// # no zeros
+
+// []  -->  0
+// # no zeros
 
 // 💡 SOLUTION:
 
-var runLengthEncoding = function(str){
-   let arr = [[]];
-    str.split('').forEach((item,index) => arr[arr.length-1][1] === item ? arr[arr.length-1][0]+=1: arr.push([1,item]))
-    arr.shift();
-    return arr
-  }
-console.log(runLengthEncoding("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"));
+function zeroPlentiful(arr){
+    let newArr = [];
+    let sec = 0;
+        for (let i = 0; i< arr.length; i++) {
+            if (arr[i] === 0) {
+                sec+=1
+            };
+            if (arr [i] === 0 && arr[i+1] !== undefined && arr[i+1] !== 0) {
+                newArr.push(sec)
+                sec = 0
+            };
+            if (i === arr.length-1 && arr[arr.length-1] === 0 ) {
+                newArr.push(sec)
+            };
+        };
+    return newArr.sort((a,b)=> a-b)[0] >=4 ? newArr.length : 0;
+  };
+  console.log(zeroPlentiful([0, 2, 0, 0, 0, 0, 3, 4, 5, 0, 0, 0, 2]))
