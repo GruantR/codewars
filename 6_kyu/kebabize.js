@@ -14,9 +14,9 @@
 // 💡 SOLUTION:
 
 function kebabize(str) {
-  let target = 'qwertyuiopasdfghjklzxcvbnm'.split('');
-  let arr = str.split('').map(item => target.includes(item.toLowerCase()) ? (item === item.toLowerCase() ? item : '-' +item.toLowerCase()) : '').join('');
-  if (arr[0] === '-') {arr = arr.slice(1)};
-  return arr
-}
-console.log(kebabize('A!bstractSingletonProxyFactoryBean'));
+    let target = 'qwertyuiopasdfghjklzxcvbnm'.split('');
+    let arr = str.split('').map(item => target.includes(item.toLowerCase()) ? (item === item.toLowerCase() ? item : '-' +item.toLowerCase()) : '').join('');
+    if (arr[0] === '-') {arr = arr.slice(1)};
+    return arr
+  }
+  console.log(kebabize('A!bstractSingletonProxyFactoryBean'));
