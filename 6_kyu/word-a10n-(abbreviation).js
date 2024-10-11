@@ -23,33 +23,34 @@
 // 💡 SOLUTION:
 
 function abbreviate(string) {
-  let alphabite = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
-  let arr = string.split("");
-  let finalIndex = false;
-  if (alphabite.includes(arr[arr.length - 1])) {
-    arr.push(" ");
-    finalIndex = true;
-  }
-  let start = 0;
-  let end = arr.length;
-  let finalArr = [];
-
-  for (let i = start; i < end; i++) {
-    if (!alphabite.includes(arr[i])) {
-      finalArr.push(
-        arr.slice(start, i).length > 3
-          ? arr[start] +
-              (arr.slice(start, i).length - 2).toString() +
-              arr[i - 1]
-          : arr.slice(start, i).join("")
-      );
-      finalArr.push(arr[i]);
-      start = i + 1;
+    let alphabite = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+    let arr = string.split("");
+    let finalIndex = false;
+    if (alphabite.includes(arr[arr.length - 1])) {
+      arr.push(" ");
+      finalIndex = true;
     }
+    let start = 0;
+    let end = arr.length;
+    let finalArr = [];
+  
+    for (let i = start; i < end; i++) {
+      if (!alphabite.includes(arr[i])) {
+        finalArr.push(
+          arr.slice(start, i).length > 3
+            ? arr[start] +
+                (arr.slice(start, i).length - 2).toString() +
+                arr[i - 1]
+            : arr.slice(start, i).join("")
+        );
+        finalArr.push(arr[i]);
+        start = i + 1;
+      }
+    }
+    if (finalIndex) {
+      finalArr.pop();
+    }
+    return finalArr.join("");
   }
-  if (finalIndex) {
-    finalArr.pop();
-  }
-  return finalArr.join("");
-}
-console.log(abbreviate("Accessibility"));
+  console.log(abbreviate("Accessibility"));
+  
