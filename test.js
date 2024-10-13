@@ -1,31 +1,51 @@
-//https://www.codewars.com/kata/515decfd9dcfc23bb6000006/train/javascript
+//https://www.codewars.com/kata/529b54d9aba78c924d00088e/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Write an algorithm that will identify valid IPv4 addresses in dot-decimal format. IPs should be considered valid if they consist of four octets, with values between 0 and 255, inclusive.
+// Given a string and an object/array you need to return a formatted string. Replace all occurrences in the string where the name of a key in the object is surrounded by curly brackets.
 
-// Valid inputs examples:
-// Examples of valid inputs:
-// 1.2.3.4
-// 123.45.67.89
-// Invalid input examples:
-// 1.2.3
-// 1.2.3.4.5
-// 123.456.78.90
-// 123.045.067.089
-// Notes:
-// Leading zeros (e.g. 01.02.03.04) are considered invalid
-// Inputs are guaranteed to be a single string
+// Inherited object properties should not be applied
+
+// An example says more than a thousand words..
+
+// Example using object
+
+// var s = 'Hello {foo} - make me a {bar}';
+// var o = {
+//   foo : 'Jack',
+//   bar : 'sandwich'
+// };
+
+// format(s, o); // "Hello Jack - make me a sandwich"
+// Example using array
+
+// var s = 'Hello {0} - make me a {1}';
+// var a = ['Jack', 'sandwich'];
+
+// format(s, a); // "Hello Jack - make me a sandwich"
+// See tests for more information.
 
 // 💡 SOLUTION:
 
-function isValidIP(str) {
-    let target = str.split('.').every((item,index,array)=> { 
-        let zeroElem = true;
-        if (item.length > 1 && item[0] === "0" || String(Number(item)).length !== item.length ) {zeroElem = false};
-        return zeroElem && array.length === 4  && isFinite(item) && item >=0 && item < 256 });
-    return target
-  }
-  console.log(isValidIP('1.2.3.4 '))
+var obj = { foo : 'Jack', bar : 'sandwich' };
+var a = ['Jack', 'sandwiches', 0];
+var format = function (str, obj) {
+    let arr = str.split(' ')
+    let i = 0;
+    for (let item of arr) {
+   
+    if (item.includes('{' && '}') && obj[item.slice(item.indexOf('{')+1,item.indexOf('}'))] || obj[item.slice(item.indexOf('{')+1,item.indexOf('}'))] === 0)  {
+        //arr[i] = obj[item.slice(1,item.length-1)]
+       arr[i] = item.split(`${item.slice(item.indexOf('{'),item.indexOf('}')+1)}`).join(`${obj[item.slice(item.indexOf('{')+1,item.indexOf('}'))]}`)
+    }  
+    i++;
+    }
+
+
+
+    return arr.join(' ')
+
+};
+console.log(format('Hello {0} - {foobar} make me {2} {1} - I\'m full..', a))
 
 
