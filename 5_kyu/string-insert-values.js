@@ -27,25 +27,25 @@
 
 // 💡 SOLUTION:
 
-var obj = { foo : 'Jack', bar : 'sandwich' };
-var a = ['Jack', 'sandwiches', 0];
+var obj = { foo: "Jack", bar: "sandwich" };
+var a = ["Jack", "sandwiches", 0];
 var format = function (str, obj) {
-    let arr = str.split(' ')
-    let i = 0;
-    for (let item of arr) {
-   
-    if (item.includes('{' && '}') && obj[item.slice(item.indexOf('{')+1,item.indexOf('}'))] || obj[item.slice(item.indexOf('{')+1,item.indexOf('}'))] === 0)  {
-        //arr[i] = obj[item.slice(1,item.length-1)]
-       arr[i] = item.split(`${item.slice(item.indexOf('{'),item.indexOf('}')+1)}`).join(`${obj[item.slice(item.indexOf('{')+1,item.indexOf('}'))]}`)
-    }  
-    i++;
+  let arr = str.split(" ");
+  let i = 0;
+  for (let item of arr) {
+    if (
+      (item.includes("{" && "}") &&
+        obj[item.slice(item.indexOf("{") + 1, item.indexOf("}"))]) ||
+      obj[item.slice(item.indexOf("{") + 1, item.indexOf("}"))] === 0
+    ) {
+      //arr[i] = obj[item.slice(1,item.length-1)]
+      arr[i] = item
+        .split(`${item.slice(item.indexOf("{"), item.indexOf("}") + 1)}`)
+        .join(`${obj[item.slice(item.indexOf("{") + 1, item.indexOf("}"))]}`);
     }
+    i++;
+  }
 
-
-
-    return arr.join(' ')
-
+  return arr.join(" ");
 };
-console.log(format('Hello {0} - {foobar} make me {2} {1} - I\'m full..', a))
-
-
+console.log(format("Hello {0} - {foobar} make me {2} {1} - I'm full..", a));
