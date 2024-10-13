@@ -1,51 +1,19 @@
-//https://www.codewars.com/kata/529b54d9aba78c924d00088e/train/javascript
+//https://www.codewars.com/kata/57cc79ec484cf991c900018d/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Given a string and an object/array you need to return a formatted string. Replace all occurrences in the string where the name of a key in the object is surrounded by curly brackets.
+// Simple enough this one - you will be given an array. The values in the array will either be numbers or strings, or a mix of both. You will not get an empty array, nor a sparse one.
 
-// Inherited object properties should not be applied
+// Your job is to return a single array that has first the numbers sorted in ascending order, followed by the strings sorted in alphabetic order. The values must maintain their original type.
 
-// An example says more than a thousand words..
-
-// Example using object
-
-// var s = 'Hello {foo} - make me a {bar}';
-// var o = {
-//   foo : 'Jack',
-//   bar : 'sandwich'
-// };
-
-// format(s, o); // "Hello Jack - make me a sandwich"
-// Example using array
-
-// var s = 'Hello {0} - make me a {1}';
-// var a = ['Jack', 'sandwich'];
-
-// format(s, a); // "Hello Jack - make me a sandwich"
-// See tests for more information.
+// Note that numbers written as strings are strings and must be sorted with the other strings.
 
 // 💡 SOLUTION:
 
-var obj = { foo : 'Jack', bar : 'sandwich' };
-var a = ['Jack', 'sandwiches', 0];
-var format = function (str, obj) {
-    let arr = str.split(' ')
-    let i = 0;
-    for (let item of arr) {
-   
-    if (item.includes('{' && '}') && obj[item.slice(item.indexOf('{')+1,item.indexOf('}'))] || obj[item.slice(item.indexOf('{')+1,item.indexOf('}'))] === 0)  {
-        //arr[i] = obj[item.slice(1,item.length-1)]
-       arr[i] = item.split(`${item.slice(item.indexOf('{'),item.indexOf('}')+1)}`).join(`${obj[item.slice(item.indexOf('{')+1,item.indexOf('}'))]}`)
-    }  
-    i++;
+function dbSort(a){
+    let arrNumber = [];
+    let arrString = [];
+    a.forEach(item => typeof item === 'number' ? arrNumber.push(item) : arrString.push(item));
+    return arrNumber.sort((a,b)=>a-b).concat(arrString.sort())
     }
-
-
-
-    return arr.join(' ')
-
-};
-console.log(format('Hello {0} - {foobar} make me {2} {1} - I\'m full..', a))
-
-
+    console.log(dbSort([ +0, 2, 2, 'Banana', 'Orange', 'Apple', 'Mango' ]))
