@@ -21,37 +21,26 @@
 // [Personal thanks to Professor Jim Fowler on Coursera for his awesome classes that I really recommend to any math enthusiast and for showing me this mathematical curiosity too with his usual contagious passion :)]
 
 // 💡 SOLUTION:
-// class Student {
-//     constructor(age, gpa, fullName) {
-//       this.age = age;
-//       this.gpa = gpa;
-//       this.fullName = fullName;
-//     };
-//   };
 
-//   let students = new Student ()
-// function sort(students) {
-//     return "";
-//   };
 
 function tribonacci(signature, n) {
-  if (n === 2) {
-    return signature.slice(0, 2);
-  }
-  if (n === 1) {
-    return signature.slice(0, 1);
-  }
-  if (n === 0) {
-    return [];
-  }
-  if (n > 3) {
-    let sum = 0;
-    for (let i = 0; i < n - 3; i++) {
-      sum = signature.slice(i, i + 3);
-      signature.push(sum.reduce((accum, item) => accum + item));
+    if (n === 2) {
+      return signature.slice(0, 2);
     }
+    if (n === 1) {
+      return signature.slice(0, 1);
+    }
+    if (n === 0) {
+      return [];
+    }
+    if (n > 3) {
+      let sum = 0;
+      for (let i = 0; i < n - 3; i++) {
+        sum = signature.slice(i, i + 3);
+        signature.push(sum.reduce((accum, item) => accum + item));
+      }
+    }
+  
+    return signature;
   }
-
-  return signature;
-}
-console.log(tribonacci([1, 1, 1], 0));
+  console.log(tribonacci([1, 1, 1], 0));
