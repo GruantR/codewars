@@ -1,57 +1,67 @@
-//https://www.codewars.com/kata/556deca17c58da83c00002db/train/javascript
+//https://www.codewars.com/kata/5829c2c8ef8d4474300000fa/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Well met with Fibonacci bigger brother, AKA Tribonacci.
+// Tale University is a bit messy, and can't maintain an ordered list of their student. Tale's dean wants to print a sortet list of his students by the gpa, last name and age and post it on the walls so everybody can be impressed of his great students.
 
-// As the name may already reveal, it works basically like a Fibonacci, but summing the last 3 (instead of 2) numbers of the sequence to generate the next. And, worse part of it, regrettably I won't get to hear non-native Italian speakers trying to pronounce it :(
+// Given a list of students, sort them by (from most important to least important):
 
-// So, if we are to start our Tribonacci sequence with [1, 1, 1] as a starting input (AKA signature), we have this sequence:
+// GPA (descending)
+// First letter of last name (ascending)
+// Age (ascending)
+// And the class Student:
 
-// [1, 1 ,1, 3, 5, 9, 17, 31, ...]
-// But what if we started with [0, 0, 1] as a signature? As starting with [0, 1] instead of [1, 1] basically shifts the common Fibonacci sequence by once place, you may be tempted to think that we would get the same sequence shifted by 2 places, but that is not the case and we would get:
+// class Student {
+//   constructor(age, gpa, fullName) {
+//     this.age = age;
+//     this.gpa = gpa;
+//     this.fullName = fullName;
+//   };
+// };
+// Return the sorted result as full names string, comma separated.
 
-// [0, 0, 1, 1, 2, 4, 7, 13, 24, ...]
-// Well, you may have guessed it by now, but to be clear: you need to create a fibonacci function that given a signature array/list, returns the first n elements - signature included of the so seeded sequence.
+// For Example, given the list (name, age, gpa):
 
-// Signature will always contain 3 numbers; n will always be a non-negative number; if n == 0, then return an empty array (except in C return NULL) and be ready for anything else which is not clearly specified ;)
+// David Goodman, 23, 88
+// Mark Rose, 25, 82
+// Jane Doe, 22, 90
+// Jane Dane, 25, 90
 
-// If you enjoyed this kata more advanced and generalized version of it can be found in the Xbonacci kata
-
-// [Personal thanks to Professor Jim Fowler on Coursera for his awesome classes that I really recommend to any math enthusiast and for showing me this mathematical curiosity too with his usual contagious passion :)]
 
 // 💡 SOLUTION:
-// class Student {
-//     constructor(age, gpa, fullName) {
-//       this.age = age;
-//       this.gpa = gpa;
-//       this.fullName = fullName;
-//     };
-//   };
 
-//   let students = new Student ()
-// function sort(students) {
-//     return "";
-//   };
+class Student {
+    constructor(age, gpa, fullName) {
+      this.age = age;
+      this.gpa = gpa;
+      this.fullName = fullName;
+    };
+  };
 
-function tribonacci(signature, n) {
-  if (n === 2) {
-    return signature.slice(0, 2);
-  }
-  if (n === 1) {
-    return signature.slice(0, 1);
-  }
-  if (n === 0) {
-    return [];
-  }
-  if (n > 3) {
-    let sum = 0;
-    for (let i = 0; i < n - 3; i++) {
-      sum = signature.slice(i, i + 3);
-      signature.push(sum.reduce((accum, item) => accum + item));
-    }
-  }
+  
+  var students = [
+    new Student(23, 88, "David Goodman"), 
+    new Student(25, 82, "Mark Rose"), 
+    new Student(22, 90, "Jane Doe"),
+    new Student(25, 90, "Jane Dane")
+];
 
-  return signature;
-}
-console.log(tribonacci([1, 1, 1], 0));
+function sort(students) {
+     students.sort((a,b) => {
+        if (a.gpa === b.gpa) {
+            if (a.fullName.split(' ')[1][0] === b.fullName.split(' ')[1][0]) {
+                if (a.age>b.age) {return 1}
+                if (a.age<b.age) {return -1}
+                return 0
+            };
+            if (a.fullName.split(' ')[1][0]>b.fullName.split(' ')[1][0]) {return 1}
+            if (a.fullName.split(' ')[1][0]<b.fullName.split(' ')[1][0]) {return -1}
+            return 0
+        };
+        if (a.gpa<b.gpa) {return 1}
+        if (a.gpa>b.gpa) {return -1}
+        return b.gpa-a.gpa  
+    })
+    return students.map(item => item.fullName).join(',')
+  };
+  console.log(sort(students));
