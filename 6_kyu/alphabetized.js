@@ -14,16 +14,16 @@
 // 💡 SOLUTION:
 
 function alphabetized(s) {
-  let target = "abcdefghijklmnopqrstuvwxyz";
-  let arr = s.split("");
-  return arr
-    .filter((item) => target.includes(item.toLocaleLowerCase()))
-    .sort(
-      (a, b) =>
-        target.indexOf(a.toLocaleLowerCase()) -
-        target.indexOf(b.toLocaleLowerCase())
-    )
-    .join("");
-}
-
-console.log(alphabetized("The Holy Bible"));
+    let target = "abcdefghijklmnopqrstuvwxyz";
+    let arr = s.split("");
+    return arr
+      .filter((item) => target.includes(item.toLocaleLowerCase()))
+      .sort(
+        (a, b) =>
+          target.indexOf(a.toLocaleLowerCase()) -
+          target.indexOf(b.toLocaleLowerCase())
+      )
+      .join("");
+  }
+  
+  console.log(alphabetized("The Holy Bible"));
