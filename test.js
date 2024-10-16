@@ -1,29 +1,46 @@
-//https://www.codewars.com/kata/alphabetized/train/javascript
+//https://www.codewars.com/kata/59557b2a6e595316ab000046/train/javascript
 
 // 📌 DESCRIPTION:
 
-// The alphabetized kata
-// Re-order the characters of a string, so that they are concatenated into a new string in "case-insensitively-alphabetical-order-of-appearance" order. Whitespace and punctuation shall simply be removed!
+// Convert a hash into an array. Nothing more, Nothing less.
 
-// The input is restricted to contain no numerals and only words containing the english alphabet letters.
+// {name: 'Jeremy', age: 24, role: 'Software Engineer'}
+// should be converted into
 
-// Example:
-
-// alphabetized("The Holy Bible") // "BbeehHilloTy"
+// [["age", 24], ["name", "Jeremy"], ["role", "Software Engineer"]]
+// Good Luck!
 
 // 💡 SOLUTION:
 
-function alphabetized(s) {
-  let target = "abcdefghijklmnopqrstuvwxyz";
-  let arr = s.split("");
-  return arr
-    .filter((item) => target.includes(item.toLocaleLowerCase()))
-    .sort(
-      (a, b) =>
-        target.indexOf(a.toLocaleLowerCase()) -
-        target.indexOf(b.toLocaleLowerCase())
-    )
-    .join("");
-}
 
-console.log(alphabetized("The Holy Bible"));
+// function sortStringsByVowels(strings){
+//     let target = 'eyuioa'.split('')
+
+//     if (!Array.isArray(strings)){
+//     var results = strings.split(',')
+//     }
+//     else {
+//         var results = strings.join(',').split(',')
+//     }
+
+    
+
+//     results.sort((a,b)=>{
+
+//        let aa = a.split('').filter(value=> target.includes(value.toLowerCase())).join('').length;
+//        let bb = b.split('').filter(value=> target.includes(value.toLowerCase())).join('').length;
+//     if (aa !== bb) {return bb-aa}
+//         return 0
+
+//     });
+
+//     return results;
+//     }
+
+//     console.log(sortStringsByVowels(["high","day","boot"]))
+
+function convertHashToArray(hash){
+   return Object.entries(hash)
+    
+  }
+  console.log(convertHashToArray({name: 'Jeremy', age: 24, role: 'Software Engineer'}))
