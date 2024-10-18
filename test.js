@@ -1,52 +1,37 @@
-//https://www.codewars.com/kata/5d2d0d34bceae80027bffddb/train/javascript
+//https://www.codewars.com/kata/5a8d2bf60025e9163c0000bc/train/javascript
 
 // 📌 DESCRIPTION:
 
-// The goal of this Kata is to write a function that will receive an array of strings as its single argument, then the strings are each processed and sorted (in desending order) based on the length of the single longest sub-string of contiguous vowels ( aeiouAEIOU ) that may be contained within the string. The strings may contain letters, numbers, special characters, uppercase, lowercase, whitespace, and there may be (often will be) multiple sub-strings of contiguous vowels. We are only interested in the single longest sub-string of vowels within each string, in the input array.
+// In this kata, you will sort elements in an array by decreasing frequency of elements. If two elements have the same frequency, sort them by increasing value.
 
-// Example:
+// solve([2,3,5,3,7,9,5,3,7]) = [3,3,3,5,5,7,7,2,9]
+// -- We sort by highest frequency to lowest frequency.
+// -- If two elements have same frequency, we sort by increasing value.
+// More examples in test cases.
 
-// str1 = "what a beautiful day today"
-// str2 = "it's okay, but very breezy"
-// When the strings are sorted, str1 will be first as its longest sub-string of contiguous vowels "eau" is of length 3, while str2 has as its longest sub-string of contiguous vowels "ee", which is of length 2.
+// Good luck!
 
-// If two or more strings in the array have maximum sub-strings of the same length, then the strings should remain in the order in which they were found in the orginal array.
-
+// Please also try Simple time difference
 // 💡 SOLUTION:
 
+function solve(arr){
+  let obj = {}
+  arr.forEach(item => obj[item] ? obj[item]+=1: obj[item] = 1)
+  let finalArr = [];
+  let newArr = Object
+  .entries(obj)
+  .sort((a,b)=> {
+    if (b[1] !== a[1]) {
+    return b[1]-a[1]
+    }
+    return a[0]-b[0]
+  })
+  .forEach(item => {
+    for (let i = 0; i<item[1]; i++ ) {
+      finalArr.push(Number(item[0]))
+    }
+  })       
 
-function sortStringsByVowels(strings){
-    let target = 'aeiouAEIOU'.split('')
-    let obj = {};
-   strings.forEach((item,index) => obj[item] = index);
-let arr = strings;
-      arr.sort((a,b) => {
-
-      function firstNum(a) {
-        let sumA = 0;
-        let counterA = 0;
-        for (let value of a) {
-          target.includes(value) ? counterA+=1 : counterA = 0;
-          counterA > sumA ? sumA = counterA : sumA;
-        }
-        return sumA
-      }
-      let aa = firstNum(a);
-
-      function secondNum(b) {
-        let sumB = 0;
-        let counterB = 0;
-        for (let value of b) {
-          target.includes(value) ? counterB+=1 : counterB = 0;
-          counterB > sumB ? sumB = counterB : sumB;
-        }
-        return sumB
-      }
-      let bb = secondNum(b)
-      if (aa!==bb) {return bb-aa}
-      return obj[a] - obj[b]
-    })
-    return arr
-  }
-    console.log(sortStringsByVowels(["AIBRH","YOUNG","GREEEN"]))
-
+  return finalArr
+}
+console.log(solve([26, 26, 26, 35, 35, 35, 0, 0, 5, 5, 7, 7, 20, 20, 33, 33, 38, 38, 43, 43, 50, 50, 3, 11, 12, 13, 15, 17, 18, 22, 34, 36, 37, 39, 41, 45, 47, 49]))
