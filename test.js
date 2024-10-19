@@ -1,37 +1,18 @@
-//https://www.codewars.com/kata/5a8d2bf60025e9163c0000bc/train/javascript
+//https://www.codewars.com/kata/558fc85d8fd1938afb000014/train/javascript
 
 // 📌 DESCRIPTION:
 
-// In this kata, you will sort elements in an array by decreasing frequency of elements. If two elements have the same frequency, sort them by increasing value.
+// Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 positive integers. No floats or non-positive integers will be passed.
 
-// solve([2,3,5,3,7,9,5,3,7]) = [3,3,3,5,5,7,7,2,9]
-// -- We sort by highest frequency to lowest frequency.
-// -- If two elements have same frequency, we sort by increasing value.
-// More examples in test cases.
+// For example, when an array is passed like [19, 5, 42, 2, 77], the output should be 7.
 
-// Good luck!
+// [10, 343445353, 3453445, 3453545353453] should return 3453455.
 
-// Please also try Simple time difference
+
+
 // 💡 SOLUTION:
 
-function solve(arr){
-  let obj = {}
-  arr.forEach(item => obj[item] ? obj[item]+=1: obj[item] = 1)
-  let finalArr = [];
-  let newArr = Object
-  .entries(obj)
-  .sort((a,b)=> {
-    if (b[1] !== a[1]) {
-    return b[1]-a[1]
-    }
-    return a[0]-b[0]
-  })
-  .forEach(item => {
-    for (let i = 0; i<item[1]; i++ ) {
-      finalArr.push(Number(item[0]))
-    }
-  })       
-
-  return finalArr
+function sumTwoSmallestNumbers(numbers) {  
+  return numbers.sort((a,b)=>a-b).slice(0,2).reduce((accum,item)=>accum+item)
 }
-console.log(solve([26, 26, 26, 35, 35, 35, 0, 0, 5, 5, 7, 7, 20, 20, 33, 33, 38, 38, 43, 43, 50, 50, 3, 11, 12, 13, 15, 17, 18, 22, 34, 36, 37, 39, 41, 45, 47, 49]))
+console.log(sumTwoSmallestNumbers([5, 8, 12, 19, 22]))
