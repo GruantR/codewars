@@ -19,22 +19,23 @@
 
 
 function getDivisorsCnt(n) {
-  if (n === 1) { return 1; }
-
-  let counter = 0;
-  let index = Math.floor(Math.sqrt(n));
-
-  for (let i = 1; i <= index; i++) {
-      if (n % i === 0) {
-          counter += 1; // Считаем i
-          if (i !== n / i) {
-              counter += 1; // Считаем n / i только если он не равен i
-          }
-      }
+    if (n === 1) { return 1; }
+  
+    let counter = 0;
+    let index = Math.floor(Math.sqrt(n));
+  
+    for (let i = 1; i <= index; i++) {
+        if (n % i === 0) {
+            counter += 1; // Считаем i
+            if (i !== n / i) {
+                counter += 1; // Считаем n / i только если он не равен i
+            }
+        }
+    }
+    return counter; // Возвращаем общее количество делителей
   }
-  return counter; // Возвращаем общее количество делителей
-}
-
-console.log(getDivisorsCnt(25)); // Выводит 3 (1, 5, 25)
-
-
+  
+  console.log(getDivisorsCnt(25)); // Выводит 3 (1, 5, 25)
+  
+  
+  
