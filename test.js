@@ -1,29 +1,28 @@
-//https://www.codewars.com/kata/zipwith/train/javascript
+//https://www.codewars.com/kata/currying-functions-multiply-all-elements-in-an-array/train/javascript
 
 // 📌 DESCRIPTION:
-// zipWith ( or zip_with ) takes a function and two arrays and zips the arrays together, applying the function to every pair of values.
-// The function value is one new array.
+// To complete this Kata you need to make a function multiplyAll/multiply_all which takes an array of integers as an argument. This function must return another function, which takes a single integer as an argument and returns a new array.
 
-// If the arrays are of unequal length, the output will only be as long as the shorter one.
-// (Values of the longer array are simply not used.)
+// The returned array should consist of each of the elements from the first array multiplied by the integer.
 
-// Inputs should not be modified.
+// Example:
 
-// Examples
-// zipWith( Math.pow, [10,10,10,10], [0,1,2,3] )      =>  [1,10,100,1000]
-// zipWith( Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1] )  =>  [4,7,7,4,7,7]
+// multiplyAll([1, 2, 3])(2) = [2, 4, 6];
+// You must not mutate the original array.
 
-// zipWith( function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3] )  =>  [0,2,4,6]  // Both forms are valid
-// zipWith( (a,b) => a+b,                  [0,1,2,3], [0,1,2,3] )  =>  [0,2,4,6]  // B
+// Here's a nice Youtube video about currying, which might help you if this is new to you.
 
 // 💡 SOLUTION:
 
-function zipWith(fn,a0,a1) {
-  let arrLength = a0.length > a1.length ? a1.length:a0.length;
-  let newArr = [];
-  for (let i = 0; i<arrLength; i++) {
-    newArr.push(fn(a0[i],a1[i]))
-  } 
-  return newArr;
-}
-console.log(zipWith(function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3]))
+function chain(input, fs) {
+  function add(num) {
+    return num + 1;
+  }
+  let newNum = fs[0](input); 
+
+  function mult(num) {
+    return num * 30;
+  }
+  return fs[1](newNum)
+  }
+  console.log(chain(2, [add, mult]))
