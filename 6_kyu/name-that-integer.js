@@ -20,17 +20,17 @@
 // 💡 SOLUTION:
 
 function detectInt(...conditions) {
-  let arr = false;
-  let n = 0;
-  while (!arr) {
-    n += 1;
-    arr = conditions.every((item) => item(n));
+    let arr = false;
+    let n = 0;
+    while (!arr) {
+      n += 1;
+      arr = conditions.every((item) => item(n));
+    }
+    return n;
   }
-  return n;
-}
-console.log(
-  detectInt(
-    (x) => x % 5 == 0,
-    (x) => x % 3 == 0
-  )
-);
+  console.log(
+    detectInt(
+      (x) => x % 5 == 0,
+      (x) => x % 3 == 0
+    )
+  );
