@@ -1,40 +1,36 @@
-//https://www.codewars.com/kata/542c0f198e077084c0000c2e/train/javascript
+//https://www.codewars.com/kata/name-that-integer/train/javascript
 
 // 📌 DESCRIPTION:
+// Write a method detect_int that returns the first positive integer for which an arbitrary number of lambdas returns true. If no arguments are passed in, then detect_int should return 1.
 
-// Count the number of divisors of a positive integer n.
+// For example:
 
-// Random tests go up to n = 500000, but fixed tests go higher.
+// lam1 = x => x > 9
+// lam2 = x => x**0.5 % 1 == 0
 
-// Examples (input --> output)
-// 4 --> 3 // we have 3 divisors - 1, 2 and 4
-// 5 --> 2 // we have 2 divisors - 1 and 5
-// 12 --> 6 // we have 6 divisors - 1, 2, 3, 4, 6 and 12
-// 30 --> 8 // we have 8 divisors - 1, 2, 3, 5, 6, 10, 15 and 30
-// Note you should only return a number, the count of divisors. The numbers between parentheses are shown only for you to see which numbers are counted in each case.
+// detect_int()             // => 1
+// detect_int(lam1)         // => 10
+// detect_int(lam2)         // => 1
+// detect_int(lam1,lam2)    // => 16
+// The testing rubric will never ask for a number that does not exist, like:
 
+// detect_int(n=>n%2==1, n=>n%2==0)      // => !??
+// For examples, see the example test cases.
 
 // 💡 SOLUTION:
 
-
-
-function getDivisorsCnt(n) {
-  if (n === 1) { return 1; }
-
-  let counter = 0;
-  let index = Math.floor(Math.sqrt(n));
-
-  for (let i = 1; i <= index; i++) {
-      if (n % i === 0) {
-          counter += 1; // Считаем i
-          if (i !== n / i) {
-              counter += 1; // Считаем n / i только если он не равен i
-          }
-      }
+function detectInt(...conditions) {
+  let arr = false;
+  let n = 0;
+  while (!arr) {
+    n += 1;
+    arr = conditions.every((item) => item(n));
   }
-  return counter; // Возвращаем общее количество делителей
+  return n;
 }
-
-console.log(getDivisorsCnt(25)); // Выводит 3 (1, 5, 25)
-
-
+console.log(
+  detectInt(
+    (x) => x % 5 == 0,
+    (x) => x % 3 == 0
+  )
+);
