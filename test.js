@@ -1,36 +1,29 @@
-//https://www.codewars.com/kata/name-that-integer/train/javascript
+//https://www.codewars.com/kata/zipwith/train/javascript
 
 // 📌 DESCRIPTION:
-// Write a method detect_int that returns the first positive integer for which an arbitrary number of lambdas returns true. If no arguments are passed in, then detect_int should return 1.
+// zipWith ( or zip_with ) takes a function and two arrays and zips the arrays together, applying the function to every pair of values.
+// The function value is one new array.
 
-// For example:
+// If the arrays are of unequal length, the output will only be as long as the shorter one.
+// (Values of the longer array are simply not used.)
 
-// lam1 = x => x > 9
-// lam2 = x => x**0.5 % 1 == 0
+// Inputs should not be modified.
 
-// detect_int()             // => 1
-// detect_int(lam1)         // => 10
-// detect_int(lam2)         // => 1
-// detect_int(lam1,lam2)    // => 16
-// The testing rubric will never ask for a number that does not exist, like:
+// Examples
+// zipWith( Math.pow, [10,10,10,10], [0,1,2,3] )      =>  [1,10,100,1000]
+// zipWith( Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1] )  =>  [4,7,7,4,7,7]
 
-// detect_int(n=>n%2==1, n=>n%2==0)      // => !??
-// For examples, see the example test cases.
+// zipWith( function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3] )  =>  [0,2,4,6]  // Both forms are valid
+// zipWith( (a,b) => a+b,                  [0,1,2,3], [0,1,2,3] )  =>  [0,2,4,6]  // B
 
 // 💡 SOLUTION:
 
-function detectInt(...conditions) {
-  let arr = false;
-  let n = 0;
-  while (!arr) {
-    n += 1;
-    arr = conditions.every((item) => item(n));
-  }
-  return n;
+function zipWith(fn,a0,a1) {
+  let arrLength = a0.length > a1.length ? a1.length:a0.length;
+  let newArr = [];
+  for (let i = 0; i<arrLength; i++) {
+    newArr.push(fn(a0[i],a1[i]))
+  } 
+  return newArr;
 }
-console.log(
-  detectInt(
-    (x) => x % 5 == 0,
-    (x) => x % 3 == 0
-  )
-);
+console.log(zipWith(function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3]))
