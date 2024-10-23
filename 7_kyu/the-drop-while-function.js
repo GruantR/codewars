@@ -13,17 +13,18 @@
 
 // 💡 SOLUTION:
 function isEven(num) {
-  return num % 2 === 0;
-}
-
-function dropWhile(array, predicate) {
-  let finalArr = [];
-  for (let i = 0; i < array.length; i++) {
-    if (!predicate(array[i])) {
-      finalArr = array.slice(i);
-      break;
-    }
+    return num % 2 === 0;
   }
-  return finalArr;
-}
-console.log(dropWhile([2, 4, 8, 5, 7, 9, 16, 32], isEven));
+  
+  function dropWhile(array, predicate) {
+    let finalArr = [];
+    for (let i = 0; i < array.length; i++) {
+      if (!predicate(array[i])) {
+        finalArr = array.slice(i);
+        break;
+      }
+    }
+    return finalArr;
+  }
+  console.log(dropWhile([2, 4, 8, 5, 7, 9, 16, 32], isEven));
+  
