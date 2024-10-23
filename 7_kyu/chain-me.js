@@ -20,14 +20,15 @@
 // 💡 SOLUTION:
 
 function add(num) {
-  return num + 1;
-}
-
-function mult(num) {
-  return num * 30;
-}
-
-function chain(input, fs) {
-  return fs.reduce((accum, item) => item(accum), input);
-}
-console.log(chain(2, [add, mult]));
+    return num + 1;
+  }
+  
+  function mult(num) {
+    return num * 30;
+  }
+  
+  function chain(input, fs) {
+    return fs.reduce((accum, item) => item(accum), input);
+  }
+  console.log(chain(2, [add, mult]));
+  
