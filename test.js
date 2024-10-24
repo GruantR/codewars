@@ -1,27 +1,33 @@
-//https://www.codewars.com/kata/function-composition-1/train/javascript
+// git reset --hard origin/main
+//https://www.codewars.com/kata/51fc3beb41ecc97ee20000c3/train/javascript
 
 // 📌 DESCRIPTION:
-// Javascript functions can be combined to form new functions. For example the functions addOne and multTwo can be combined to form a new function which first adds one and then multiplies by two, as follows:
 
-// const addOne = (a) => a + 1
-// const multTwo = (b) => b * 2
-// const addOneMultTwo = (c) => multTwo(addOne(c))
+// The makeLooper() function (or make_looper in your language) takes a string (of non-zero length) as an argument. It returns a function. The function it returns will return successive characters of the string on successive invocations. It will start back at the beginning of the string once it reaches the end.
 
-// addOneMultTwo(5) // returns 12
-// Combining functions like this is called function composition. Functional programming libraries in Javascript such as Ramda include a generic compose function which does the heavy lifting of combining functions for you. So you could implement addOneMultTwo as follows:
+// For example:
 
-// const addOneMultTwo = compose(multTwo, addOne)
-
-// addOneMultTwo(5) // returns 12
-// A simple implementation of compose, could work as follows:
+// var abc = makeLooper('abc');
+// abc(); // should return 'a' on this first call
+// abc(); // should return 'b' on this second call
+// abc(); // should return 'c' on this third call
+// abc(); // should return 'a' again on this fourth call
+// Different loopers should not affect each other, so be wary of unmanaged global state.
 
 // 💡 SOLUTION:
-const addOne = (a) => a + 1;
-const multTwo = (b) => b * 2;
 
-function compose(...func) {
-  return function (param) {
-    return func.reverse().reduce((accum, item) => item(accum), param);
+function makeLooper(str) {
+  let i = -1;
+  return function () {
+    i++;
+    if (i === str.length) {
+      i = 0;
+    }
+    return str[i];
   };
 }
-console.log(compose(addOne, multTwo, addOne, addOne)(2));
+var abc = makeLooper("abc");
+console.log(abc());
+console.log(abc());
+console.log(abc());
+console.log(abc());
