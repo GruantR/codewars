@@ -16,8 +16,8 @@
 // 💡 SOLUTION:
 
 function solve(st,a,b){
-  let target = st.slice(a,b+1)
-  let arr = st.split(target).join(target.split('').reverse().join(''))
-  return arr
- }
-console.log(solve("codewars",1,5))
+    let target = st.slice(a,b+1)
+    let arr = st.split(target).join(target.split('').reverse().join(''))
+    return arr
+   }
+  console.log(solve("codewars",1,5))
