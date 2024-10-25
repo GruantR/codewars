@@ -1,33 +1,23 @@
 // git reset --hard origin/main
-//https://www.codewars.com/kata/51fc3beb41ecc97ee20000c3/train/javascript
+//https://www.codewars.com/kata/5a8d1c82373c2e099d0000ac/train/javascript
 
 // 📌 DESCRIPTION:
 
-// The makeLooper() function (or make_looper in your language) takes a string (of non-zero length) as an argument. It returns a function. The function it returns will return successive characters of the string on successive invocations. It will start back at the beginning of the string once it reaches the end.
+// In this Kata, you will be given a string and two indexes (a and b). Your task is to reverse the portion of that string between those two indices inclusive.
 
-// For example:
+// str = "codewars", a = 1, b = 5 --> "cawedors"
+// str = "cODEWArs", a = 1, b = 5 --> "cAWEDOrs"
+// Input will be lowercase and uppercase letters only.
 
-// var abc = makeLooper('abc');
-// abc(); // should return 'a' on this first call
-// abc(); // should return 'b' on this second call
-// abc(); // should return 'c' on this third call
-// abc(); // should return 'a' again on this fourth call
-// Different loopers should not affect each other, so be wary of unmanaged global state.
+// The first index a will always be smaller than the string length; the second index b can be greater than the string length. More examples in the test cases. Good luck!
+
+// Please also try:
 
 // 💡 SOLUTION:
 
-function makeLooper(str) {
-  let i = -1;
-  return function () {
-    i++;
-    if (i === str.length) {
-      i = 0;
-    }
-    return str[i];
-  };
-}
-var abc = makeLooper("abc");
-console.log(abc());
-console.log(abc());
-console.log(abc());
-console.log(abc());
+function solve(st,a,b){
+  let target = st.slice(a,b+1)
+  let arr = st.split(target).join(target.split('').reverse().join(''))
+  return arr
+ }
+console.log(solve("codewars",1,5))
