@@ -15,14 +15,14 @@
 // 💡 SOLUTION:
 
 function foldTo(distance) {
-  if (distance<0){return null}
-  let paperThickness = 0.0001;
-  let index = 0;
-  while (paperThickness<distance){
-    index++
-    paperThickness*=2
+    if (distance<0){return null}
+    let paperThickness = 0.0001;
+    let index = 0;
+    while (paperThickness<distance){
+      index++
+      paperThickness*=2
+    }
+    return index
+    
   }
-  return index
-  
-}
-console.log(foldTo(-0.00005470483705774303))
+  console.log(foldTo(-0.00005470483705774303))
