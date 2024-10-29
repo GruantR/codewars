@@ -13,12 +13,13 @@
 // 💡 SOLUTION:
 
 String.prototype.camelCase=function(){
-  if (this.length === 0) {return ''}
-  return this.split(' ').map(item=> item[0].toUpperCase()+item.slice(1)).join('')
-    
-}
-console.log("".camelCase())
-
-
-
-
+    if (this.length === 0) {return ''}
+    return this.split(' ').map(item=> item[0].toUpperCase()+item.slice(1)).join('')
+      
+  }
+  console.log("".camelCase())
+  
+  
+  
+  
+  
