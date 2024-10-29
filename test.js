@@ -1,32 +1,24 @@
 // git reset --hard origin/main
-//https://www.codewars.com/kata/56747fd5cb988479af000028/train/javascript
+//https://www.codewars.com/kata/587731fda577b3d1b0001196/train/javascript
 
 // 📌 DESCRIPTION:
 
-// You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+// Write a method (or function, depending on the language) that converts a string to camelCase, that is, all words must have their first letter capitalized and spaces must be removed.
 
-// #Examples:
-
-// Kata.getMiddle("test") should return "es"
-
-// Kata.getMiddle("testing") should return "t"
-
-// Kata.getMiddle("middle") should return "dd"
-
-// Kata.getMiddle("A") should return "A"
-// #Input
-
-// A word (string) of length 0 < str < 1000 (In javascript you may get slightly more than 1000 in some test cases due to an error in the test cases). You do not need to test for this. This is only here to tell you that you do not need to worry about your solution timing out.
-
-// #Output
-
-// The middle character(s) of the word represented as a string.
+// Examples (input --> output):
+// "hello case" --> "HelloCase"
+// "camel case word" --> "CamelCaseWord"
+// Don't forget to rate this kata! Thanks :)
 
 // 💡 SOLUTION:
 
-function getMiddle(s){
-  let middle = Math.floor(s.length/2);
-  return s.length %2 === 0 ? s.slice(middle-1,middle+1) :s[middle]
+String.prototype.camelCase=function(){
+  if (this.length === 0) {return ''}
+  return this.split(' ').map(item=> item[0].toUpperCase()+item.slice(1)).join('')
+    
 }
+console.log("".camelCase())
 
-console.log(getMiddle('testing'))
+
+
+
