@@ -30,7 +30,7 @@
 
 // 💡 SOLUTION:
 
-  function bestMatch(ALAHLYGoals, zamalekGoals) {
+function bestMatch(ALAHLYGoals, zamalekGoals) {
     let arr = [];
     ALAHLYGoals.forEach((item,index) => arr.push([item - zamalekGoals[index],index,zamalekGoals[index]]))
 
