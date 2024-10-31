@@ -81,7 +81,7 @@ return function () {
         break
       }
     }
-    
+
     return index
 
   }
@@ -104,4 +104,6 @@ console.log(seq.next());
 console.log(seq.next());
 console.log(seq.next());
 console.log(seq.next());
+
+
 
