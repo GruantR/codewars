@@ -30,19 +30,20 @@
 // 💡 SOLUTION:
 
 function isGTten(el) {
-  return el > 10;
-}
-
-var isEven = function (el) {
-  return el % 2 === 0;
-};
-
-function multiFilter(...args) {
-  return function (elem) {
-    return args.every(function (func) {return func(elem)});
+    return el > 10;
+  }
+  
+  var isEven = function (el) {
+    return el % 2 === 0;
   };
-}
-
-console.log(
-  [1, 2, 3, 4, 10, 11, 12, 20, 21, 22].filter(multiFilter(isEven, isGTten))
-);
+  
+  function multiFilter(...args) {
+    return function (elem) {
+      return args.every(function (func) {return func(elem)});
+    };
+  }
+  
+  console.log(
+    [1, 2, 3, 4, 10, 11, 12, 20, 21, 22].filter(multiFilter(isEven, isGTten))
+  );
+  
