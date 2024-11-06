@@ -84,4 +84,4 @@ function findNb(m) {
 
 }
 
-console.log(findNb(1071225))
+//console.log(findNb(1071225))
