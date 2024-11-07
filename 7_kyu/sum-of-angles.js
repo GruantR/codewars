@@ -8,6 +8,6 @@
 // 💡 SOLUTION:
 
 function angle(n) {
-  return ((n-2)*180)
-}
-console.log(angle(3))
+    return ((n-2)*180)
+  }
+  console.log(angle(3))
