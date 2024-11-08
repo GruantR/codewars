@@ -21,6 +21,6 @@
 // 💡 SOLUTION:
 
 function predictAge(...arg){
-  return Math.floor(Math.sqrt(arg.map(item => Math.pow(item,2)).reduce((accum,item) => accum+item,0))/2)
-}
-console.log(predictAge(65,60,75,55,60,63,64,45))
+    return Math.floor(Math.sqrt(arg.map(item => Math.pow(item,2)).reduce((accum,item) => accum+item,0))/2)
+  }
+  console.log(predictAge(65,60,75,55,60,63,64,45))
