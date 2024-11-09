@@ -1,26 +1,24 @@
 // git reset --hard origin/main
-//https://www.codewars.com/kata/5aff237c578a14752d0035ae/train/javascript
+//https://www.codewars.com/kata/59706036f6e5d1e22d000016/train/javascript
 
 // 📌 DESCRIPTION:
 
-// My grandfather always predicted how old people would get, and right before he passed away he revealed his secret!
+// If　a = 1, b = 2, c = 3 ... z = 26
 
-// In honor of my grandfather's memory we will write a function using his formula!
+// Then l + o + v + e = 54
 
-// Take a list of ages when each of your great-grandparent died.
-// Multiply each number by itself.
-// Add them all together.
-// Take the square root of the result.
-// Divide by two.
-// Example
-// predictAge(65, 60, 75, 55, 60, 63, 64, 45) === 86
-// Note: the result should be rounded down to the nearest integer.
+// and f + r + i + e + n + d + s + h + i + p = 108
 
-// Some random tests might fail due to a bug in the JavaScript implementation. Simply resubmit if that happens to you.
+// So friendship is twice as strong as love :-)
+
+// Your task is to write a function which calculates the value of a word based off the sum of the alphabet positions of its characters.
+
+// The input will always be made of only lowercase letters and will never be empty.
 
 // 💡 SOLUTION:
 
-function predictAge(...arg){
-  return Math.floor(Math.sqrt(arg.map(item => Math.pow(item,2)).reduce((accum,item) => accum+item,0))/2)
+function wordsToMarks(string){
+let arr = '_abcdefghijklmnopqrstuvwxyz'
+  return string.split('').reduce((accum,item) => accum+arr.indexOf(item),0)
 }
-console.log(predictAge(65,60,75,55,60,63,64,45))
+console.log(wordsToMarks('adssds'))
