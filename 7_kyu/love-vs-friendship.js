@@ -18,7 +18,7 @@
 // 💡 SOLUTION:
 
 function wordsToMarks(string){
-let arr = '_abcdefghijklmnopqrstuvwxyz'
-  return string.split('').reduce((accum,item) => accum+arr.indexOf(item),0)
-}
-console.log(wordsToMarks('adssds'))
+    let arr = '_abcdefghijklmnopqrstuvwxyz'
+      return string.split('').reduce((accum,item) => accum+arr.indexOf(item),0)
+    }
+    console.log(wordsToMarks('adssds'))
