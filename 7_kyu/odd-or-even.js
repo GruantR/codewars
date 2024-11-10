@@ -24,7 +24,7 @@
 // 💡 SOLUTION:
 
 function oddOrEven(array) {
-  let sum = array.reduce((accum,item) => accum+item,0);
-  return sum === 0 || sum % 2 === 0 ? 'even' : 'odd'
-}
-console.log(oddOrEven([0]))
+    let sum = array.reduce((accum,item) => accum+item,0);
+    return sum === 0 || sum % 2 === 0 ? 'even' : 'odd'
+  }
+  console.log(oddOrEven([0]))
