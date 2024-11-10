@@ -1,24 +1,30 @@
 // git reset --hard origin/main
-//https://www.codewars.com/kata/59706036f6e5d1e22d000016/train/javascript
+//https://www.codewars.com/kata/5949481f86420f59480000e7/train/javascript
 
 // 📌 DESCRIPTION:
 
-// If　a = 1, b = 2, c = 3 ... z = 26
+// Task:
+// Given a list of integers, determine whether the sum of its elements is odd or even.
 
-// Then l + o + v + e = 54
+// Give your answer as a string matching "odd" or "even".
 
-// and f + r + i + e + n + d + s + h + i + p = 108
+// If the input array is empty consider it as: [0] (array with a zero).
 
-// So friendship is twice as strong as love :-)
+// Examples:
+// Input: [0]
+// Output: "even"
 
-// Your task is to write a function which calculates the value of a word based off the sum of the alphabet positions of its characters.
+// Input: [0, 1, 4]
+// Output: "odd"
 
-// The input will always be made of only lowercase letters and will never be empty.
+// Input: [0, -1, -5]
+// Output: "even"
+// Have fun!
 
 // 💡 SOLUTION:
 
-function wordsToMarks(string){
-let arr = '_abcdefghijklmnopqrstuvwxyz'
-  return string.split('').reduce((accum,item) => accum+arr.indexOf(item),0)
+function oddOrEven(array) {
+  let sum = array.reduce((accum,item) => accum+item,0);
+  return sum === 0 || sum % 2 === 0 ? 'even' : 'odd'
 }
-console.log(wordsToMarks('adssds'))
+console.log(oddOrEven([0]))
