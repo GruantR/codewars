@@ -1,30 +1,28 @@
 // git reset --hard origin/main
-//https://www.codewars.com/kata/5949481f86420f59480000e7/train/javascript
+//https://www.codewars.com/kata/539de388a540db7fec000642/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Task:
-// Given a list of integers, determine whether the sum of its elements is odd or even.
+// Story
+// Your online store likes to give out coupons for special occasions. Some customers try to cheat the system by entering invalid codes or using expired coupons.
 
-// Give your answer as a string matching "odd" or "even".
+// Task
+// Your mission:
+// Write a function called checkCoupon which verifies that a coupon code is valid and not expired.
 
-// If the input array is empty consider it as: [0] (array with a zero).
+// A coupon is no more valid on the day AFTER the expiration date. All dates will be passed as strings in this format: "MONTH DATE, YEAR".
 
 // Examples:
-// Input: [0]
-// Output: "even"
-
-// Input: [0, 1, 4]
-// Output: "odd"
-
-// Input: [0, -1, -5]
-// Output: "even"
-// Have fun!
+// checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
+// checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")
 
 // 💡 SOLUTION:
 
-function oddOrEven(array) {
-  let sum = array.reduce((accum,item) => accum+item,0);
-  return sum === 0 || sum % 2 === 0 ? 'even' : 'odd'
+function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
+  currentDate = new Date(currentDate)
+  expirationDate = new Date(expirationDate)
+  return expirationDate-currentDate >=0 && enteredCode === correctCode
+
+  
 }
-console.log(oddOrEven([0]))
+console.log(checkCoupon('123','123','September 5, 2014','October 1, 2014'))
