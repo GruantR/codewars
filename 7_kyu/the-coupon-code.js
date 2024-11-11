@@ -19,10 +19,10 @@
 // 💡 SOLUTION:
 
 function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
-  currentDate = new Date(currentDate)
-  expirationDate = new Date(expirationDate)
-  return expirationDate-currentDate >=0 && enteredCode === correctCode
-
+    currentDate = new Date(currentDate)
+    expirationDate = new Date(expirationDate)
+    return expirationDate-currentDate >=0 && enteredCode === correctCode
   
-}
-console.log(checkCoupon('123','123','September 5, 2014','October 1, 2014'))
+    
+  }
+  console.log(checkCoupon('123','123','September 5, 2014','October 1, 2014'))
