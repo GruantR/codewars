@@ -1,28 +1,62 @@
 // git reset --hard origin/main
-//https://www.codewars.com/kata/539de388a540db7fec000642/train/javascript
+//https://www.codewars.com/kata/5b773b698adeaeb6b80000df/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Story
-// Your online store likes to give out coupons for special occasions. Some customers try to cheat the system by entering invalid codes or using expired coupons.
+// Recursive algorithms can sometimes be optimised with memoisation. Often however, the memoisation is tightly coupled with the algorithm, making reuse difficult.
 
 // Task
-// Your mission:
-// Write a function called checkCoupon which verifies that a coupon code is valid and not expired.
+// Implement a reusable memoisation function
+// that, given a function of one argument, returns a memoised function of one argument.
 
-// A coupon is no more valid on the day AFTER the expiration date. All dates will be passed as strings in this format: "MONTH DATE, YEAR".
+// Functions of more than one argument can be memoised by currying the function and memoising it for every argument, one at a time. This has easier reusability than having a different memoisation component for every number of arguments.
+// ( This scenario will be tested. )
 
-// Examples:
-// checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
-// checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")
+// Performance vs. reusability
+// Maximum performance is not the goal of this kata; maximum simplicity and reusability is.
+// If, for any specific application, you need maximum performance, you would probably customise your reusable memo function for the job, and possibly couple it more tightly, thus shifting the balance away from simplicity and reusability more towards performance. There's always a balance to be struck, just as there is in resource allocation ( time vs. space, CPU vs. memory ).
+
+// Testing
+// Your function will be tested with naive implementations of recursive staples factorial, Ackermann and Fibonacci, and the algorithm for finding a longest common subsequence.
+// The submit tests are exactly the same as the example tests, only with some random testing thrown in, but there are no surprises. If you pass the example tests, you should pass the submit tests, and you can read the example tests. ( It is recommended that you do. )
+
+// Ackermann and the longest common subsequence implementation will test multiply memoising a curried function.
+
+// The datatype of the function argument can be any primitive or object.
+// If a function of zero arguments is passed, it is to be treated as a function of one argument which is undefined.
+
+// Related kata
+// any factorial or Fibonacci kata, e.g. The Millionth Fibonacci Kata
+// Ackermann Function
+// Longest Common Subsequence and its Performance version
+
 
 // 💡 SOLUTION:
 
-function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
-  currentDate = new Date(currentDate)
-  expirationDate = new Date(expirationDate)
-  return expirationDate-currentDate >=0 && enteredCode === correctCode
+const factorial = (i) => (i ? i * factorial(i - 1) : 1);
 
-  
+function memo(fn) {
+  let obj = {};
+
+  return function (...arg) {
+    let key = 0;
+    if (arg.length === 1 && Number.isFinite(arg[0])) {
+      key = arg[0];
+    } else {
+      key = JSON.stringify(arg);
+    }
+
+    if (key in obj) {
+      return obj[key];
+    }
+
+    const result = fn(...arg);
+    obj[key] = result;
+
+    return result;
+  };
 }
-console.log(checkCoupon('123','123','September 5, 2014','October 1, 2014'))
+
+const memoizedFactorial = memo(factorial);
+console.log(memoizedFactorial(15));
+console.log(memoizedFactorial(15));
