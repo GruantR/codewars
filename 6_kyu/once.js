@@ -16,18 +16,19 @@
 // 💡 SOLUTION:
 
 function once(fn) {
-  let firstStart = false;
-  return function (...arg) {
-    if (!firstStart) {
-      firstStart = true;
-      let res = fn(...arg);
-      return res;
-    }
-    return undefined;
-  };
-}
-logOnce = once(console.log);
-logOnce("foo"); // -> "foo"
-logOnce("bar"); //
-logOnce("bar");
-logOnce("bar");
+    let firstStart = false;
+    return function (...arg) {
+      if (!firstStart) {
+        firstStart = true;
+        let res = fn(...arg);
+        return res;
+      }
+      return undefined;
+    };
+  }
+  logOnce = once(console.log);
+  logOnce("foo"); // -> "foo"
+  logOnce("bar"); //
+  logOnce("bar");
+  logOnce("bar");
+  
