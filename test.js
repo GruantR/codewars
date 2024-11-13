@@ -1,30 +1,31 @@
 // git reset --hard origin/main
-//https://www.codewars.com/kata/once/train/javascript
+//https://www.codewars.com/kata/586f6741c66d18c22800010a/train/javascript
 
 // 📌 DESCRIPTION:
 
-// You'll implement once, a function that takes another function as an argument, and returns a new version of that function that can only be called once.
+// Your task is to write a function which returns the sum of a sequence of integers.
 
-// Subsequent calls to the resulting function should have no effect (and should return undefined).
+// The sequence is defined by 3 non-negative values: begin, end, step.
 
-// For example:
+// If begin value is greater than the end, your function should return 0. If end is not the result of an integer number of steps, then don't add it to the sum. See the 4th example below.
 
-// logOnce = once(console.log)
-// logOnce("foo") // -> "foo"
-// logOnce("bar") // -> no effect
+// Examples
+
+// 2,2,2 --> 2
+// 2,6,2 --> 12 (2 + 4 + 6)
+// 1,5,1 --> 15 (1 + 2 + 3 + 4 + 5)
+// 1,5,3  --> 5 (1 + 4)
 
 // 💡 SOLUTION:
 
 const sequenceSum = (begin, end, step) => {
-  if (end < begin) {return 0}
-  let sum = begin;
-  let finish = begin
-  while (end > sum) {
-    sum+=step;
-    finish+=sum
-
-
-  }
-  return finish
+  if (begin > end) {return 0}
+let sum = begin;
+let finish = sum
+while (sum+step<=end) {
+sum+=step
+finish+=sum
+}
+return finish
 };
-console.log(sequenceSum(1,5,3))
+console.log(sequenceSum(2,6,2))
