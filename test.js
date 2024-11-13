@@ -15,19 +15,16 @@
 
 // 💡 SOLUTION:
 
-function once(fn) {
-  let firstStart = false;
-  return function (...arg) {
-    if (!firstStart) {
-      firstStart = true;
-      let res = fn(...arg);
-      return res;
-    }
-    return undefined;
-  };
-}
-logOnce = once(console.log);
-logOnce("foo"); // -> "foo"
-logOnce("bar"); //
-logOnce("bar");
-logOnce("bar");
+const sequenceSum = (begin, end, step) => {
+  if (end < begin) {return 0}
+  let sum = begin;
+  let finish = begin
+  while (end > sum) {
+    sum+=step;
+    finish+=sum
+
+
+  }
+  return finish
+};
+console.log(sequenceSum(1,5,3))
