@@ -19,13 +19,14 @@
 // 💡 SOLUTION:
 
 const sequenceSum = (begin, end, step) => {
-  if (begin > end) {return 0}
-let sum = begin;
-let finish = sum
-while (sum+step<=end) {
-sum+=step
-finish+=sum
-}
-return finish
-};
-console.log(sequenceSum(2,6,2))
+    if (begin > end) {return 0}
+  let sum = begin;
+  let finish = sum
+  while (sum+step<=end) {
+  sum+=step
+  finish+=sum
+  }
+  return finish
+  };
+  console.log(sequenceSum(2,6,2))
+  
