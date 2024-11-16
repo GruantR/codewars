@@ -62,66 +62,67 @@
 // 💡 SOLUTION:
 
 function isEven(number) {
-  return number % 2 === 0;
-}
-
-function parity(number) {
-  return isEven(number) ? 'even' : 'odd';
-}
-
-function frequencyCompare(value1, value2, freq1, freq2) {
-  return freq2 - freq1;
-}
-
-function alphabeticalCompare(value1, value2) {
-  if (String(value1) < String(value2)) {
-    return -1;
-  } else if (String(value1) > String(value2)) {
-    return 1;
-  } else {
-    return 0;
+    return number % 2 === 0;
   }
-}
-
-function profession(person) {
-  return person.profession;
-}
-
-
-function id(value) {
-  return value;
-}
-
-
-function frequency(arr, options) {
-  if (arr.length === 0) {return []}
   
-  let colectMap = new Map();
-  let finalArr = [];
-
-
-  if (options && typeof options.criteria === 'function') {
-    let targetArr = [];
-    arr.forEach(item => targetArr.push(options.criteria(item)))
-    arr = targetArr
-   };
-
-
-  arr.forEach(item => colectMap.has(item) ? colectMap.set(item,colectMap.get(item)+1): colectMap.set(item,1));
-  colectMap.forEach((value,key) => {finalArr.push([key,value])});
-
-
-  if (options && typeof options.compareTo === 'function') {
-    finalArr.sort((a,b)=> options.compareTo(a[0],b[0],a[1],b[1]))
+  function parity(number) {
+    return isEven(number) ? 'even' : 'odd';
   }
-  else {
-    typeof finalArr[0][0] === 'number' ?
-    finalArr.sort((a,b)=> a[0]-b[0]) :
-    finalArr.sort();  
+  
+  function frequencyCompare(value1, value2, freq1, freq2) {
+    return freq2 - freq1;
   }
-
-  return finalArr;
-}
-
-
-console.log (frequency([{name: 'Peter', profession: 'teacher'}, {name: 'Michael', profession: 'teacher'}, {name: 'Anna', profession: 'scientific'}, {name: 'Rose', profession: 'scientific'}, {name: 'Anna', profession: 'scientific'}, {name: 'Anna', profession: 'politician'}], {criteria: profession, compareTo: frequencyCompare}))
+  
+  function alphabeticalCompare(value1, value2) {
+    if (String(value1) < String(value2)) {
+      return -1;
+    } else if (String(value1) > String(value2)) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+  
+  function profession(person) {
+    return person.profession;
+  }
+  
+  
+  function id(value) {
+    return value;
+  }
+  
+  
+  function frequency(arr, options) {
+    if (arr.length === 0) {return []}
+    
+    let colectMap = new Map();
+    let finalArr = [];
+  
+  
+    if (options && typeof options.criteria === 'function') {
+      let targetArr = [];
+      arr.forEach(item => targetArr.push(options.criteria(item)))
+      arr = targetArr
+     };
+  
+  
+    arr.forEach(item => colectMap.has(item) ? colectMap.set(item,colectMap.get(item)+1): colectMap.set(item,1));
+    colectMap.forEach((value,key) => {finalArr.push([key,value])});
+  
+  
+    if (options && typeof options.compareTo === 'function') {
+      finalArr.sort((a,b)=> options.compareTo(a[0],b[0],a[1],b[1]))
+    }
+    else {
+      typeof finalArr[0][0] === 'number' ?
+      finalArr.sort((a,b)=> a[0]-b[0]) :
+      finalArr.sort();  
+    }
+  
+    return finalArr;
+  }
+  
+  
+  console.log (frequency([{name: 'Peter', profession: 'teacher'}, {name: 'Michael', profession: 'teacher'}, {name: 'Anna', profession: 'scientific'}, {name: 'Rose', profession: 'scientific'}, {name: 'Anna', profession: 'scientific'}, {name: 'Anna', profession: 'politician'}], {criteria: profession, compareTo: frequencyCompare}))
+  
