@@ -1,74 +1,127 @@
 // git reset --hard origin/main
-//https://www.codewars.com/kata/i-spy/train/javascript
+//https://www.codewars.com/kata/5452209f699b534c67000cdf/train/javascript
 
 // 📌 DESCRIPTION:
 
-// In testing, a spy function is one that keeps track of various metadata regarding its invocations. Some examples of properties that a spy might track include:
+// Implement the frequency(arr, options) function.
 
-// Whether it was invoked
-// How many times it was invoked
-// What arguments it was called with
-// What contexts it was called in
-// What values it returned
-// Whether it threw an error
-// For this kata, implement a spyOn function which takes any function func as a parameter and returns a spy for func. The returned spy must be callable in the same manner as the original func, and include the following additional properties/methods:
+// The function takes an array and calculates the frequency of each value of the array sorted naturally.
 
-// .callCount() — returns the number of times spy has been called
-// .wasCalledWith(val) – returns true if spy was ever called with val, else returns false.
-// .returned(val) — returns true if spy ever returned val, else returns false
-// Below is a specific example of how spyOn might work in the wild.
+// For example:
 
-// function adder(n1, n2) { return n1 + n2; }
-// var adderSpy = spyOn( adder );
+// frequency(['Peter', 'Anna', 'Rose', 'Peter', 'Peter', 'Anna']); //[["Anna", 2], ["Peter", 3], ["Rose", 1]]
+// frequency([1, 10, 12, 2, 1, 10, 2, 2]); //[[1, 2], [2, 3], [10, 2], [12, 1]]
+// Optionally, the function can take the sorting criteria. For example, to sort alphabetically:
 
-// adderSpy(2, 4); // returns 6
-// adderSpy(3, 5); // returns 8
-// adderSpy.callCount(); // returns 2
-// adderSpy.wasCalledWith(4); // true
-// adderSpy.wasCalledWith(0); // false
-// adderSpy.returned(8); // true
-// adderSpy.returned(0); // false
+// function alphabeticalCompare(value1, value2) {
+//   if (String(value1) < String(value2)) {
+//     return -1;
+//   } else if (String(value1) > String(value2)) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// }
+
+// frequency([1, 10, 12, 2, 1, 10, 2, 2], {compareTo: alphabeticalCompare}); //[[1, 2], [10, 2], [12, 1], [2, 3]]
+// The comparison function also receives the frequencies of each value. For example, to sort by descending frequency:
+
+// function frequencyCompare(value1, value2, freq1, freq2) {
+//   return freq2 - freq1;
+// }
+
+// frequency(['Peter', 'Anna', 'Rose', 'Peter', 'Peter', 'Anna'], {compareTo: frequencyCompare}); //[["Peter", 3], ["Anna", 2], ["Rose", 1]]
+// Finally the function can receive the grouping criteria. For example:
+
+// function isEven(number) {
+//   return number % 2 === 0;
+// }
+
+// function parity(number) {
+//   return isEven(number) ? 'even' : 'odd';
+// }
+
+// frequency([1, 2, 3, 4, 5, 6, 7], {criteria: parity}); //[["even", 3], ["odd", 4]]
+// Obviously you can combine both:
+
+// function profession(person) {
+//   return person.profession;
+// }
+
+// var persons = [
+//   {name: 'Peter', profession: 'teacher'},
+//   {name: 'Michael', profession: 'teacher'},
+//   {name: 'Anna', profession: 'scientific'},
+//   {name: 'Rose', profession: 'scientific'},
+//   {name: 'Anna', profession: 'scientific'},
+//   {name: 'Anna', profession: 'politician'}
+// ];
+
+// frequency(persons, {criteria: profession, compareTo: frequencyCompare}); //[["scientific", 3], ["teacher", 2], ["politician", 1]]
 
 // 💡 SOLUTION:
 
-function spyOn(func) {
-  let counter = 0;
-  let arrInput = [];
-  let arrOutput = [];
-
-  let spyFunc = function (...arg) {
-    arrInput.push(...arg);
-    counter++;
-    let result = func(...arg);
-    arrOutput.push(result);
-    return result;
-  };
-
-  spyFunc.callCount = function () {
-    return counter;
-  };
-
-  spyFunc.wasCalledWith = function (searchElem) {
-    return arrInput.includes(searchElem);
-  };
-
-  spyFunc.returned = function (searchElem) {
-    return arrOutput.includes(searchElem);
-  };
-
-  return spyFunc;
+function isEven(number) {
+  return number % 2 === 0;
 }
 
-function adder(n1, n2) {
-  return n1 + n2;
+function parity(number) {
+  return isEven(number) ? 'even' : 'odd';
 }
 
-var adderSpy = spyOn(adder);
+function frequencyCompare(value1, value2, freq1, freq2) {
+  return freq2 - freq1;
+}
 
-console.log(adderSpy(2, 4)); // returns 6
-console.log(adderSpy(3, 5)); // returns 8
-console.log(adderSpy.callCount()); // returns 2
-console.log(adderSpy.wasCalledWith(4)); // true
-console.log(adderSpy.wasCalledWith(0)); // false
-console.log(adderSpy.returned(8)); // true
-console.log(adderSpy.returned(0)); // false
+function alphabeticalCompare(value1, value2) {
+  if (String(value1) < String(value2)) {
+    return -1;
+  } else if (String(value1) > String(value2)) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+function profession(person) {
+  return person.profession;
+}
+
+
+function id(value) {
+  return value;
+}
+
+
+function frequency(arr, options) {
+  if (arr.length === 0) {return []}
+  
+  let colectMap = new Map();
+  let finalArr = [];
+
+
+  if (options && typeof options.criteria === 'function') {
+    let targetArr = [];
+    arr.forEach(item => targetArr.push(options.criteria(item)))
+    arr = targetArr
+   };
+
+
+  arr.forEach(item => colectMap.has(item) ? colectMap.set(item,colectMap.get(item)+1): colectMap.set(item,1));
+  colectMap.forEach((value,key) => {finalArr.push([key,value])});
+
+
+  if (options && typeof options.compareTo === 'function') {
+    finalArr.sort((a,b)=> options.compareTo(a[0],b[0],a[1],b[1]))
+  }
+  else {
+    typeof finalArr[0][0] === 'number' ?
+    finalArr.sort((a,b)=> a[0]-b[0]) :
+    finalArr.sort();  
+  }
+
+  return finalArr;
+}
+
+
+console.log (frequency([{name: 'Peter', profession: 'teacher'}, {name: 'Michael', profession: 'teacher'}, {name: 'Anna', profession: 'scientific'}, {name: 'Rose', profession: 'scientific'}, {name: 'Anna', profession: 'scientific'}, {name: 'Anna', profession: 'politician'}], {criteria: profession, compareTo: frequencyCompare}))
