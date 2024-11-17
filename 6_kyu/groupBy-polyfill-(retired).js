@@ -27,24 +27,25 @@
 // 💡 SOLUTION:
 
 let groupBy = (Object.groupBy = function (items, cb) {
-  let obj = {
-    __proto__: null,
-  };
-
-  if (!Array.isArray(items)) {
-    items = [...items];
-  }
-
-  items.forEach((value, index) => {
-    let resFunc = cb(value, index);
-
-    obj[resFunc] ? obj[resFunc].push(value) : (obj[resFunc] = [value]);
+    let obj = {
+      __proto__: null,
+    };
+  
+    if (!Array.isArray(items)) {
+      items = [...items];
+    }
+  
+    items.forEach((value, index) => {
+      let resFunc = cb(value, index);
+  
+      obj[resFunc] ? obj[resFunc].push(value) : (obj[resFunc] = [value]);
+    });
+    return obj;
   });
-  return obj;
-});
-
-let items = ["a", "b"];
-let cb = (x) => x;
-
-const result = Object.groupBy(items, cb);
-console.log(result);
+  
+  let items = ["a", "b"];
+  let cb = (x) => x;
+  
+  const result = Object.groupBy(items, cb);
+  console.log(result);
+  
