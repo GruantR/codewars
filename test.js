@@ -1,50 +1,55 @@
 // git reset --hard origin/main
-//https://www.codewars.com/kata/653107dc0bbdb7003e9c59c8/train/javascript
+//https://www.codewars.com/kata/57a2013acf1fa5bfc4000921/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Your task is to implement the Object.groupBy() polyfill.
+// Write a function which calculates the average of the numbers in a given array.
 
-// The groupBy function accepts two arguments: items and cb. The function calls cb once for each element in items, in ascending order, and constructs an object of arrays.
-
-// Each value returned by cb is coerced to a property key, and the associated element is included in the array in the constructed object according to this property key.
-
-// The cb function is called with two arguments: the value of the element and the index of the element.
-
-// // group integers by the number of digits
-
-// const items = [1, 4, 123, 44444, 88888, 12345];
-// const cb = x => x.toString().length;
-// const result = Object.groupBy(items, cb);
-
-// // result === {
-// //     "1": [1, 4],
-// //     "3": [123],
-// //     "5": [44444, 88888, 12345],
-// // }
-// Follow-up kata: GroupBy Advanced
+// Note: Empty arrays should return 0.
 
 // 💡 SOLUTION:
 
-let groupBy = (Object.groupBy = function (items, cb) {
-  let obj = {
-    __proto__: null,
-  };
+// function groupBy(
+//   array,
+//   classifier,
+//   downstream,
+//   accumulatorSupplier,
+// ) {
 
-  if (!Array.isArray(items)) {
-    items = [...items];
-  }
+// let collectMap = new Map();
+// array.forEach(item => {
+//   let key = classifier(item);
+//   let value = downstream(accumulatorSupplier(item),item)
+//   console.log(key)
+//   //collectMap.has(key) ?  collectMap.set( key,collectMap.get(key)+value) :  collectMap.set(key,value)
+//   collectMap.has(key) ?  collectMap.set( key,collectMap.get(key).concat(value)) :  collectMap.set(key,value)
 
-  items.forEach((value, index) => {
-    let resFunc = cb(value, index);
+// }
+// )
+//   return collectMap
+// }
 
-    obj[resFunc] ? obj[resFunc].push(value) : (obj[resFunc] = [value]);
-  });
-  return obj;
-});
+// const employees = [
+//   { name: "James", income: 1000, profession: "developer", age: 23, },
+//   { name: "Robert", income: 1100, profession: "qa", age: 34, },
+//   { name: "John", income: 1200, profession: "designer", age: 32, },
+//   { name: "Mary", income: 1300, profession: "designer", age: 22, },
+//   { name: "Patricia", income: 1400, profession: "qa", age: 23, },
+//   { name: "Jennifer", income: 1500, profession: "developer", age: 45, },
+//   { name: "Max", income: 1600, profession: "developer", age: 27, },
+// ];
 
-let items = ["a", "b"];
-let cb = (x) => x;
+// const profession2names = groupBy(
+//   employees,
+//   employee => employee.profession,
+//   (acc, employee) => [...acc, employee.name],
+//   () => [],
+// );
 
-const result = Object.groupBy(items, cb);
-console.log(result);
+// console.log(profession2names)
+
+function findAverage(array) {
+  
+  return array.length>0 ? array.reduce((accum,item) =>accum+item)/array.length: 0
+}
+console.log(findAverage([1,2,3,4]))
