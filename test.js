@@ -48,8 +48,12 @@
 
 // console.log(profession2names)
 
-function findAverage(array) {
-  
-  return array.length>0 ? array.reduce((accum,item) =>accum+item)/array.length: 0
-}
-console.log(findAverage([1,2,3,4]))
+function capitalize(s){
+let arr1 = [];
+let arr2 = [];
+s.split('').forEach((item,index) => {index === 0 || index % 2 ===0 ? arr1.push(item.toUpperCase()) && arr2.push(item) : arr2.push(item.toUpperCase()) && arr1.push(item) })
+return [arr1.join(''),arr2.join('')]
+};
+
+
+console.log(capitalize("abcdef"))
