@@ -48,12 +48,9 @@
 
 // console.log(profession2names)
 
-function capitalize(s){
-let arr1 = [];
-let arr2 = [];
-s.split('').forEach((item,index) => {index === 0 || index % 2 ===0 ? arr1.push(item.toUpperCase()) && arr2.push(item) : arr2.push(item.toUpperCase()) && arr1.push(item) })
-return [arr1.join(''),arr2.join('')]
-};
+function gimme (triplet) {
+    let sortArr = triplet.slice().sort((a,b)=>a-b)
+return triplet.indexOf(sortArr[1])
+}
 
-
-console.log(capitalize("abcdef"))
+console.log(gimme([5,10,14]))
