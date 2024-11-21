@@ -48,9 +48,6 @@
 
 // console.log(profession2names)
 
-function gimme (triplet) {
-    let sortArr = triplet.slice().sort((a,b)=>a-b)
-return triplet.indexOf(sortArr[1])
-}
 
-console.log(gimme([5,10,14]))
+  reverseLetter = (str) => str.split('').reverse().filter(item=> 'abcdefghijklmnopqrstuvwxyz'.includes(item)).join('')
+  console.log(reverseLetter("ultr53o?n"));
