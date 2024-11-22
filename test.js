@@ -7,14 +7,13 @@
 
 // Note: Empty arrays should return 0.
 
-// 💡 SOLUTION:
+// 💡 SOLUTION :
 
 // function groupBy(
 //   array,
 //   classifier,
 //   downstream,
-//   accumulatorSupplier,
-// ) {
+//   accumulatorSupplier,е
 
 // let collectMap = new Map();
 // array.forEach(item => {
@@ -48,6 +47,12 @@
 
 // console.log(profession2names)
 
-
-  reverseLetter = (str) => str.split('').reverse().filter(item=> 'abcdefghijklmnopqrstuvwxyz'.includes(item)).join('')
-  console.log(reverseLetter("ultr53o?n"));
+function isSortedAndHow(array) {
+    let sortArr = array.slice()
+    let obj = {
+        'yes, ascending': sortArr.sort((a,b)=>a-b).join(''),
+        'yes, descending': sortArr.sort((a,b)=>b-a).join('')
+    }
+return obj["yes, ascending"] === array.join('') ? 'yes, ascending': (obj[ 'yes, descending'] !== array.join('') ? 'no':'yes, descending')
+}
+console.log(isSortedAndHow([15, 7, 3, -8]))
