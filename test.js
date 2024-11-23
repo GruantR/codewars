@@ -47,12 +47,7 @@
 
 // console.log(profession2names)
 
-function isSortedAndHow(array) {
-    let sortArr = array.slice()
-    let obj = {
-        'yes, ascending': sortArr.sort((a,b)=>a-b).join(''),
-        'yes, descending': sortArr.sort((a,b)=>b-a).join('')
-    }
-return obj["yes, ascending"] === array.join('') ? 'yes, ascending': (obj[ 'yes, descending'] !== array.join('') ? 'no':'yes, descending')
-}
-console.log(isSortedAndHow([15, 7, 3, -8]))
+function noOdds( values ){
+    return values.filter(item => item === 0 || item % 2 === 0)
+  }
+  console.log(noOdds([0,1,2,3,4,5,6]))
