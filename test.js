@@ -47,7 +47,23 @@
 
 // console.log(profession2names)
 
-function noOdds( values ){
-    return values.filter(item => item === 0 || item % 2 === 0)
+
+
+
+
+function largestPairSum (numbers) {
+    return numbers.sort((a,b)=> a-b).slice(-2).reduce((accum,item)=>accum+item,0)
   }
-  console.log(noOdds([0,1,2,3,4,5,6]))
+
+  console.log(largestPairSum([10,14,2,23,19]));
+  
+
+
+
+
+
+
+
+
+
+
