@@ -47,14 +47,10 @@
 
 // console.log(profession2names)
 
+function bump(x){
+let count = 0;
+x.split('').forEach(function (item) {if (item === 'n') {count++}})
+return count > 15 ? 'Car Dead' : 'Woohoo!'
+}
 
-
-    function sumDigits(number) {
-        return number.toString().split('').filter(item => isFinite(item)).reduce((accum,item) =>accum+ +item,0)
-    }
-    
-
-console.log(sumDigits(-32))
-
-
-  
+console.log(bump("__nn_nnnn__n_n___n____nn__nnn"));
