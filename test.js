@@ -47,10 +47,23 @@
 
 // console.log(profession2names)
 
-function bump(x){
-let count = 0;
-x.split('').forEach(function (item) {if (item === 'n') {count++}})
-return count > 15 ? 'Car Dead' : 'Woohoo!'
-}
+function solve(s) {
+    const vowel = 'aeiou'.split('');
+    const target = '_abcdefghijklmnopqrstuvwxyz';
+    let conter = 0;
+    let max = 0;
 
-console.log(bump("__nn_nnnn__n_n___n____nn__nnn"));
+    s.split('').forEach((item)=>  {
+        if (vowel.includes(item)) {conter = 0}
+        else {
+            conter += target.indexOf(item)
+            max < conter ? max = conter:1
+        }
+      
+    })
+    return max
+
+     
+  };
+
+  console.log(solve('chruschtschov'))
