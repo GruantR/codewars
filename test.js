@@ -1,52 +1,40 @@
 // git reset --hard origin/main
-//https://www.codewars.com/kata/54dc6f5a224c26032800005c/train/javascript
+//https://www.codewars.com/kata/5506b230a11c0aeab3000c1f/solutions/javascript
 
 // 📌 DESCRIPTION:
 
-// A bookseller has lots of books classified in 26 categories labeled A, B, C, ..., Z. Each book has a code of at least 3 characters. The 1st character of a code is a capital letter which defines the book category.
+// Description:
+// This program tests the life of an evaporator containing a gas.
 
-// In the bookseller's stocklist each code is followed by a space and by a positive integer, which indicates the quantity of books of this code in stock.
+// We know the content of the evaporator (content in ml), the percentage of foam or gas lost every day (evap_per_day) and the threshold (threshold) in percentage beyond which the evaporator is no longer useful. All numbers are strictly positive.
 
-// Task
-// You will receive the bookseller's stocklist and a list of categories. Your task is to find the total number of books in the bookseller's stocklist, with the category codes in the list of categories. Note: the codes are in the same order in both lists.
+// The program reports the nth day (as an integer) on which the evaporator will be out of use.
 
-// Return the result as a string described in the example below, or as a list of pairs (Haskell/Clojure/Racket/Prolog).
-
-// If any of the input lists is empty, return an empty string, or an empty array/list (Clojure/Racket/Prolog).
-
-// Example
-// # the bookseller's stocklist:
-// "ABART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"
-
-// # list of categories: 
-// "A", "B", "C", "W"
-
-// # result:
-// "(A : 20) - (B : 114) - (C : 50) - (W : 0)"
-// Explanation:
-
-// category A: 20 books (ABART)
-// category B: 114 books = 25 (BKWRK) + 89 (BTSQZ)
-// category C: 50 books (CDXEF)
-// category W: 0 books
+// Example:
+// evaporator(10, 10, 5) -> 29
+// Note:
+// Content is in fact not necessary in the body of the function "evaporator", you can use it or not use it, as you wish. Some people might prefer to reason with content, some other with percentages only. It's up to you but you must keep it as a parameter because the tests have it as an argument.
 
 // 💡 SOLUTION :
 
-function stockList(books, categories) {
-    if (books.length === 0) {return ''}
-    let obj = {}
-    let arr = books.map(item => item.split(' '))
-    for (let value of arr) {
-        obj[value[0][0]] ?   obj[value[0][0]]+= +value[1] : obj[value[0][0]] = +value[1]
-        
-    }
-    let finalStr = [];
-    for (let value of categories) {
-        
-        finalStr.push(`(${value} : ${obj[value] ? obj[value]: 0})`)
-    }
-    return finalStr.join(' - ')
-    
 
+function evaporator(content, evap_per_day, threshold) { 
+    let currentContent = content; // Текущий объем жидкости
+    let days = 0; // Количество дней
+
+    // Вычисляем пороговое значение
+    const thresholdValue = content * (threshold / 100);
+
+    while (currentContent > thresholdValue) {
+        // Считаем сколько у нас evaporates каждый день
+        currentContent -= currentContent * (evap_per_day / 100);
+        days++; // Увеличиваем счетчик дней
+    }
+    
+    return days;
 }
-console.log(stockList(["BBAR 150","CDXE 515","BKWR 250","BTSQ 890","DRTY 600"],["A","B","C","D"]));
+
+// Пример использования
+console.log(evaporator(100, 5, 7)); // Должен вернуть количество дней
+
+  
