@@ -1,40 +1,62 @@
 // git reset --hard origin/main
-//https://www.codewars.com/kata/5506b230a11c0aeab3000c1f/solutions/javascript
+//https://www.codewars.com/kata/59377c53e66267c8f6000027/train/javascript
 
 // 📌 DESCRIPTION:
 
-// Description:
-// This program tests the life of an evaporator containing a gas.
+// Introduction
+// There is a war and nobody knows - the alphabet war!
+// There are two groups of hostile letters. The tension between left side letters and right side letters was too high and the war began.
 
-// We know the content of the evaporator (content in ml), the percentage of foam or gas lost every day (evap_per_day) and the threshold (threshold) in percentage beyond which the evaporator is no longer useful. All numbers are strictly positive.
+// Task
+// Write a function that accepts fight string consists of only small letters and return who wins the fight. When the left side wins return Left side wins!, when the right side wins return Right side wins!, in other case return Let's fight again!.
 
-// The program reports the nth day (as an integer) on which the evaporator will be out of use.
+// The left side letters and their power:
 
-// Example:
-// evaporator(10, 10, 5) -> 29
-// Note:
-// Content is in fact not necessary in the body of the function "evaporator", you can use it or not use it, as you wish. Some people might prefer to reason with content, some other with percentages only. It's up to you but you must keep it as a parameter because the tests have it as an argument.
+//  w - 4
+//  p - 3
+//  b - 2
+//  s - 1
+// The right side letters and their power:
+
+//  m - 4
+//  q - 3
+//  d - 2
+//  z - 1
+// The other letters don't have power and are only victims.
+
+// Example
+// alphabetWar("z");        //=> Right side wins!
+// alphabetWar("zdqmwpbs"); //=> Let's fight again!
+// alphabetWar("zzzzs");    //=> Right side wins!
+// alphabetWar("wwwwwwz");  //=> Left side wins!
 
 // 💡 SOLUTION :
 
+alphabetWar = (fight) => {
+    let leftObj = {
+        'w' : 4,
+        'p' : 3,
+        'b' : 2,
+        's' : 1,
+    };
 
-function evaporator(content, evap_per_day, threshold) { 
-    let currentContent = content; // Текущий объем жидкости
-    let days = 0; // Количество дней
-
-    // Вычисляем пороговое значение
-    const thresholdValue = content * (threshold / 100);
-
-    while (currentContent > thresholdValue) {
-        // Считаем сколько у нас evaporates каждый день
-        currentContent -= currentContent * (evap_per_day / 100);
-        days++; // Увеличиваем счетчик дней
+    let rightObj = {
+        'm' : 4,
+        'q' : 3,
+        'd' : 2,
+        'z' : 1,
     }
-    
-    return days;
-}
+    let finalRezult = 0;
+    fight.split('').forEach((value, index, array) => {
+        leftObj[value] ? finalRezult -= leftObj[value] : (rightObj[value] ? finalRezult+= rightObj[value] : 1)
+    })
 
-// Пример использования
-console.log(evaporator(100, 5, 7)); // Должен вернуть количество дней
 
-  
+ return  finalRezult === 0 ? "Let's fight again!" : (finalRezult < 0 ? 'Left side wins!' : 'Right side wins!')
+
+
+
+};
+
+
+console.log(alphabetWar('zzz'));
