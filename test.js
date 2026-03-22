@@ -32,31 +32,20 @@
 
 // 💡 SOLUTION :
 
-alphabetWar = (fight) => {
-    let leftObj = {
-        'w' : 4,
-        'p' : 3,
-        'b' : 2,
-        's' : 1,
-    };
 
-    let rightObj = {
-        'm' : 4,
-        'q' : 3,
-        'd' : 2,
-        'z' : 1,
+// Фабрика middleware с замыканием
+function createAuthMiddleware(requiredRole) {
+  // requiredRole "запоминается" в замыкании
+  return (req, res, next) => {
+    if (!req.user) return res.status(401).send('Не авторизован');
+    if (req.user.role !== requiredRole) {
+      return res.status(403).send('Нет прав');
     }
-    let finalRezult = 0;
-    fight.split('').forEach((value, index, array) => {
-        leftObj[value] ? finalRezult -= leftObj[value] : (rightObj[value] ? finalRezult+= rightObj[value] : 1)
-    })
+    next(); // Доступ разрешен
+  };
+}
 
+// Использование - создаем middleware с разными ролями
+const requireAdmin = createAuthMiddleware('admin');     // ← 'admin' запомнился в замыкании
+const requireEditor = createAuthMiddleware('editor');  // ← 'editor' запомнился в замыкании
 
- return  finalRezult === 0 ? "Let's fight again!" : (finalRezult < 0 ? 'Left side wins!' : 'Right side wins!')
-
-
-
-};
-
-
-console.log(alphabetWar('zzz'));
